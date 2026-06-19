@@ -2,7 +2,7 @@
 
 SVGotchi is an experimental local-first SVG Tamagotchi prototype with deterministic animation and a browser-local emotion model path.
 
-The current character is rendered from the uploaded composed asset `assets/1.png` inside the SVG app shell. This keeps the character visually identical to the uploaded asset while preserving the SVG prompt, deterministic transitions, and browser-local model boundary.
+The current character uses the uploaded composed asset `assets/1.png` as its base inside the SVG app shell. Non-neutral emotions add app-owned SVG expression overlays for eyes, mouth, brows, blush, and effects so the character visibly reacts while preserving the SVG prompt, deterministic transitions, and browser-local model boundary.
 
 ## Install
 

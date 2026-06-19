@@ -59,7 +59,7 @@ const state = {
 const root = document.getElementById("svgotchi-root");
 const nodes = ids([
   "pet", "prompt-area", "prompt-bg", "prompt-placeholder", "prompt-text", "prompt-caret",
-  "send-zone", "app-status", "app-plan", "eye-left", "eye-right", "mouth",
+  "send-zone", "app-status", "app-plan", "face", "face-cover", "face-features", "eye-left", "eye-right", "mouth",
   "eye-left-shine", "eye-right-shine", "eye-left-heart", "eye-right-heart",
   "brow-left", "brow-right", "blush-left", "blush-right",
   "effect-hearts", "effect-sparkles", "effect-tears", "effect-zzz", "effect-question", "effect-anger"
@@ -413,11 +413,21 @@ function renderPose(p) {
   setEyes(p.eyes);
   setMouth(p.mouth);
   setBrows(p.brows);
+  setFaceOverlay(p);
   attr(nodes["blush-left"], { opacity: p.blushOpacity });
   attr(nodes["blush-right"], { opacity: p.blushOpacity });
   for (const effect of ["hearts", "sparkles", "tears", "zzz", "question", "anger"]) {
     attr(nodes[`effect-${effect}`], { opacity: p.effect === effect ? p.effectOpacity : 0 });
   }
+}
+
+function setFaceOverlay(p) {
+  const active = p.eyes !== "dot" || p.mouth !== "flat" || p.brows !== "none" || p.blushOpacity > 0.05;
+  const opacity = active ? 1 : 0;
+  attr(nodes["face"], { "data-face-overlay": active ? "active" : "neutral" });
+  attr(nodes["face-cover"], { opacity });
+  attr(nodes["face-features"], { opacity });
+  if (root) root.dataset.faceOverlay = active ? "active" : "neutral";
 }
 
 function setPetTransform(p) {
@@ -435,13 +445,13 @@ function setPetTransform(p) {
 
 function setEyes(kind) {
   const presets = {
-    dot: [[42, 39, 4.6, 6, "", 1], [58, 39, 4.6, 6, "", 1], 1, 0],
-    happy_closed: [[42, 39.5, 5, 0.6, "", 1], [58, 39.5, 5, 0.6, "", 1], 0, 0],
-    half_closed: [[42, 40, 4.8, 1.4, "", 1], [58, 40, 4.8, 1.4, "", 1], 0, 0],
-    sharp: [[42, 39, 4.9, 3.2, "rotate(12 42 39)", 1], [58, 39, 4.9, 3.2, "rotate(-12 58 39)", 1], 0, 0],
-    wide: [[42, 39, 5.2, 7, "", 1], [58, 39, 5.2, 7, "", 1], 1, 0],
-    sad: [[42, 40, 4.7, 3, "rotate(-12 42 40)", 1], [58, 40, 4.7, 3, "rotate(12 58 40)", 1], 0, 0],
-    heart_like: [[42, 39, 4.6, 6, "", 0], [58, 39, 4.6, 6, "", 0], 0, 1]
+    dot: [[41.8, 31.6, 4.9, 5.8, "", 1], [58.2, 31.6, 4.9, 5.8, "", 1], 1, 0],
+    happy_closed: [[41.8, 32.4, 5, 0.6, "", 1], [58.2, 32.4, 5, 0.6, "", 1], 0, 0],
+    half_closed: [[41.8, 32, 5, 1.35, "", 1], [58.2, 32, 5, 1.35, "", 1], 0, 0],
+    sharp: [[41.8, 31.7, 5, 3, "rotate(12 41.8 31.7)", 1], [58.2, 31.7, 5, 3, "rotate(-12 58.2 31.7)", 1], 0, 0],
+    wide: [[41.8, 31.4, 5.3, 6.5, "", 1], [58.2, 31.4, 5.3, 6.5, "", 1], 1, 0],
+    sad: [[41.8, 32.2, 4.8, 3, "rotate(-12 41.8 32.2)", 1], [58.2, 32.2, 4.8, 3, "rotate(12 58.2 32.2)", 1], 0, 0],
+    heart_like: [[41.8, 31.6, 4.9, 5.8, "", 0], [58.2, 31.6, 4.9, 5.8, "", 0], 0, 1]
   };
   const [left, right, shineOpacity, heartOpacity] = presets[kind] || presets.dot;
   ellipse(nodes["eye-left"], left);
@@ -454,14 +464,14 @@ function setEyes(kind) {
 
 function setMouth(kind) {
   const presets = {
-    flat: ["M46 53h8", ""],
-    small_smile: ["M45 52q5 4 10 0", ""],
-    big_smile: ["M43 51q7 7 14 0", ""],
-    sad_curve: ["M45 55q5-4 10 0", ""],
-    zigzag: ["M44 53l3-2l3 2l3-2l3 2", "rotate(-4 50 53)"],
-    tiny_open: ["M49 51q1-1 2 0q1 2 0 4q-1 1-2 0q-1-2 0-4z", ""],
-    surprised_o: ["M50 50a3 4 0 1 0 0.1 0", ""],
-    pout: ["M45 53q5-2 10 0", ""]
+    flat: ["M46 40.6h8", ""],
+    small_smile: ["M45 39.8q5 4 10 0", ""],
+    big_smile: ["M43 38.8q7 7 14 0", ""],
+    sad_curve: ["M45 42.2q5-4 10 0", ""],
+    zigzag: ["M44 40.7l3-2l3 2l3-2l3 2", "rotate(-4 50 40.7)"],
+    tiny_open: ["M49 38.7q1-1 2 0q1 2 0 4q-1 1-2 0q-1-2 0-4z", ""],
+    surprised_o: ["M50 38.2a3 4 0 1 0 0.1 0", ""],
+    pout: ["M45 40.8q5-2 10 0", ""]
   };
   const [d, transform] = presets[kind] || presets.flat;
   attr(nodes.mouth, { d, transform });
@@ -469,11 +479,11 @@ function setMouth(kind) {
 
 function setBrows(kind) {
   const presets = {
-    none: [["M38 33q4-2 8 0", 0, ""], ["M54 33q4-2 8 0", 0, ""]],
-    soft: [["M38 33q4-2 8 0", 0.55, ""], ["M54 33q4-2 8 0", 0.55, ""]],
-    angry: [["M37 32l9 3", 1, ""], ["M63 32l-9 3", 1, ""]],
-    worried: [["M37 35l9-3", 1, ""], ["M54 32l9 3", 1, ""]],
-    raised: [["M38 30q4-2 8 0", 1, ""], ["M54 30q4-2 8 0", 1, ""]]
+    none: [["M37.2 25.7q4.6-2 9.2 0", 0, ""], ["M53.6 25.7q4.6-2 9.2 0", 0, ""]],
+    soft: [["M37.2 25.7q4.6-2 9.2 0", 0.55, ""], ["M53.6 25.7q4.6-2 9.2 0", 0.55, ""]],
+    angry: [["M36.8 25l9.4 3", 1, ""], ["M63.2 25l-9.4 3", 1, ""]],
+    worried: [["M36.8 28.4l9.4-3", 1, ""], ["M53.8 25.4l9.4 3", 1, ""]],
+    raised: [["M37.2 23.5q4.6-2 9.2 0", 1, ""], ["M53.6 23.5q4.6-2 9.2 0", 1, ""]]
   };
   const [left, right] = presets[kind] || presets.none;
   pathNode(nodes["brow-left"], left);

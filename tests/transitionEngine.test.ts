@@ -77,12 +77,16 @@ test("transition preview asset contains all five required transitions and uses t
   const assetSvg = readFileSync("assets/transition-previews/stage-04-sample-transitions.svg", "utf8");
   const renderedSvg = renderTransitionPreviewSvg(REQUIRED_TRANSITION_SAMPLES);
   const imageHrefs = [...assetSvg.matchAll(/<image\b[^>]*\bhref="([^"]+)"/gi)].map((match) => match[1]);
+  const activeFaceOverlays = assetSvg.match(/data-face-overlay="active"/g) ?? [];
 
   assert.equal(assetSvg, renderedSvg);
   for (const sample of REQUIRED_TRANSITION_SAMPLES) {
     assert.match(assetSvg, new RegExp(`data-transition="${sample.from}->${sample.to}"`));
   }
   assert.equal(imageHrefs.length, REQUIRED_TRANSITION_SAMPLES.length * 5);
+  assert.ok(activeFaceOverlays.length >= REQUIRED_TRANSITION_SAMPLES.length, "transition preview should show visible facial overlays");
+  assert.match(assetSvg, /class="face-patch"/);
+  assert.match(assetSvg, /class="mouth-line"/);
   assert.deepEqual([...new Set(imageHrefs)], ["/assets/1.png"]);
   assert.doesNotMatch(assetSvg, /<foreignObject\b/i);
   assert.doesNotMatch(assetSvg, /\bhref="https?:\/\//i);

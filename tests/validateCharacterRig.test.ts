@@ -72,3 +72,15 @@ test("base character uses only the approved uploaded PNG image asset", () => {
   assert.doesNotMatch(assetSvg, /\bhref="https?:\/\//i);
   assert.doesNotMatch(assetSvg, /\bhref="data:/i);
 });
+
+test("base character exposes a visible-capable expression overlay rig", () => {
+  assert.ok(assetSvg.includes('id="face-cover"'));
+  assert.ok(assetSvg.includes('id="face-features"'));
+  assert.ok(assetSvg.includes('id="eye-left-shine"'));
+  assert.ok(assetSvg.includes('id="eye-right-shine"'));
+  assert.ok(assetSvg.includes('id="eye-left-heart"'));
+  assert.ok(assetSvg.includes('id="eye-right-heart"'));
+  assert.ok(assetSvg.includes('class="face-patch"'));
+  assert.ok(assetSvg.includes('class="mouth-line"'));
+  assert.doesNotMatch(assetSvg, /\.face-slot\s*\{[^}]*opacity:\s*0/i);
+});

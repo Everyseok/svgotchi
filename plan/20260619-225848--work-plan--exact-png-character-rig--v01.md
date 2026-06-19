@@ -216,3 +216,9 @@ Score Update: provisional 50/100. The user has not provided a numeric score, so 
 What Remains Unsatisfactory: The base character is exact, but thirty fully distinct exact expression PNG variants are still not available. The uploaded PNG also contains its own baked visual background pixels, so exact rendering preserves those pixels. Final subjective visual acceptance still depends on the user's browser check.
 
 Score History Addition: 2026-06-19 23:08:16 Asia/Seoul: provisional 50/100. Exact PNG-backed implementation is complete and locally verified, but user has not provided a new explicit score and the workflow caps provisional scoring at 50.
+
+## Superseded Status Update: 2026-06-19 23:33:43 Asia/Seoul
+
+Status: Superseded for active visual work by `plan/20260619-233343--work-plan--completion-grade-expression-rig--v01.md`.
+
+Reason: The exact PNG base correction is still valid and remains part of the project, but user feedback after runtime inspection showed that a transform-only PNG character is not acceptable as a completed character experience. The new active plan keeps the exact `assets/1.png` base and adds a visible expression overlay rig so emotion prompts change the face, not only the whole image transform.

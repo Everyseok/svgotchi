@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 import { EMOTIONS } from "../src/emotion/emotionCatalog.ts";
 import { listPoseEntries, POSE_MAP, type Pose } from "../src/emotion/poseMap.ts";
 import { renderPoseSheetSvg } from "../src/emotion/poseSheetPreview.ts";
+import { isFaceOverlayActive, renderAnimeCharacter } from "../src/render/animeRig.ts";
 
 const EXPECTED_EMOTIONS = [
   "neutral",
@@ -58,16 +59,45 @@ test("each pose uses bounded primitive pose parameters", () => {
 test("pose sheet preview includes every emotion and uses the approved uploaded PNG image asset", () => {
   const svg = renderPoseSheetSvg();
   const imageHrefs = [...svg.matchAll(/<image\b[^>]*\bhref="([^"]+)"/gi)].map((match) => match[1]);
+  const activeFaceOverlays = svg.match(/data-face-overlay="active"/g) ?? [];
 
   for (const emotion of EXPECTED_EMOTIONS) {
     assert.match(svg, new RegExp(`data-emotion="${emotion}"`));
   }
 
   assert.equal(imageHrefs.length, EXPECTED_EMOTIONS.length);
+  assert.equal(activeFaceOverlays.length, EXPECTED_EMOTIONS.length - 1);
   assert.deepEqual([...new Set(imageHrefs)], ["/assets/1.png"]);
   assert.doesNotMatch(svg, /<foreignObject\b/i);
   assert.doesNotMatch(svg, /\bhref="https?:\/\//i);
   assert.doesNotMatch(svg, /\bhref="data:/i);
+});
+
+test("pose sheet positions each character inside its own cell", () => {
+  const svg = renderPoseSheetSvg();
+  const happyCell = svg.match(/<g data-emotion="happy"[\s\S]*?<\/g>\n    <text x="4" y="70"/)?.[0] ?? "";
+
+  assert.match(happyCell, /<g transform="translate\(5 7\) rotate\(0 50 40\) scale\(0\.63\)">/);
+  assert.doesNotMatch(happyCell, /translate\(77 7\)/);
+});
+
+test("non-neutral emotion previews render real face overlays instead of transform-only poses", () => {
+  assert.equal(isFaceOverlayActive(POSE_MAP.neutral), false);
+  assert.doesNotMatch(renderAnimeCharacter(POSE_MAP.neutral), /data-face-overlay="active"/);
+
+  for (const emotion of EXPECTED_EMOTIONS.filter((emotion) => emotion !== "neutral")) {
+    const rendered = renderAnimeCharacter(POSE_MAP[emotion]);
+    assert.equal(isFaceOverlayActive(POSE_MAP[emotion]), true, `${emotion} should activate face overlay`);
+    assert.match(rendered, /data-face-overlay="active"/, `${emotion} should render visible face overlay`);
+    assert.match(rendered, /class="face-patch"/, `${emotion} should cover flattened PNG facial pixels`);
+  }
+
+  assert.match(renderAnimeCharacter(POSE_MAP.love), /class="eye-heart"/);
+  assert.match(renderAnimeCharacter(POSE_MAP.sad), /class="effect-tear"/);
+  assert.match(renderAnimeCharacter(POSE_MAP.angry), /class="brow-line"/);
+  assert.match(renderAnimeCharacter(POSE_MAP.surprised), /a3 4 0 1 0/);
+  assert.match(renderAnimeCharacter(POSE_MAP.sleepy), /class="eye-fill"/);
+  assert.match(renderAnimeCharacter(POSE_MAP.curious), /data-face-overlay="active"/);
 });
 
 test("generated pose sheet asset matches the preview renderer output", () => {

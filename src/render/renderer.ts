@@ -47,7 +47,7 @@ function renderSample(sample: TransitionPreviewSample, sampleIndex: number): str
 
 function renderFramePose(pose: Pose, reply: string): string {
   const scale = round(0.62 * pose.bodyScale);
-  const transform = `translate(${round(5 + pose.bodyOffsetX)} ${round(18 + pose.bodyOffsetY)}) rotate(${round(pose.bodyRotation)} 50 43) scale(${scale})`;
+  const transform = `translate(${round(5 + pose.bodyOffsetX)} ${round(18 + pose.bodyOffsetY)}) rotate(${round(pose.bodyRotation)} 50 40) scale(${scale})`;
 
   return `<g transform="${transform}">
       ${renderAnimeCharacter(pose)}

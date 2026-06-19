@@ -15,6 +15,12 @@ test("character contract uses the required 100x100 SVG layout", () => {
 test("required rig ids are unique and include every prompt and effect slot", () => {
   assert.equal(new Set(REQUIRED_RIG_IDS).size, REQUIRED_RIG_IDS.length);
   assert.ok(REQUIRED_RIG_IDS.includes("character-image"));
+  assert.ok(REQUIRED_RIG_IDS.includes("face-cover"));
+  assert.ok(REQUIRED_RIG_IDS.includes("face-features"));
+  assert.ok(REQUIRED_RIG_IDS.includes("eye-left-shine"));
+  assert.ok(REQUIRED_RIG_IDS.includes("eye-right-shine"));
+  assert.ok(REQUIRED_RIG_IDS.includes("eye-left-heart"));
+  assert.ok(REQUIRED_RIG_IDS.includes("eye-right-heart"));
   assert.ok(REQUIRED_RIG_IDS.includes("effect-hearts"));
   assert.ok(REQUIRED_RIG_IDS.includes("effect-tears"));
   assert.ok(REQUIRED_RIG_IDS.includes("effect-zzz"));

@@ -27,9 +27,9 @@ function renderCell(emotion: string, pose: Pose, index: number): string {
   const x = (index % COLS) * CELL_W;
   const y = Math.floor(index / COLS) * CELL_H;
   const scale = round(0.62 * pose.bodyScale);
-  const tx = x + 5 + pose.bodyOffsetX;
-  const ty = y + 8 + pose.bodyOffsetY;
-  const transform = `translate(${round(tx)} ${round(ty)}) rotate(${round(pose.bodyRotation)} 50 43) scale(${scale})`;
+  const tx = 5 + pose.bodyOffsetX;
+  const ty = 8 + pose.bodyOffsetY;
+  const transform = `translate(${round(tx)} ${round(ty)}) rotate(${round(pose.bodyRotation)} 50 40) scale(${scale})`;
 
   return `  <g data-emotion="${emotion}" transform="translate(${x} ${y})">
     <rect x="1" y="1" width="${CELL_W - 2}" height="${CELL_H - 2}" class="frame muted"/>

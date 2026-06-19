@@ -1,17 +1,17 @@
 # SVGotchi Deterministic Transition Review
 
-Status: Current deterministic transition preview for exact uploaded PNG character
+Status: Current deterministic transition preview for uploaded PNG base plus SVG expression overlay
 Last updated: 2026-06-19 Asia/Seoul
 
 ## Scope
 
-The transition renderer implements deterministic multi-frame emotion transitions for the image-backed uploaded character and the 30-emotion pose map. The visible character body is `assets/1.png`. The model/planner boundary remains narrow: model evidence is mapped into sanitized app-owned transition fields, and the model does not write SVG, selectors, path data, image paths, CSS, JavaScript, animation code, or pet reply text.
+The transition renderer implements deterministic multi-frame emotion transitions for the image-backed uploaded character and the 30-emotion pose map. The visible character body is `assets/1.png`, and non-neutral frames render an app-owned SVG expression overlay for eyes, mouth, brows, blush, and effects. The model/planner boundary remains narrow: model evidence is mapped into sanitized app-owned transition fields, and the model does not write SVG, selectors, path data, image paths, CSS, JavaScript, animation code, or pet reply text.
 
 The visual direction remains:
 
 - dark SVG background
-- exact uploaded character pixels from `assets/1.png`
-- SVG primitives only
+- exact uploaded character pixels from `assets/1.png` as the base identity
+- SVG expression overlay primitives for visible reactions
 - deterministic frames from typed pose parameters
 - no LLM-generated SVG, selectors, path data, or animation code
 - no LLM-generated pet reply text or reply style
@@ -76,17 +76,19 @@ Current result:
 
 - typecheck passed
 - browser script syntax check passed
-- 37 baseline tests passed
+- 40 baseline tests passed
 - required transition samples generate multiple frames
 - transition endpoints include first and final progress states
 - preview asset matches renderer output exactly
 - preview includes all five required transitions
 - preview uses `/assets/1.png` for every sampled transition frame
+- preview includes visible face overlays, face patches, and mouth geometry in non-neutral transition frames
 - preview has no remote image href, data URI image href, or `foreignObject`
 
 Additional current checks:
 
 - `data-transition` group count: 25
 - unique transitions: `neutral->shy_love`, `neutral->hungry`, `neutral->sleepy`, `neutral->hurt`, `neutral->curious`
-- served SVG demo/full probes passed for `you are cute -> shy_love`
+- served SVG demo/full probes passed for `you are cute -> shy_love` and inspect face overlay state
+- representative served demo probes passed for sad, angry, surprised/question, and sleepy states with non-neutral face overlay evidence
 - local browser-side classifier import probe passed

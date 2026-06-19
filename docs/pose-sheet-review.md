@@ -1,16 +1,17 @@
 # SVGotchi 30-Emotion Pose Sheet Review
 
-Status: Current 30-emotion pose sheet for exact uploaded PNG character
+Status: Current 30-emotion pose sheet for uploaded PNG base plus SVG expression overlay
 Last updated: 2026-06-19 Asia/Seoul
 
 ## Scope
 
-This document defines target poses for all 30 required emotions using one shared image-backed rig. The visible character body is the uploaded composed PNG at `assets/1.png`. The model and planner still do not generate SVG, path data, selectors, image paths, or animation code.
+This document defines target poses for all 30 required emotions using one shared image-backed rig. The visible character body is the uploaded composed PNG at `assets/1.png`. Neutral preserves that base image as the visual baseline. Non-neutral poses render an app-owned SVG expression overlay for eyes, mouth, brows, blush, and effects. The model and planner still do not generate SVG, path data, selectors, image paths, or animation code.
 
 The current visual direction remains:
 
 - dark SVG background
-- exact uploaded character pixels from `assets/1.png`
+- exact uploaded character pixels from `assets/1.png` as the base identity
+- visible SVG expression overlays for non-neutral emotions
 - primitive SVG pose parameters
 - no separate DOM structure per emotion
 
@@ -93,5 +94,8 @@ Expected Stage 2 checks:
 - every pose has bounded primitive numeric parameters
 - pose sheet preview includes every emotion
 - pose sheet preview uses `/assets/1.png` for every emotion
+- pose sheet preview renders active face overlays for the 29 non-neutral emotions
+- pose sheet characters are positioned inside their own cells rather than shifted by outer grid coordinates
+- representative emotions render distinct face geometry such as heart eyes, sad tears, angry brows, surprised mouth, sleepy eyes, and curious/question states
 - pose sheet preview has no remote image href, data URI image href, or `foreignObject`
 - character rig tests continue passing

@@ -4,9 +4,16 @@ import { CHARACTER_IMAGE_HREF } from "../character/baseCharacter.ts";
 export const ANIME_PREVIEW_STYLE = `    .bg { fill: #140f1f; }
     .frame { fill: none; stroke: #5f4a7d; stroke-width: 1; }
     .character-image { image-rendering: auto; }
+    .face-patch { fill: #fff1f0; stroke: #f0c9cf; stroke-width: 0.3; }
+    .eye-fill { fill: #6f54b8; stroke: #3c286d; stroke-width: 0.55; }
+    .eye-shine { fill: #fffaff; }
+    .eye-heart { fill: #ff78ad; stroke: #963f72; stroke-width: 0.35; }
+    .mouth-line, .eye-line, .brow-line { fill: none; stroke: #4b2a4d; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; }
+    .blush-fill { fill: #ff9ab8; }
     .effect-fill { fill: #ff7dac; }
     .effect-tear { fill: #7ed8ff; }
     .effect-line { stroke: #ffe889; stroke-width: 1.2; stroke-linecap: round; fill: none; }
+    .effect-symbol { fill: #ffe889; font-size: 8px; font-weight: 700; }
     .bubble { fill: #211832; stroke: #cbb5ea; stroke-width: 1; }
     .bubble-tail { fill: #cdb9ff; }
     text { fill: #f7eaff; font-family: monospace; font-size: 4px; }
@@ -16,65 +23,86 @@ export const ANIME_PREVIEW_STYLE = `    .bg { fill: #140f1f; }
 export function renderAnimeCharacter(pose: Pose): string {
   return [
     renderAnimeBody(),
+    renderAnimeFace(pose),
     renderAnimeEffect(pose.effect, pose.effectOpacity)
   ].filter(Boolean).join("\n      ");
 }
 
 export function renderAnimeBody(): string {
-  return `<image href="${CHARACTER_IMAGE_HREF}" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid meet" class="character-image"/>`;
+  return `<image href="${CHARACTER_IMAGE_HREF}" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>`;
 }
 
 export function renderAnimeFace(pose: Pick<Pose, "eyes" | "mouth" | "brows" | "blushOpacity">): string {
+  if (!isFaceOverlayActive(pose)) {
+    return "";
+  }
+
   const faceParts = [
+    renderFaceCover(),
     renderAnimeBrows(pose.brows),
     renderAnimeEyes(pose.eyes),
     renderAnimeMouth(pose.mouth),
-    `<ellipse cx="37.5" cy="49" rx="5.3" ry="2.5" class="blush-fill" opacity="${round(pose.blushOpacity)}"/>`,
-    `<ellipse cx="62.5" cy="49" rx="5.3" ry="2.5" class="blush-fill" opacity="${round(pose.blushOpacity)}"/>`
+    `<ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="${round(pose.blushOpacity)}"/>`,
+    `<ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="${round(pose.blushOpacity)}"/>`
   ].filter(Boolean).join("\n        ");
 
-  return `<g class="anime-face">
+  return `<g class="anime-face" data-face-overlay="active">
         ${faceParts}
       </g>`;
+}
+
+export function isFaceOverlayActive(pose: Pick<Pose, "eyes" | "mouth" | "brows" | "blushOpacity">): boolean {
+  return pose.eyes !== "dot"
+    || pose.mouth !== "flat"
+    || pose.brows !== "none"
+    || pose.blushOpacity > 0.05;
+}
+
+function renderFaceCover(): string {
+  return `<g class="face-cover">
+          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
+          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
+          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
+        </g>`;
 }
 
 export function renderAnimeEyes(eyes: EyePose): string {
   switch (eyes) {
     case "dot":
-      return `<ellipse cx="42" cy="39" rx="4.6" ry="6" class="eye-fill"/><ellipse cx="58" cy="39" rx="4.6" ry="6" class="eye-fill"/><circle cx="40.4" cy="36.7" r="1.4" class="eye-shine"/><circle cx="56.4" cy="36.7" r="1.4" class="eye-shine"/>`;
+      return `<ellipse cx="41.8" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><ellipse cx="58.2" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><circle cx="40.2" cy="29.2" r="1.1" class="eye-shine"/><circle cx="56.6" cy="29.2" r="1.1" class="eye-shine"/>`;
     case "happy_closed":
-      return `<path d="M37 39q5 4 10 0M53 39q5 4 10 0" class="eye-line"/>`;
+      return `<path d="M36.8 32.4q5 3.5 10 0M53.2 32.4q5 3.5 10 0" class="eye-line"/>`;
     case "half_closed":
-      return `<ellipse cx="42" cy="40" rx="4.8" ry="1.4" class="eye-fill"/><ellipse cx="58" cy="40" rx="4.8" ry="1.4" class="eye-fill"/>`;
+      return `<ellipse cx="41.8" cy="32" rx="5" ry="1.35" class="eye-fill"/><ellipse cx="58.2" cy="32" rx="5" ry="1.35" class="eye-fill"/>`;
     case "sharp":
-      return `<ellipse cx="42" cy="39" rx="4.9" ry="3.2" class="eye-fill" transform="rotate(12 42 39)"/><ellipse cx="58" cy="39" rx="4.9" ry="3.2" class="eye-fill" transform="rotate(-12 58 39)"/>`;
+      return `<ellipse cx="41.8" cy="31.7" rx="5" ry="3" class="eye-fill" transform="rotate(12 41.8 31.7)"/><ellipse cx="58.2" cy="31.7" rx="5" ry="3" class="eye-fill" transform="rotate(-12 58.2 31.7)"/>`;
     case "wide":
-      return `<ellipse cx="42" cy="39" rx="5.2" ry="7" class="eye-fill"/><ellipse cx="58" cy="39" rx="5.2" ry="7" class="eye-fill"/><circle cx="40.1" cy="36.1" r="1.5" class="eye-shine"/><circle cx="56.1" cy="36.1" r="1.5" class="eye-shine"/>`;
+      return `<ellipse cx="41.8" cy="31.4" rx="5.3" ry="6.5" class="eye-fill"/><ellipse cx="58.2" cy="31.4" rx="5.3" ry="6.5" class="eye-fill"/><circle cx="40.1" cy="28.7" r="1.25" class="eye-shine"/><circle cx="56.5" cy="28.7" r="1.25" class="eye-shine"/>`;
     case "sad":
-      return `<ellipse cx="42" cy="40" rx="4.7" ry="3" class="eye-fill" transform="rotate(-12 42 40)"/><ellipse cx="58" cy="40" rx="4.7" ry="3" class="eye-fill" transform="rotate(12 58 40)"/>`;
+      return `<ellipse cx="41.8" cy="32.2" rx="4.8" ry="3" class="eye-fill" transform="rotate(-12 41.8 32.2)"/><ellipse cx="58.2" cy="32.2" rx="4.8" ry="3" class="eye-fill" transform="rotate(12 58.2 32.2)"/>`;
     case "heart_like":
-      return `<path d="M42 37c-2-4-7-2-6 2c1 4 6 7 6 7s5-3 6-7c1-4-4-6-6-2z" class="effect-fill"/><path d="M58 37c-2-4-7-2-6 2c1 4 6 7 6 7s5-3 6-7c1-4-4-6-6-2z" class="effect-fill"/>`;
+      return `<path d="M41.8 29.6c-1.8-3.2-5.8-1.6-5 1.7c.8 3 5 5.5 5 5.5s4.2-2.5 5-5.5c.8-3.3-3.2-4.9-5-1.7z" class="eye-heart"/><path d="M58.2 29.6c-1.8-3.2-5.8-1.6-5 1.7c.8 3 5 5.5 5 5.5s4.2-2.5 5-5.5c.8-3.3-3.2-4.9-5-1.7z" class="eye-heart"/>`;
   }
 }
 
 export function renderAnimeMouth(mouth: MouthPose): string {
   switch (mouth) {
     case "flat":
-      return `<path d="M46 53h8" class="mouth-line"/>`;
+      return `<path d="M46 40.6h8" class="mouth-line"/>`;
     case "small_smile":
-      return `<path d="M45 52q5 4 10 0" class="mouth-line"/>`;
+      return `<path d="M45 39.8q5 4 10 0" class="mouth-line"/>`;
     case "big_smile":
-      return `<path d="M43 51q7 7 14 0" class="mouth-line"/>`;
+      return `<path d="M43 38.8q7 7 14 0" class="mouth-line"/>`;
     case "sad_curve":
-      return `<path d="M45 55q5-4 10 0" class="mouth-line"/>`;
+      return `<path d="M45 42.2q5-4 10 0" class="mouth-line"/>`;
     case "zigzag":
-      return `<path d="M44 53l3-2l3 2l3-2l3 2" class="mouth-line"/>`;
+      return `<path d="M44 40.7l3-2l3 2l3-2l3 2" class="mouth-line"/>`;
     case "tiny_open":
-      return `<path d="M49 51q1-1 2 0q1 2 0 4q-1 1-2 0q-1-2 0-4z" class="mouth-line"/>`;
+      return `<path d="M49 38.7q1-1 2 0q1 2 0 4q-1 1-2 0q-1-2 0-4z" class="mouth-line"/>`;
     case "surprised_o":
-      return `<path d="M50 50a3 4 0 1 0 0.1 0" class="mouth-line"/>`;
+      return `<path d="M50 38.2a3 4 0 1 0 0.1 0" class="mouth-line"/>`;
     case "pout":
-      return `<path d="M45 53q5-2 10 0" class="mouth-line"/>`;
+      return `<path d="M45 40.8q5-2 10 0" class="mouth-line"/>`;
   }
 }
 
@@ -83,13 +111,13 @@ export function renderAnimeBrows(brows: BrowPose): string {
     case "none":
       return "";
     case "soft":
-      return `<path d="M38 33q4-2 8 0M54 33q4-2 8 0" class="brow-line" opacity="0.55"/>`;
+      return `<path d="M37.2 25.7q4.6-2 9.2 0M53.6 25.7q4.6-2 9.2 0" class="brow-line" opacity="0.55"/>`;
     case "angry":
-      return `<path d="M37 32l9 3M63 32l-9 3" class="brow-line"/>`;
+      return `<path d="M36.8 25l9.4 3M63.2 25l-9.4 3" class="brow-line"/>`;
     case "worried":
-      return `<path d="M37 35l9-3M54 32l9 3" class="brow-line"/>`;
+      return `<path d="M36.8 28.4l9.4-3M53.8 25.4l9.4 3" class="brow-line"/>`;
     case "raised":
-      return `<path d="M38 30q4-2 8 0M54 30q4-2 8 0" class="brow-line"/>`;
+      return `<path d="M37.2 23.5q4.6-2 9.2 0M53.6 23.5q4.6-2 9.2 0" class="brow-line"/>`;
   }
 }
 
@@ -107,11 +135,11 @@ export function renderAnimeEffect(effect: EffectName, opacity: number): string {
     case "sparkles":
       return `${prefix}<path d="M64 19v10M59 24h10M69 16v6M66 19h6" class="effect-line"/>${suffix}`;
     case "tears":
-      return `${prefix}<path d="M38 44c-3 5-2 8 1 8s4-3-1-8z" class="effect-tear"/><path d="M61 44c-3 5-2 8 1 8s4-3-1-8z" class="effect-tear"/>${suffix}`;
+      return `${prefix}<path d="M39 35c-2.8 4.8-1.8 7.5 1 7.5s3.6-2.7-1-7.5z" class="effect-tear"/><path d="M60 35c-2.8 4.8-1.8 7.5 1 7.5s3.6-2.7-1-7.5z" class="effect-tear"/>${suffix}`;
     case "zzz":
-      return `${prefix}<text x="66" y="20">Z</text>${suffix}`;
+      return `${prefix}<text x="66" y="20" class="effect-symbol">Zz</text>${suffix}`;
     case "question":
-      return `${prefix}<text x="66" y="26">?</text>${suffix}`;
+      return `${prefix}<text x="67" y="26" class="effect-symbol">?</text>${suffix}`;
     case "anger":
       return `${prefix}<path d="M65 20l4 5M70 20l-4 5" class="effect-line"/>${suffix}`;
   }
