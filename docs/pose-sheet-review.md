@@ -1,19 +1,16 @@
 # SVGotchi 30-Emotion Pose Sheet Review
 
-Status: Current 30-emotion pose sheet for pure SVG anime companion
+Status: Current 30-emotion pose sheet for exact uploaded PNG character
 Last updated: 2026-06-19 Asia/Seoul
 
 ## Scope
 
-This document defines target poses for all 30 required emotions using one shared pure SVG anime companion rig. The model and planner still do not generate SVG, path data, selectors, or animation code.
+This document defines target poses for all 30 required emotions using one shared image-backed rig. The visible character body is the uploaded composed PNG at `assets/1.png`. The model and planner still do not generate SVG, path data, selectors, image paths, or animation code.
 
 The current visual direction remains:
 
 - dark SVG background
-- lavender/white hair
-- purple eyes
-- soft blush
-- pastel outfit/accent marks
+- exact uploaded character pixels from `assets/1.png`
 - primitive SVG pose parameters
 - no separate DOM structure per emotion
 
@@ -95,6 +92,6 @@ Expected Stage 2 checks:
 - `POSE_MAP` has exactly one pose for every emotion and no extra keys
 - every pose has bounded primitive numeric parameters
 - pose sheet preview includes every emotion
-- pose sheet preview uses the expected anime palette
-- pose sheet preview has no `<image>`, `foreignObject`, or `href`-loaded runtime asset
+- pose sheet preview uses `/assets/1.png` for every emotion
+- pose sheet preview has no remote image href, data URI image href, or `foreignObject`
 - character rig tests continue passing

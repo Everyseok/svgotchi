@@ -73,21 +73,18 @@ test("planner-facing transition config keeps reply text outside the engine contr
   assert.equal(Object.hasOwn(frames[0] ?? {}, "reply"), false);
 });
 
-test("transition preview asset contains all five required transitions and uses the pure SVG anime palette", () => {
+test("transition preview asset contains all five required transitions and uses the approved uploaded PNG image asset", () => {
   const assetSvg = readFileSync("assets/transition-previews/stage-04-sample-transitions.svg", "utf8");
   const renderedSvg = renderTransitionPreviewSvg(REQUIRED_TRANSITION_SAMPLES);
-  const colorLiterals = [...assetSvg.matchAll(/#[0-9a-fA-F]{3,6}\b/g)].map((match) => match[0]?.toLowerCase());
-  const palette = new Set(colorLiterals);
+  const imageHrefs = [...assetSvg.matchAll(/<image\b[^>]*\bhref="([^"]+)"/gi)].map((match) => match[1]);
 
   assert.equal(assetSvg, renderedSvg);
   for (const sample of REQUIRED_TRANSITION_SAMPLES) {
     assert.match(assetSvg, new RegExp(`data-transition="${sample.from}->${sample.to}"`));
   }
-  assert.doesNotMatch(assetSvg, /<image\b/i);
+  assert.equal(imageHrefs.length, REQUIRED_TRANSITION_SAMPLES.length * 5);
+  assert.deepEqual([...new Set(imageHrefs)], ["/assets/1.png"]);
   assert.doesNotMatch(assetSvg, /<foreignObject\b/i);
-  assert.doesNotMatch(assetSvg, /\bhref\s*=/i);
-  assert.ok(palette.has("#140f1f"));
-  assert.ok(palette.has("#e5dcfb"));
-  assert.ok(palette.has("#7d4fc3"));
-  assert.ok(palette.has("#f59ab1"));
+  assert.doesNotMatch(assetSvg, /\bhref="https?:\/\//i);
+  assert.doesNotMatch(assetSvg, /\bhref="data:/i);
 });

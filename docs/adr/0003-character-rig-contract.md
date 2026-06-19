@@ -14,7 +14,7 @@ SVGotchi needs 30 emotions and animated transitions without swapping unrelated i
 
 ## Decision
 
-Use a fixed `viewBox="0 0 100 100"` rig with required IDs and stable slots. All emotions share the same DOM structure. Pose data controls visibility, transforms, opacity, and simple primitive shapes. The active runtime character is a pure SVG anime companion inspired by reference PNG layers, but those PNG files are not runtime dependencies.
+Use a fixed `viewBox="0 0 100 100"` rig with required IDs and stable slots. All emotions share the same DOM structure. Pose data controls visibility, transforms, opacity, and simple primitive shapes. The active runtime character uses the uploaded composed PNG at `assets/1.png` inside the SVG app shell so the base character is visually identical to the user-provided asset.
 
 The rig validator must run before the app starts and fail clearly when required IDs or layout invariants are missing.
 

@@ -12,8 +12,8 @@ export function renderPoseSheetSvg(): string {
     .join("\n");
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${COLS * CELL_W} ${ROWS * CELL_H}" role="img" aria-labelledby="title desc">
-  <title id="title">SVGotchi 30-emotion anime pose sheet</title>
-  <desc id="desc">Thirty pure SVG anime companion emotion poses using one shared rig structure.</desc>
+  <title id="title">SVGotchi 30-emotion uploaded PNG pose sheet</title>
+  <desc id="desc">Thirty emotion poses using the uploaded character asset from assets/1.png in one shared SVG rig structure.</desc>
   <style>
 ${ANIME_PREVIEW_STYLE}
   </style>

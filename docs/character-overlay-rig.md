@@ -3,7 +3,7 @@
 Status: historical proposal; not the active implementation path
 Last updated: 2026-06-19 Asia/Seoul
 
-Note: The active runtime now uses a pure SVG anime companion inspired by the PNG references. This PNG-preserving overlay rig is retained as historical design context only.
+Note: The active runtime now uses `assets/1.png` as the exact visible character inside the SVG app shell. This PNG-preserving overlay rig for separate expression layers is retained as historical design context only.
 
 ## Purpose
 

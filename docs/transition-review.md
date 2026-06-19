@@ -1,19 +1,16 @@
 # SVGotchi Deterministic Transition Review
 
-Status: Current deterministic transition preview for pure SVG anime companion
+Status: Current deterministic transition preview for exact uploaded PNG character
 Last updated: 2026-06-19 Asia/Seoul
 
 ## Scope
 
-The transition renderer implements deterministic multi-frame emotion transitions for the pure SVG anime companion and the 30-emotion pose map. The model/planner boundary remains narrow: model evidence is mapped into sanitized app-owned transition fields, and the model does not write SVG, selectors, path data, CSS, JavaScript, animation code, or pet reply text.
+The transition renderer implements deterministic multi-frame emotion transitions for the image-backed uploaded character and the 30-emotion pose map. The visible character body is `assets/1.png`. The model/planner boundary remains narrow: model evidence is mapped into sanitized app-owned transition fields, and the model does not write SVG, selectors, path data, image paths, CSS, JavaScript, animation code, or pet reply text.
 
 The visual direction remains:
 
 - dark SVG background
-- lavender/white hair
-- purple eyes
-- soft blush
-- pastel outfit/accent marks
+- exact uploaded character pixels from `assets/1.png`
 - SVG primitives only
 - deterministic frames from typed pose parameters
 - no LLM-generated SVG, selectors, path data, or animation code
@@ -84,8 +81,8 @@ Current result:
 - transition endpoints include first and final progress states
 - preview asset matches renderer output exactly
 - preview includes all five required transitions
-- preview uses the expected anime palette
-- preview has no `<image>`, `foreignObject`, or `href`-loaded runtime asset
+- preview uses `/assets/1.png` for every sampled transition frame
+- preview has no remote image href, data URI image href, or `foreignObject`
 
 Additional current checks:
 

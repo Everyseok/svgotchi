@@ -46,7 +46,7 @@ test("validator rejects a non-canonical viewBox", () => {
 });
 
 test("validator rejects a body box that does not match the coordinate contract", () => {
-  const wrongBodyBox = assetSvg.replace('id="body" x="18" y="9" width="64" height="68"', 'id="body" x="19" y="9" width="64" height="68"');
+  const wrongBodyBox = assetSvg.replace('id="body" x="10" y="0" width="80" height="80"', 'id="body" x="11" y="0" width="80" height="80"');
   const result = validateCharacterRig(wrongBodyBox);
 
   assert.equal(result.ok, false);
@@ -61,16 +61,14 @@ test("validator rejects duplicate ids", () => {
   assert.match(result.errors[0] ?? "", /Duplicate SVG ids/);
 });
 
-test("base character is pure SVG and uses the anime companion palette", () => {
-  const colorLiterals = [...assetSvg.matchAll(/#[0-9a-fA-F]{3,6}\b/g)].map((match) => match[0]?.toLowerCase());
-  const palette = new Set(colorLiterals);
+test("base character uses only the approved uploaded PNG image asset", () => {
+  const imageTags = assetSvg.match(/<image\b/gi) ?? [];
+  const imageHrefs = [...assetSvg.matchAll(/<image\b[^>]*\bhref="([^"]+)"/gi)].map((match) => match[1]);
 
-  assert.ok(colorLiterals.length > 0);
-  assert.doesNotMatch(assetSvg, /<image\b/i);
+  assert.equal(imageTags.length, 1);
+  assert.deepEqual(imageHrefs, ["/assets/1.png"]);
+  assert.ok(assetSvg.includes('id="character-image"'));
   assert.doesNotMatch(assetSvg, /<foreignObject\b/i);
-  assert.doesNotMatch(assetSvg, /\bhref\s*=/i);
-  assert.ok(palette.has("#140f1f"));
-  assert.ok(palette.has("#e5dcfb"));
-  assert.ok(palette.has("#7d4fc3"));
-  assert.ok(palette.has("#f59ab1"));
+  assert.doesNotMatch(assetSvg, /\bhref="https?:\/\//i);
+  assert.doesNotMatch(assetSvg, /\bhref="data:/i);
 });

@@ -16,7 +16,7 @@ export function renderTransitionPreviewSvg(samples: readonly TransitionPreviewSa
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title desc">
   <title id="title">SVGotchi deterministic transition previews</title>
-  <desc id="desc">Five multi-frame pure SVG anime companion emotion transition previews.</desc>
+  <desc id="desc">Five multi-frame emotion transition previews using the uploaded character asset from assets/1.png.</desc>
   <style>
 ${ANIME_PREVIEW_STYLE}
     .bubble-group text { font-size: 3px; }

@@ -1,22 +1,13 @@
+export const CHARACTER_IMAGE_HREF = "/assets/1.png";
+
 export const BASE_CHARACTER_SVG = String.raw`<svg xmlns="http://www.w3.org/2000/svg" id="svgotchi-root" viewBox="0 0 100 100" tabindex="0" role="img" aria-labelledby="svgotchi-title svgotchi-desc">
-  <title id="svgotchi-title">SVGotchi neutral anime companion</title>
-  <desc id="svgotchi-desc">A pure SVG anime-style companion with pale lavender hair, purple eyes, soft blush, and a pure SVG prompt placeholder.</desc>
+  <title id="svgotchi-title">SVGotchi uploaded anime companion</title>
+  <desc id="svgotchi-desc">An SVG app shell that renders the uploaded character asset exactly from assets/1.png with a pure SVG prompt placeholder.</desc>
   <style>
     #svgotchi-root { background: #140f1f; }
     .rig-slot { fill: none; opacity: 0; pointer-events: none; }
-    .hair-back { fill: #e5dcfb; stroke: #b89bd3; stroke-width: 1.3; }
-    .hair-shadow { fill: #cbb5ea; opacity: 0.78; }
-    .hair-front { fill: #f8f3ff; stroke: #b89bd3; stroke-width: 1.1; }
-    .skin { fill: #ffe1df; stroke: #d69aa5; stroke-width: 1.1; }
-    .skin-soft { fill: #f4bec8; opacity: 0.42; }
-    .outfit { fill: #6f54a8; stroke: #3b285a; stroke-width: 1.1; }
-    .outfit-light { fill: #cdb9ff; stroke: #6f54a8; stroke-width: 0.8; }
-    .accent { fill: #ff9fc1; stroke: #9a5f83; stroke-width: 0.8; }
-    .eye-fill { fill: #7d4fc3; stroke: #34204d; stroke-width: 0.9; }
-    .eye-shine { fill: #fffaf8; opacity: 0.88; }
-    .brow-line { stroke: #65426d; stroke-width: 1.2; stroke-linecap: round; fill: none; }
-    .mouth-line { stroke: #8f4d67; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-    .blush-fill { fill: #f59ab1; opacity: 0; }
+    .face-slot { opacity: 0; pointer-events: none; }
+    .character-image { image-rendering: auto; }
     .effect-fill { fill: #ff7dac; }
     .effect-tear { fill: #7ed8ff; }
     .effect-line { stroke: #ffe889; stroke-width: 1.2; stroke-linecap: round; fill: none; }
@@ -28,44 +19,16 @@ export const BASE_CHARACTER_SVG = String.raw`<svg xmlns="http://www.w3.org/2000/
   </style>
   <rect id="pet-area" x="0" y="0" width="100" height="80" fill="#140f1f"/>
   <g id="pet">
-    <rect id="body" x="18" y="9" width="64" height="68" rx="20" class="rig-slot"/>
-    <g id="hair-back">
-      <path d="M24 32c1-16 12-26 26-26s25 10 26 26c2 12 4 28 1 42c-8 5-17 5-27 5s-19 0-27-5c-3-14-1-30 1-42z" class="hair-back"/>
-      <path d="M20 42c0-12 7-23 17-30c-5 17-5 40-2 64c-8-5-13-17-15-34z" class="hair-shadow"/>
-      <path d="M80 42c0-12-7-23-17-30c5 17 5 40 2 64c8-5 13-17 15-34z" class="hair-shadow"/>
-    </g>
-    <g id="torso">
-      <path d="M34 66c2-7 8-11 16-11s14 4 16 11l7 13H27z" class="outfit"/>
-      <path d="M42 59h16l-4 14h-8z" class="outfit-light"/>
-      <path d="M43 61l7 5l7-5" class="mouth-line"/>
-      <circle cx="50" cy="68" r="2.4" class="accent"/>
-    </g>
-    <g id="head">
-      <path d="M31 31c0-14 8-23 19-23s19 9 19 23v12c0 14-8 22-19 22s-19-8-19-22z" class="skin"/>
-      <path d="M42 60c3 2 13 2 16 0v9c-5 3-11 3-16 0z" class="skin"/>
-      <ellipse cx="50" cy="48" rx="14" ry="8" class="skin-soft"/>
-    </g>
-    <g id="hair-front">
-      <path d="M26 33c2-15 12-27 25-27c12 0 22 11 24 27c-5-6-10-10-16-12c-3 9-11 14-22 17c1-5 0-10-1-14c-4 4-7 7-10 9z" class="hair-front"/>
-      <path d="M30 31c-5 8-5 26 1 41c2-13 4-25 9-37z" class="hair-front"/>
-      <path d="M70 31c5 8 5 26-1 41c-2-13-4-25-9-37z" class="hair-front"/>
-      <path d="M43 10c-2 10-7 17-15 21c5-11 10-18 15-21z" class="hair-front"/>
-      <path d="M55 10c1 10 6 17 15 21c-5-11-10-18-15-21z" class="hair-front"/>
-      <path d="M68 20l5-5l3 6l-6 3z" class="accent"/>
-      <circle cx="69" cy="24" r="2" class="outfit-light"/>
-    </g>
-    <g id="face">
-      <path id="brow-left" d="M38 33q4-2 8 0" class="brow-line" opacity="0"/>
-      <path id="brow-right" d="M54 33q4-2 8 0" class="brow-line" opacity="0"/>
-      <ellipse id="eye-left" cx="42" cy="39" rx="4.6" ry="6" class="eye-fill"/>
-      <ellipse id="eye-right" cx="58" cy="39" rx="4.6" ry="6" class="eye-fill"/>
-      <circle id="eye-left-shine" cx="40.4" cy="36.7" r="1.4" class="eye-shine"/>
-      <circle id="eye-right-shine" cx="56.4" cy="36.7" r="1.4" class="eye-shine"/>
-      <path id="eye-left-heart" d="M42 37c-2-4-7-2-6 2c1 4 6 7 6 7s5-3 6-7c1-4-4-6-6-2z" class="effect-fill" opacity="0"/>
-      <path id="eye-right-heart" d="M58 37c-2-4-7-2-6 2c1 4 6 7 6 7s5-3 6-7c1-4-4-6-6-2z" class="effect-fill" opacity="0"/>
-      <path id="mouth" d="M46 52q4 2 8 0" class="mouth-line"/>
-      <ellipse id="blush-left" cx="37.5" cy="49" rx="5.3" ry="2.5" class="blush-fill"/>
-      <ellipse id="blush-right" cx="62.5" cy="49" rx="5.3" ry="2.5" class="blush-fill"/>
+    <rect id="body" x="10" y="0" width="80" height="80" rx="0" class="rig-slot"/>
+    <image id="character-image" href="${CHARACTER_IMAGE_HREF}" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
+    <g id="face" class="face-slot">
+      <path id="brow-left" d="M38 33q4-2 8 0"/>
+      <path id="brow-right" d="M54 33q4-2 8 0"/>
+      <ellipse id="eye-left" cx="42" cy="39" rx="4.6" ry="6"/>
+      <ellipse id="eye-right" cx="58" cy="39" rx="4.6" ry="6"/>
+      <path id="mouth" d="M46 52q4 2 8 0"/>
+      <ellipse id="blush-left" cx="37.5" cy="49" rx="5.3" ry="2.5"/>
+      <ellipse id="blush-right" cx="62.5" cy="49" rx="5.3" ry="2.5"/>
     </g>
     <g id="effect-hearts" class="hidden-layer">
       <path d="M67 22c-2-4-8-2-6 3c1 3 6 6 6 6s5-3 6-6c2-5-4-7-6-3z" class="effect-fill"/>

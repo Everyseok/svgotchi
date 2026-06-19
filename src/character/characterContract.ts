@@ -39,10 +39,10 @@ export const CHARACTER_CONTRACT = {
   viewBox: { x: 0, y: 0, width: 100, height: 100 },
   petArea: { x: 0, y: 0, width: 100, height: 80 },
   promptArea: { x: 0, y: 81, width: 100, height: 19 },
-  bodyBox: { x: 18, y: 9, width: 64, height: 68 },
+  bodyBox: { x: 10, y: 0, width: 80, height: 80 },
   anchors: {
-    bodyCenter: { x: 50, y: 43 },
-    faceCenter: { x: 50, y: 42 },
+    bodyCenter: { x: 50, y: 40 },
+    faceCenter: { x: 50, y: 40 },
     eyeLeft: { x: 42, y: 39 },
     eyeRight: { x: 58, y: 39 },
     browLeft: { x: 42, y: 33 },

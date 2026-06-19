@@ -3,6 +3,7 @@ export const REQUIRED_RIG_IDS = [
   "pet-area",
   "prompt-area",
   "pet",
+  "character-image",
   "body",
   "face",
   "eye-left",

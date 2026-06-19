@@ -3,7 +3,7 @@
 Status: historical proposal; not the active implementation path
 Last updated: 2026-06-19 Asia/Seoul
 
-Note: The active runtime now uses a pure SVG anime companion. The PNG overlay Gate X path remains historical design analysis only and is not required by the current MVP.
+Note: The active runtime now uses `assets/1.png` as the exact visible character inside the SVG app shell. The broader PNG overlay Gate X path for separate expression layers remains historical design analysis only and is not required by the current MVP.
 
 ## Purpose
 

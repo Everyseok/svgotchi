@@ -219,6 +219,7 @@ async function smokeCheck(baseUrl: string, mode: ServeMode): Promise<boolean> {
     ? [
         { path: "/", contentType: "image/svg+xml" },
         { path: "/assets/base-character.svg", contentType: "image/svg+xml" },
+        { path: "/assets/1.png", contentType: "image/png" },
         { path: "/assets/svgotchi-browser.js", contentType: "text/javascript" },
         { path: "/vendor/onnxruntime-common/index.js", contentType: "text/javascript" },
         { path: "/vendor/onnxruntime-web/ort.webgpu.bundle.min.mjs", contentType: "text/javascript" },
@@ -227,6 +228,7 @@ async function smokeCheck(baseUrl: string, mode: ServeMode): Promise<boolean> {
     : [
         { path: "/", contentType: "image/svg+xml" },
         { path: "/assets/base-character.svg", contentType: "image/svg+xml" },
+        { path: "/assets/1.png", contentType: "image/png" },
         { path: "/assets/svgotchi-browser.js", contentType: "text/javascript" },
         { path: "/vendor/onnxruntime-common/index.js", contentType: "text/javascript" },
         { path: "/vendor/onnxruntime-web/ort.webgpu.bundle.min.mjs", contentType: "text/javascript" },

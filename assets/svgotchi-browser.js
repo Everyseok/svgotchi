@@ -422,7 +422,7 @@ function renderPose(p) {
 
 function setPetTransform(p) {
   const cx = 50;
-  const cy = 43;
+  const cy = 40;
   const transform = [
     `translate(${round(p.bodyOffsetX)} ${round(p.bodyOffsetY)})`,
     `rotate(${round(p.bodyRotation)} ${cx} ${cy})`,

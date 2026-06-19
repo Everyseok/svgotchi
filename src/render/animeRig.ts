@@ -1,21 +1,9 @@
 import type { BrowPose, EffectName, EyePose, MouthPose, Pose } from "../emotion/poseMap.ts";
+import { CHARACTER_IMAGE_HREF } from "../character/baseCharacter.ts";
 
 export const ANIME_PREVIEW_STYLE = `    .bg { fill: #140f1f; }
     .frame { fill: none; stroke: #5f4a7d; stroke-width: 1; }
-    .hair-back { fill: #e5dcfb; stroke: #b89bd3; stroke-width: 1.3; }
-    .hair-shadow { fill: #cbb5ea; opacity: 0.78; }
-    .hair-front { fill: #f8f3ff; stroke: #b89bd3; stroke-width: 1.1; }
-    .skin { fill: #ffe1df; stroke: #d69aa5; stroke-width: 1.1; }
-    .skin-soft { fill: #f4bec8; opacity: 0.42; }
-    .outfit { fill: #6f54a8; stroke: #3b285a; stroke-width: 1.1; }
-    .outfit-light { fill: #cdb9ff; stroke: #6f54a8; stroke-width: 0.8; }
-    .accent { fill: #ff9fc1; stroke: #9a5f83; stroke-width: 0.8; }
-    .eye-fill { fill: #7d4fc3; stroke: #34204d; stroke-width: 0.9; }
-    .eye-line { stroke: #7d4fc3; stroke-width: 1.6; stroke-linecap: round; fill: none; }
-    .eye-shine { fill: #fffaf8; opacity: 0.88; }
-    .brow-line { stroke: #65426d; stroke-width: 1.2; stroke-linecap: round; fill: none; }
-    .mouth-line { stroke: #8f4d67; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-    .blush-fill { fill: #f59ab1; }
+    .character-image { image-rendering: auto; }
     .effect-fill { fill: #ff7dac; }
     .effect-tear { fill: #7ed8ff; }
     .effect-line { stroke: #ffe889; stroke-width: 1.2; stroke-linecap: round; fill: none; }
@@ -28,39 +16,12 @@ export const ANIME_PREVIEW_STYLE = `    .bg { fill: #140f1f; }
 export function renderAnimeCharacter(pose: Pose): string {
   return [
     renderAnimeBody(),
-    renderAnimeFace(pose),
     renderAnimeEffect(pose.effect, pose.effectOpacity)
   ].filter(Boolean).join("\n      ");
 }
 
 export function renderAnimeBody(): string {
-  return `<g class="anime-body">
-        <g>
-          <path d="M24 32c1-16 12-26 26-26s25 10 26 26c2 12 4 28 1 42c-8 5-17 5-27 5s-19 0-27-5c-3-14-1-30 1-42z" class="hair-back"/>
-          <path d="M20 42c0-12 7-23 17-30c-5 17-5 40-2 64c-8-5-13-17-15-34z" class="hair-shadow"/>
-          <path d="M80 42c0-12-7-23-17-30c5 17 5 40 2 64c8-5 13-17 15-34z" class="hair-shadow"/>
-        </g>
-        <g>
-          <path d="M34 66c2-7 8-11 16-11s14 4 16 11l7 13H27z" class="outfit"/>
-          <path d="M42 59h16l-4 14h-8z" class="outfit-light"/>
-          <path d="M43 61l7 5l7-5" class="mouth-line"/>
-          <circle cx="50" cy="68" r="2.4" class="accent"/>
-        </g>
-        <g>
-          <path d="M31 31c0-14 8-23 19-23s19 9 19 23v12c0 14-8 22-19 22s-19-8-19-22z" class="skin"/>
-          <path d="M42 60c3 2 13 2 16 0v9c-5 3-11 3-16 0z" class="skin"/>
-          <ellipse cx="50" cy="48" rx="14" ry="8" class="skin-soft"/>
-        </g>
-        <g>
-          <path d="M26 33c2-15 12-27 25-27c12 0 22 11 24 27c-5-6-10-10-16-12c-3 9-11 14-22 17c1-5 0-10-1-14c-4 4-7 7-10 9z" class="hair-front"/>
-          <path d="M30 31c-5 8-5 26 1 41c2-13 4-25 9-37z" class="hair-front"/>
-          <path d="M70 31c5 8 5 26-1 41c-2-13-4-25-9-37z" class="hair-front"/>
-          <path d="M43 10c-2 10-7 17-15 21c5-11 10-18 15-21z" class="hair-front"/>
-          <path d="M55 10c1 10 6 17 15 21c-5-11-10-18-15-21z" class="hair-front"/>
-          <path d="M68 20l5-5l3 6l-6 3z" class="accent"/>
-          <circle cx="69" cy="24" r="2" class="outfit-light"/>
-        </g>
-      </g>`;
+  return `<image href="${CHARACTER_IMAGE_HREF}" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid meet" class="character-image"/>`;
 }
 
 export function renderAnimeFace(pose: Pick<Pose, "eyes" | "mouth" | "brows" | "blushOpacity">): string {
