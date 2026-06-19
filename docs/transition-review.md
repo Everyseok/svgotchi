@@ -1,16 +1,19 @@
 # SVGotchi Deterministic Transition Review
 
-Status: Stage 4 complete, approved with reply-generation exclusion
-Last updated: 2026-06-17 03:22:36 Asia/Seoul
+Status: Current deterministic transition preview for pure SVG anime companion
+Last updated: 2026-06-19 Asia/Seoul
 
 ## Scope
 
-Stage 4 implements deterministic multi-frame emotion transitions for the approved Mochi Sprout character and the Stage 2 pose map. This stage does not implement Hugging Face model selection, model packaging, local LLM runtime, planner sanitization, full integration, or the final `dist/` artifact.
+The transition renderer implements deterministic multi-frame emotion transitions for the pure SVG anime companion and the 30-emotion pose map. The model/planner boundary remains narrow: model evidence is mapped into sanitized app-owned transition fields, and the model does not write SVG, selectors, path data, CSS, JavaScript, animation code, or pet reply text.
 
 The visual direction remains:
 
-- black background
-- white-only visible character/UI marks
+- dark SVG background
+- lavender/white hair
+- purple eyes
+- soft blush
+- pastel outfit/accent marks
 - SVG primitives only
 - deterministic frames from typed pose parameters
 - no LLM-generated SVG, selectors, path data, or animation code
@@ -28,6 +31,7 @@ Transition preview:
 - `src/engine/poseResolver.ts`
 - `src/engine/transitionEngine.ts`
 - `src/engine/transitionSamples.ts`
+- `src/render/animeRig.ts`
 - `src/render/effects.ts`
 - `src/render/bubble.ts`
 - `src/render/renderer.ts`
@@ -36,7 +40,7 @@ Transition preview:
 
 ## Transition Model
 
-The transition engine resolves a `from` emotion and a `to` emotion into primitive `Pose` values, interpolates numeric pose fields across a bounded frame schedule, applies a deterministic easing curve, and adds a named motion overlay. Discrete facial features switch at fixed progress thresholds so the preview remains pixel-like instead of trying to morph arbitrary SVG path data.
+The transition engine resolves a `from` emotion and a `to` emotion into primitive `Pose` values, interpolates numeric pose fields across a bounded frame schedule, applies a deterministic easing curve, and adds a named motion overlay. Discrete facial features switch at fixed progress thresholds so the preview remains deterministic instead of trying to morph arbitrary SVG path data.
 
 The current transition configuration surface is intentionally narrow:
 
@@ -71,26 +75,21 @@ Verification command:
 npm run verify
 ```
 
-Result:
+Current result:
 
 - typecheck passed
-- 28 total tests passed
+- browser script syntax check passed
+- 37 baseline tests passed
 - required transition samples generate multiple frames
 - transition endpoints include first and final progress states
 - preview asset matches renderer output exactly
 - preview includes all five required transitions
-- preview color literals are limited to `#000` and `#fff`
+- preview uses the expected anime palette
+- preview has no `<image>`, `foreignObject`, or `href`-loaded runtime asset
 
-Additional Stage 4 checks:
+Additional current checks:
 
-- transition preview XML parse: passed
 - `data-transition` group count: 25
 - unique transitions: `neutral->shy_love`, `neutral->hungry`, `neutral->sleepy`, `neutral->hurt`, `neutral->curious`
-- forbidden later-stage directories: no `src/llm`, no `dist`
-- no Hugging Face model runtime, Transformers.js runtime, ONNX runtime, or local model planner implementation was started
-
-## User Decision Required
-
-Approve or reject the five sample transition previews before Stage 5 begins.
-
-The user approved these transition previews with one additional contract: LLM output must not generate pet reply text or reply style. Stage 5 model review may proceed, but model packaging and local LLM runtime work still require later approvals.
+- served SVG demo/full probes passed for `you are cute -> shy_love`
+- local browser-side classifier import probe passed

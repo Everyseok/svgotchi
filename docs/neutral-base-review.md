@@ -1,25 +1,30 @@
 # SVGotchi Neutral Base Review
 
-Status: Stage 1 neutral base SVG and rig contract for user review
-Last updated: 2026-06-17 02:49:03 Asia/Seoul
+Status: Current pure SVG anime companion base
+Last updated: 2026-06-19 Asia/Seoul
 
-## Approved Concept Applied
+## Current Concept Applied
 
-Selected concept: Mochi Sprout
+Selected concept: pure SVG anime companion
 
-User visual constraint:
+Reference inputs:
 
-- black canvas
-- white-only visible character and UI marks
-- no color palette beyond black and white
+- `assets/1.png` through `assets/6.png` informed the visual identity.
+- The runtime does not load those PNG files.
+- The shipped character is composed from inline SVG paths, ellipses, groups, text, and style rules.
 
-Revision note:
+Runtime visual direction:
 
-- The top sprout/head shape was adjusted after user feedback so it connects to the body instead of visually overlapping the face area.
+- dark SVG canvas
+- pale lavender/white hair
+- purple eyes
+- soft blush
+- pastel outfit/accent marks
+- pure SVG prompt area
 
 Neutral base SVG:
 
-![Neutral Mochi Sprout](../assets/base-character.svg)
+![Neutral anime companion](../assets/base-character.svg)
 
 ## Files
 
@@ -40,7 +45,7 @@ Layout:
 
 - pet area: `x=0 y=0 width=100 height=80`
 - prompt area: `x=0 y=81 width=100 height=19`
-- body box: `x=30 y=18 width=40 height=44`
+- body box: `x=18 y=9 width=64 height=68`
 
 The SVG includes every required rig ID:
 
@@ -83,23 +88,22 @@ Validation implemented:
 - pet area coordinate contract
 - prompt area coordinate contract
 - body box coordinate contract
-- black/white-only color literal test
+- no runtime `<image>`
+- no `foreignObject`
+- no `href`-loaded external asset
+- expected anime palette tokens
 
 Verification command:
 
 ```powershell
 npm run verify
+npm run verify:runtime
 ```
 
-Result:
+Current result:
 
 - typecheck passed
-- 10 tests passed
-- base SVG XML parse passed
-- black/white-only color literal check passed
-
-## User Decision Required
-
-Approve or reject the neutral base SVG and rig contract before Stage 2 begins.
-
-No 30-emotion pose sheet work should begin until this neutral base and rig contract are explicitly approved.
+- browser script syntax check passed
+- 37 baseline tests passed
+- served SVG demo/full probes passed
+- local browser-side classifier import probe passed

@@ -1,7 +1,9 @@
 # PNG-Preserving Anime Character Overlay Rig
 
-Status: proposal for Gate X review
-Last updated: 2026-06-17 14:57:56 Asia/Seoul
+Status: historical proposal; not the active implementation path
+Last updated: 2026-06-19 Asia/Seoul
+
+Note: The active runtime now uses a pure SVG anime companion inspired by the PNG references. This PNG-preserving overlay rig is retained as historical design context only.
 
 ## Purpose
 

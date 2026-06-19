@@ -1,7 +1,9 @@
 # Character Migration Impact: Mochi Sprout SVG Rig to PNG Overlay Rig
 
-Status: proposal for Gate X review
-Last updated: 2026-06-17 14:57:56 Asia/Seoul
+Status: historical proposal; not the active implementation path
+Last updated: 2026-06-19 Asia/Seoul
+
+Note: The active runtime now uses a pure SVG anime companion. The PNG overlay Gate X path remains historical design analysis only and is not required by the current MVP.
 
 ## Purpose
 
@@ -312,4 +314,3 @@ The safest path is:
 - require blink as an app-owned overlay timeline;
 - use `npm install` plus a model download/setup script for full-feature distribution later;
 - stop implementation until the user approves the overlay rig and preview plan.
-

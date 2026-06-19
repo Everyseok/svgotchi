@@ -1,7 +1,9 @@
 # PNG Overlay Character Preview Plan
 
-Status: proposal for Gate X review
-Last updated: 2026-06-17 14:57:56 Asia/Seoul
+Status: historical proposal; not the active implementation path
+Last updated: 2026-06-19 Asia/Seoul
+
+Note: The active runtime now uses a pure SVG anime companion. This PNG overlay preview plan is retained as historical design context only.
 
 ## Purpose
 
@@ -287,4 +289,3 @@ Do not wire this into the transition engine until the user approves:
 - the actual preview artifacts produced in a later approved step.
 
 Until then, Stage 1-4 implementation and transition engine code remain unchanged.
-

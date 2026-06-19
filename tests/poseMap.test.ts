@@ -55,15 +55,22 @@ test("each pose uses bounded primitive pose parameters", () => {
   }
 });
 
-test("pose sheet preview includes every emotion and stays monochrome", () => {
+test("pose sheet preview includes every emotion and uses the pure SVG anime palette", () => {
   const svg = renderPoseSheetSvg();
   const colorLiterals = [...svg.matchAll(/#[0-9a-fA-F]{3,6}\b/g)].map((match) => match[0]?.toLowerCase());
+  const palette = new Set(colorLiterals);
 
   for (const emotion of EXPECTED_EMOTIONS) {
     assert.match(svg, new RegExp(`data-emotion="${emotion}"`));
   }
 
-  assert.deepEqual([...new Set(colorLiterals)].sort(), ["#000", "#fff"]);
+  assert.doesNotMatch(svg, /<image\b/i);
+  assert.doesNotMatch(svg, /<foreignObject\b/i);
+  assert.doesNotMatch(svg, /\bhref\s*=/i);
+  assert.ok(palette.has("#140f1f"));
+  assert.ok(palette.has("#e5dcfb"));
+  assert.ok(palette.has("#7d4fc3"));
+  assert.ok(palette.has("#f59ab1"));
 });
 
 test("generated pose sheet asset matches the preview renderer output", () => {

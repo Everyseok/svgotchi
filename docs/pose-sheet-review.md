@@ -1,16 +1,19 @@
 # SVGotchi 30-Emotion Pose Sheet Review
 
-Status: Stage 2 pose sheet for user review
-Last updated: 2026-06-17 Asia/Seoul
+Status: Current 30-emotion pose sheet for pure SVG anime companion
+Last updated: 2026-06-19 Asia/Seoul
 
 ## Scope
 
-Stage 2 defines target poses for all 30 required emotions using one shared Mochi Sprout rig. This stage does not implement animation, interpolation, prompt input, transition planning, LLM runtime, or packaging.
+This document defines target poses for all 30 required emotions using one shared pure SVG anime companion rig. The model and planner still do not generate SVG, path data, selectors, or animation code.
 
 The current visual direction remains:
 
-- black background
-- white-only visible character/UI marks
+- dark SVG background
+- lavender/white hair
+- purple eyes
+- soft blush
+- pastel outfit/accent marks
 - primitive SVG pose parameters
 - no separate DOM structure per emotion
 
@@ -92,11 +95,6 @@ Expected Stage 2 checks:
 - `POSE_MAP` has exactly one pose for every emotion and no extra keys
 - every pose has bounded primitive numeric parameters
 - pose sheet preview includes every emotion
-- pose sheet preview uses only black and white color literals
+- pose sheet preview uses the expected anime palette
+- pose sheet preview has no `<image>`, `foreignObject`, or `href`-loaded runtime asset
 - character rig tests continue passing
-
-## User Decision Required
-
-Approve or reject the 30-emotion pose sheet before Stage 3 begins.
-
-No pure SVG prompt prototype work should begin until the 30-emotion pose sheet is explicitly approved.
