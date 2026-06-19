@@ -1,0 +1,51 @@
+{
+  "name": "svgotchi",
+  "version": "0.0.0",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "svgotchi": "./scripts/svgotchi.ts"
+  },
+  "scripts": {
+    "cli": "node scripts/svgotchi.ts",
+    "setup-model": "node scripts/setup-model.ts",
+    "serve": "node scripts/serve.ts",
+    "serve:demo": "node scripts/serve.ts --demo",
+    "serve:smoke": "node scripts/serve.ts --no-open --smoke --port 4205",
+    "test": "node --test tests/*.test.ts",
+    "test:model": "node --test tests/modelRuntime.integration.ts",
+    "typecheck": "tsc --noEmit",
+    "verify": "npm run typecheck && npm run verify:browser && npm test",
+    "verify:runtime": "npm run serve:smoke && npm run verify:transformers-import && npm run verify:served-svg && npm run verify:served-svg:full",
+    "verify:release": "npm run verify && npm run verify:model && npm run test:model && npm run verify:runtime",
+    "verify:browser": "node --check assets/svgotchi-browser.js",
+    "verify:transformers-import": "node scripts/verify-transformers-import.ts",
+    "verify:served-svg": "node scripts/verify-served-svg.ts",
+    "verify:served-svg:full": "node scripts/verify-served-svg.ts --full",
+    "verify:model": "node scripts/verify-model.ts",
+    "verify:direct-open-svg": "node scripts/verify-direct-open-svg.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.0"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.2.0",
+    "onnxruntime-web": "1.26.0-dev.20260416-b7804b056c"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "files": [
+    "assets/base-character.svg",
+    "assets/svgotchi-browser.js",
+    "assets/pose-previews/",
+    "assets/transition-previews/",
+    "docs/",
+    "models/.gitkeep",
+    "runtime/.gitkeep",
+    "scripts/",
+    "src/",
+    "README.md"
+  ]
+}

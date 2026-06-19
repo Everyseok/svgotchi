@@ -1,0 +1,64 @@
+export const BASE_CHARACTER_SVG = String.raw`<svg xmlns="http://www.w3.org/2000/svg" id="svgotchi-root" viewBox="0 0 100 100" tabindex="0" role="img" aria-labelledby="svgotchi-title svgotchi-desc">
+  <title id="svgotchi-title">SVGotchi neutral Mochi Sprout</title>
+  <desc id="svgotchi-desc">A monochrome white pixel-style Mochi Sprout pet on a black SVG canvas with a pure SVG prompt placeholder.</desc>
+  <style>
+    #svgotchi-root { background: #000; }
+    .pixel { shape-rendering: crispEdges; }
+    .white-fill { fill: #fff; }
+    .white-stroke { stroke: #fff; stroke-width: 2; fill: none; shape-rendering: crispEdges; }
+    .thin-stroke { stroke: #fff; stroke-width: 1; fill: none; shape-rendering: crispEdges; }
+    .hidden-layer { opacity: 0; }
+    text { fill: #fff; font-family: monospace; font-size: 5px; }
+  </style>
+  <rect id="pet-area" x="0" y="0" width="100" height="80" fill="#000"/>
+  <g id="pet">
+    <rect id="body" x="30" y="18" width="40" height="44" rx="10" class="white-stroke"/>
+    <g>
+      <rect x="37" y="61" width="8" height="5" class="thin-stroke"/>
+      <rect x="55" y="61" width="8" height="5" class="thin-stroke"/>
+      <rect x="42" y="9" width="8" height="6" class="thin-stroke"/>
+      <rect x="51" y="7" width="8" height="6" class="thin-stroke"/>
+      <rect x="48" y="13" width="4" height="6" class="white-fill pixel"/>
+    </g>
+    <g id="face">
+      <rect id="eye-left" x="40" y="36" width="5" height="5" class="white-fill pixel"/>
+      <rect id="eye-right" x="56" y="36" width="5" height="5" class="white-fill pixel"/>
+      <rect id="brow-left" x="39" y="32" width="7" height="2" class="white-fill pixel" opacity="0"/>
+      <rect id="brow-right" x="55" y="32" width="7" height="2" class="white-fill pixel" opacity="0"/>
+      <rect id="mouth" x="47" y="50" width="8" height="2" class="white-fill pixel"/>
+      <rect id="blush-left" x="36" y="46" width="6" height="3" class="white-fill pixel" opacity="0"/>
+      <rect id="blush-right" x="58" y="46" width="6" height="3" class="white-fill pixel" opacity="0"/>
+    </g>
+    <g id="effect-hearts" class="hidden-layer">
+      <path d="M64 24h2v-2h3v2h2v3h-2v2h-3v-2h-2z" class="white-fill pixel"/>
+    </g>
+    <g id="effect-tears" class="hidden-layer">
+      <rect x="38" y="43" width="2" height="5" class="white-fill pixel"/>
+      <rect x="60" y="43" width="2" height="5" class="white-fill pixel"/>
+    </g>
+    <g id="effect-zzz" class="hidden-layer">
+      <text x="66" y="20">Z</text>
+    </g>
+    <g id="effect-sparkles" class="hidden-layer">
+      <path d="M63 22v8M59 26h8" class="thin-stroke"/>
+    </g>
+    <g id="effect-question" class="hidden-layer">
+      <text x="66" y="26">?</text>
+    </g>
+    <g id="effect-anger" class="hidden-layer">
+      <path d="M64 22l3 3M67 22l-3 3" class="thin-stroke"/>
+    </g>
+    <g id="speech-bubble" class="hidden-layer">
+      <rect x="22" y="5" width="56" height="12" rx="2" class="thin-stroke"/>
+      <path d="M43 17l4 4l2-4" class="white-fill pixel"/>
+    </g>
+  </g>
+  <rect id="prompt-area" x="0" y="81" width="100" height="19" fill="#000"/>
+  <rect id="prompt-bg" x="2" y="82" width="96" height="16" rx="1" fill="#000" stroke="#fff" stroke-width="1"/>
+  <text id="prompt-placeholder" x="7" y="92">say hi...</text>
+  <text id="prompt-text" x="7" y="92"></text>
+  <rect id="prompt-caret" x="7" y="86" width="1" height="8" class="white-fill pixel" opacity="0"/>
+  <rect id="send-zone" x="84" y="84" width="12" height="12" fill="#000" stroke="#fff" stroke-width="1"/>
+  <text id="send-label" x="87" y="92">&gt;</text>
+</svg>
+`;

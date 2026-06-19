@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-labelledby="title desc">
+  <title id="title">Lumi Mallow — original SVGotchi mascot</title>
+  <desc id="desc">An original copyright-safe chibi anime-inspired SVG mascot with pearly white cloud hair, lavender eyes, cream capelet, sprout hairpin, and floating pixel heart-star companion.</desc>
+  <defs>
+    <linearGradient id="skinGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff4ee"/>
+      <stop offset="0.62" stop-color="#ffe9e4"/>
+      <stop offset="1" stop-color="#f7d7d2"/>
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fffdfb"/>
+      <stop offset="0.48" stop-color="#f8f0ff"/>
+      <stop offset="1" stop-color="#e9def6"/>
+    </linearGradient>
+    <linearGradient id="hairShade" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#d8c4e9" stop-opacity="0.72"/>
+    </linearGradient>
+    <linearGradient id="eyeGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#bfa6ff"/>
+      <stop offset="0.48" stop-color="#7d5cc9"/>
+      <stop offset="1" stop-color="#4d337f"/>
+    </linearGradient>
+    <radialGradient id="eyeGlow" cx="35%" cy="30%" r="65%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.15" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="0.42" stop-color="#bfa6ff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#5b3b93" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="capeGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff9f2"/>
+      <stop offset="1" stop-color="#f3e4ff"/>
+    </linearGradient>
+    <linearGradient id="lavenderRibbon" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#d7c4ff"/>
+      <stop offset="1" stop-color="#a98be7"/>
+    </linearGradient>
+    <linearGradient id="heartGrad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff8fae"/>
+      <stop offset="1" stop-color="#ff4f7f"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#2b173d" flood-opacity="0.18"/>
+    </filter>
+    <filter id="tinyGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.95  0 1 0 0 0.70  0 0 1 0 1.00  0 0 0 0.45 0" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .line { stroke:#9a6f80; stroke-width:6; stroke-linecap:round; stroke-linejoin:round; }
+      .thin { stroke:#b98fa2; stroke-width:3.2; stroke-linecap:round; stroke-linejoin:round; fill:none; opacity:.66; }
+      .hairline { stroke:#b58ca4; stroke-width:3.5; stroke-linecap:round; fill:none; opacity:.58; }
+      .softline { stroke:#a78398; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+      .pixel { shape-rendering:crispEdges; }
+    </style>
+  </defs>
+
+  <!-- transparent background intentionally left empty -->
+  <g id="lumi-mallow-mascot" filter="url(#softShadow)">
+    <!-- floating original companion: pixel heart-star, distinct from reference placement -->
+    <g id="effect-companion" transform="translate(778 238)" filter="url(#tinyGlow)">
+      <rect class="pixel" x="42" y="0" width="28" height="28" rx="4" fill="#ff6f9b"/>
+      <rect class="pixel" x="70" y="28" width="28" height="28" rx="4" fill="#ff6f9b"/>
+      <rect class="pixel" x="14" y="28" width="28" height="28" rx="4" fill="#ff6f9b"/>
+      <rect class="pixel" x="42" y="56" width="28" height="28" rx="4" fill="#ff4f7f"/>
+      <rect class="pixel" x="42" y="96" width="16" height="16" rx="3" fill="#ffd7e4"/>
+      <path d="M128 62 l10 22 24 4-17 17 4 24-21-12-21 12 4-24-17-17 24-4z" fill="#ffe889" stroke="#b89946" stroke-width="4" stroke-linejoin="round"/>
+    </g>
+
+    <!-- back hair silhouette: cloud side-bun + short twin tails, not matching reference -->
+    <g id="hair-back">
+      <path d="M252 334 C225 262 248 179 317 126 C372 82 466 72 523 104 C580 72 674 89 722 154 C765 213 769 298 741 359 C804 444 802 579 733 677 C679 754 596 794 512 797 C427 797 349 758 296 686 C225 590 215 440 252 334Z" fill="url(#hairGrad)" class="line"/>
+      <path d="M285 384 C209 450 176 595 232 714 C259 773 316 813 380 828" class="hairline"/>
+      <path d="M735 376 C811 455 845 595 788 712 C758 775 701 815 641 829" class="hairline"/>
+      <path d="M331 143 C292 221 294 330 335 414" class="hairline"/>
+      <path d="M691 154 C728 240 725 339 681 421" class="hairline"/>
+    </g>
+
+    <!-- original cloud-bun shapes -->
+    <g id="hair-buns">
+      <path d="M255 302 C200 287 176 224 211 180 C241 142 304 146 326 189 C353 242 311 320 255 302Z" fill="url(#hairShade)" class="line"/>
+      <path d="M769 303 C824 287 848 224 813 180 C783 142 720 146 698 189 C671 242 713 320 769 303Z" fill="url(#hairShade)" class="line"/>
+      <path d="M229 207 C263 201 291 219 303 252" class="thin"/>
+      <path d="M795 207 C761 201 733 219 721 252" class="thin"/>
+    </g>
+
+    <!-- neck and shoulders -->
+    <g id="body">
+      <path d="M438 694 C447 645 456 615 512 615 C568 615 577 645 586 694 Z" fill="url(#skinGrad)" class="line"/>
+      <path d="M298 934 C318 770 396 698 512 698 C628 698 706 770 726 934Z" fill="url(#capeGrad)" class="line"/>
+      <path d="M337 819 C384 774 432 748 512 748 C592 748 640 774 687 819" fill="none" class="softline" opacity=".62"/>
+      <path d="M402 722 L512 820 L622 722 C597 704 562 694 512 694 C462 694 427 704 402 722Z" fill="#fffdf8" class="line"/>
+      <path d="M512 805 C486 772 455 745 421 727 C465 707 559 706 603 727 C569 745 538 772 512 805Z" fill="url(#lavenderRibbon)" class="line"/>
+      <circle cx="512" cy="791" r="23" fill="#fff7c9" stroke="#9a6f80" stroke-width="5"/>
+      <path d="M502 786 l10-20 10 20 22 3-16 15 4 22-20-11-20 11 4-22-16-15z" fill="#ffd868" opacity=".9"/>
+    </g>
+
+    <!-- face -->
+    <g id="face">
+      <path d="M333 348 C329 241 407 169 513 169 C619 169 697 241 692 348 C688 503 610 632 512 632 C414 632 337 503 333 348Z" fill="url(#skinGrad)" class="line"/>
+      <path d="M346 433 C322 420 307 440 313 471 C319 502 342 513 361 497" fill="url(#skinGrad)" class="line"/>
+      <path d="M678 433 C702 420 717 440 711 471 C705 502 682 513 663 497" fill="url(#skinGrad)" class="line"/>
+      <path d="M512 427 C506 466 499 487 491 505" class="thin" opacity=".42"/>
+      <path d="M487 560 C505 572 529 572 547 560" fill="none" stroke="#8d6170" stroke-width="5" stroke-linecap="round"/>
+    </g>
+
+    <!-- front hair and bangs -->
+    <g id="hair-front">
+      <path d="M318 368 C293 271 337 165 446 124 C490 107 534 108 579 126 C681 168 729 272 701 369 C665 311 612 276 512 274 C412 276 354 311 318 368Z" fill="url(#hairGrad)" class="line"/>
+      <path d="M378 154 C351 234 356 315 392 387" class="hairline"/>
+      <path d="M450 128 C420 229 430 318 461 409" class="hairline"/>
+      <path d="M515 120 C493 214 498 318 514 412" class="hairline"/>
+      <path d="M586 130 C617 232 602 324 563 405" class="hairline"/>
+      <path d="M652 164 C680 243 674 317 636 386" class="hairline"/>
+      <path d="M337 329 C382 286 461 271 512 274 C562 271 641 286 686 329" fill="none" stroke="#c29aae" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    </g>
+
+    <!-- sprout hairpin: connects to project but original detail -->
+    <g id="sprout-hairpin" transform="translate(596 118) rotate(14)">
+      <path d="M0 46 C6 25 12 10 22 0" fill="none" stroke="#7cbf8e" stroke-width="8" stroke-linecap="round"/>
+      <path d="M21 5 C53 -6 70 19 50 42 C31 37 20 24 21 5Z" fill="#b6f0c7" stroke="#5b9f70" stroke-width="5"/>
+      <path d="M22 2 C-10 -8 -27 18 -8 41 C12 36 23 22 22 2Z" fill="#d4ffd9" stroke="#5b9f70" stroke-width="5"/>
+    </g>
+
+    <!-- eyes -->
+    <g id="eyes">
+      <g id="eye-left" transform="translate(408 398)">
+        <ellipse cx="0" cy="0" rx="54" ry="68" fill="#fff" stroke="#8d6170" stroke-width="6"/>
+        <ellipse cx="4" cy="9" rx="39" ry="53" fill="url(#eyeGrad)"/>
+        <circle cx="-12" cy="-24" r="14" fill="#fff" opacity=".95"/>
+        <circle cx="18" cy="-6" r="7" fill="#fff" opacity=".8"/>
+        <ellipse cx="4" cy="9" rx="43" ry="57" fill="url(#eyeGlow)"/>
+        <path d="M-54 -56 C-20 -77 25 -78 57 -50" fill="none" stroke="#6d4256" stroke-width="7" stroke-linecap="round"/>
+        <path d="M-61 -31 l-18 -13" class="thin"/>
+        <path d="M-57 -14 l-21 -3" class="thin"/>
+      </g>
+      <g id="eye-right" transform="translate(617 398)">
+        <ellipse cx="0" cy="0" rx="54" ry="68" fill="#fff" stroke="#8d6170" stroke-width="6"/>
+        <ellipse cx="-4" cy="9" rx="39" ry="53" fill="url(#eyeGrad)"/>
+        <circle cx="-19" cy="-24" r="14" fill="#fff" opacity=".95"/>
+        <circle cx="12" cy="-6" r="7" fill="#fff" opacity=".8"/>
+        <ellipse cx="-4" cy="9" rx="43" ry="57" fill="url(#eyeGlow)"/>
+        <path d="M-57 -50 C-25 -78 20 -77 54 -56" fill="none" stroke="#6d4256" stroke-width="7" stroke-linecap="round"/>
+        <path d="M61 -31 l18 -13" class="thin"/>
+        <path d="M57 -14 l21 -3" class="thin"/>
+      </g>
+    </g>
+
+    <!-- blush, cheeks, shy highlights -->
+    <g id="blush">
+      <ellipse cx="388" cy="506" rx="56" ry="24" fill="#ff9fb9" opacity=".26"/>
+      <ellipse cx="636" cy="506" rx="56" ry="24" fill="#ff9fb9" opacity=".26"/>
+      <path d="M364 505 l28 -22" class="thin" opacity=".38"/>
+      <path d="M392 512 l28 -22" class="thin" opacity=".38"/>
+      <path d="M660 505 l-28 -22" class="thin" opacity=".38"/>
+      <path d="M632 512 l-28 -22" class="thin" opacity=".38"/>
+    </g>
+
+    <!-- small hands -->
+    <g id="hands">
+      <path d="M315 861 C283 861 256 885 257 917 C258 945 289 955 315 940 C336 928 339 892 315 861Z" fill="url(#skinGrad)" class="line"/>
+      <path d="M709 861 C741 861 768 885 767 917 C766 945 735 955 709 940 C688 928 685 892 709 861Z" fill="url(#skinGrad)" class="line"/>
+    </g>
+  </g>
+
+  <!-- metadata for downstream SVG rigging -->
+  <metadata id="svgotchi-character-metadata">
+    {"name":"Lumi Mallow","purpose":"SVGotchi original mascot concept","copyright_note":"Original character generated from generic pastel chibi/anime mascot traits; not intended to copy any existing character.","rig_slots":["hair-back","hair-buns","hair-front","sprout-hairpin","face","eye-left","eye-right","blush","body","hands","effect-companion"]}
+  </metadata>
+</svg>

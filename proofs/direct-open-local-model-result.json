@@ -1,0 +1,36 @@
+{
+  "proofUrl": "file:///C:/Users/touch/svgotchi/proofs/direct-open-local-model.svg",
+  "chromePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "runs": [
+    {
+      "mode": "normal",
+      "exitCode": 0,
+      "proofStatus": "fail",
+      "detail": "config fetch failed: Failed to fetch",
+      "steps": [
+        "ok",
+        "fail",
+        null,
+        null
+      ],
+      "label": null,
+      "score": null,
+      "stderrTail": "[40684:20380:0617/221323.672:ERROR:chrome\\installer\\util\\google_update_settings_win.cc:270] Failed opening key Software\\Google\\Update\\ClientStateMedium\\{8A69D345-D564-463c-AFF1-A69D9E530F96} to set usagestats; result: 5\r\n"
+    },
+    {
+      "mode": "diagnostic-file-access-flag",
+      "exitCode": 0,
+      "proofStatus": "running",
+      "detail": "starting",
+      "steps": [
+        "ok",
+        "ok",
+        "running",
+        null
+      ],
+      "label": null,
+      "score": null,
+      "stderrTail": "[18808:44736:0617/221324.277:ERROR:chrome\\installer\\util\\google_update_settings_win.cc:270] Failed opening key Software\\Google\\Update\\ClientStateMedium\\{8A69D345-D564-463c-AFF1-A69D9E530F96} to set usagestats; result: 5\r\n"
+    }
+  ]
+}

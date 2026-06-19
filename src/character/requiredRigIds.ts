@@ -1,0 +1,30 @@
+export const REQUIRED_RIG_IDS = [
+  "svgotchi-root",
+  "pet-area",
+  "prompt-area",
+  "pet",
+  "body",
+  "face",
+  "eye-left",
+  "eye-right",
+  "brow-left",
+  "brow-right",
+  "mouth",
+  "blush-left",
+  "blush-right",
+  "effect-hearts",
+  "effect-tears",
+  "effect-zzz",
+  "effect-sparkles",
+  "effect-question",
+  "effect-anger",
+  "speech-bubble",
+  "prompt-bg",
+  "prompt-placeholder",
+  "prompt-text",
+  "prompt-caret",
+  "send-zone",
+  "send-label"
+] as const;
+
+export type RigId = (typeof REQUIRED_RIG_IDS)[number];

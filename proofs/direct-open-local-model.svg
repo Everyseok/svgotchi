@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" data-proof-status="pending">
+  <title>SVGotchi direct-open local model proof</title>
+  <rect width="100" height="100" fill="#000"/>
+  <text x="5" y="10" fill="#fff" font-family="monospace" font-size="4">SVGotchi direct-open proof</text>
+  <text id="proof-status" x="5" y="18" fill="#fff" font-family="monospace" font-size="3.5">pending</text>
+  <text id="proof-step-1" x="5" y="27" fill="#fff" font-family="monospace" font-size="3">script: pending</text>
+  <text id="proof-step-2" x="5" y="34" fill="#fff" font-family="monospace" font-size="3">config fetch: pending</text>
+  <text id="proof-step-3" x="5" y="41" fill="#fff" font-family="monospace" font-size="3">runtime import: pending</text>
+  <text id="proof-step-4" x="5" y="48" fill="#fff" font-family="monospace" font-size="3">pipeline: pending</text>
+  <text id="proof-detail" x="5" y="58" fill="#fff" font-family="monospace" font-size="2.8">detail: waiting</text>
+  <script><![CDATA[
+    const root = document.documentElement;
+    const statusNode = document.getElementById("proof-status");
+    const detailNode = document.getElementById("proof-detail");
+    const steps = [
+      document.getElementById("proof-step-1"),
+      document.getElementById("proof-step-2"),
+      document.getElementById("proof-step-3"),
+      document.getElementById("proof-step-4")
+    ];
+    const results = [];
+
+    globalThis.__svgotchiDirectOpenProof = {
+      status: "running",
+      results
+    };
+
+    function writeStatus(status, detail) {
+      root.setAttribute("data-proof-status", status);
+      root.setAttribute("data-proof-detail", detail);
+      statusNode.textContent = `status: ${status}`;
+      detailNode.textContent = `detail: ${detail}`.slice(0, 80);
+      globalThis.__svgotchiDirectOpenProof.status = status;
+      globalThis.__svgotchiDirectOpenProof.detail = detail;
+    }
+
+    async function step(index, name, run) {
+      const node = steps[index];
+      node.textContent = `${name}: running`;
+      root.setAttribute(`data-proof-step-${index + 1}`, "running");
+      try {
+        const detail = await run();
+        node.textContent = `${name}: ok`.slice(0, 80);
+        root.setAttribute(`data-proof-step-${index + 1}`, "ok");
+        results.push({ name, ok: true, detail });
+        return detail;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        node.textContent = `${name}: fail`.slice(0, 80);
+        root.setAttribute(`data-proof-step-${index + 1}`, "fail");
+        results.push({ name, ok: false, detail: message });
+        throw new Error(`${name} failed: ${message}`);
+      }
+    }
+
+    (async () => {
+    try {
+      writeStatus("running", "starting");
+
+      await step(0, "script", async () => {
+        return "module script executed";
+      });
+
+      await step(1, "config fetch", async () => {
+        const response = await fetch("../models/onnx-community/tanaos-emotion-detection-v1-ONNX/config.json", {
+          cache: "no-store"
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const config = await response.json();
+        return `model_type=${config.model_type ?? "unknown"}`;
+      });
+
+      const transformers = await step(2, "runtime import", async () => {
+        const module = await import("../node_modules/@huggingface/transformers/dist/transformers.web.js");
+        if (!module.env || !module.pipeline) {
+          throw new Error("missing env or pipeline export");
+        }
+        return module;
+      });
+
+      await step(3, "pipeline", async () => {
+        const { env, pipeline } = transformers;
+        env.allowRemoteModels = false;
+        env.allowLocalModels = true;
+        env.localModelPath = "../models/";
+        env.backends.onnx.wasm.wasmPaths = "../runtime/onnxruntime/";
+
+        const classifier = await pipeline("text-classification", "onnx-community/tanaos-emotion-detection-v1-ONNX", {
+          dtype: "int8",
+          local_files_only: true
+        });
+        const output = await classifier("you are cute", { top_k: null });
+        const rows = Array.isArray(output) && Array.isArray(output[0]) ? output[0] : output;
+        const top = Array.isArray(rows) ? rows[0] : rows;
+        if (!top || typeof top.label !== "string" || typeof top.score !== "number") {
+          throw new Error("classifier returned unexpected output");
+        }
+        root.setAttribute("data-proof-label", top.label);
+        root.setAttribute("data-proof-score", String(top.score));
+        return `${top.label}:${top.score.toFixed(4)}`;
+      });
+
+      writeStatus("pass", "local browser model classification succeeded");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      writeStatus("fail", message);
+      console.error("[svgotchi-direct-open-proof]", message);
+    }
+    })();
+  ]]></script>
+</svg>
