@@ -58,9 +58,27 @@ test("transition intensity can stop before the full target pose", () => {
   assert.ok(finalPose);
   assert.equal(finalPose.bodyOffsetY, 0.2);
   assert.equal(finalPose.bodyOffsetX, -0.4);
-  assert.equal(finalPose.bodyScale, 0.992);
+  assert.equal(finalPose.bodyScale, 1);
   assert.equal(finalPose.blushOpacity, 0.4);
   assert.equal(finalPose.effect, "none");
+});
+
+test("sway motion does not rotate the flattened PNG image", () => {
+  const frames = createTransitionFrames({
+    from: "neutral",
+    to: "curious",
+    durationMs: 750,
+    fps: 6,
+    intensity: 0.8,
+    easing: "linear",
+    motion: "sway",
+    effect: "question",
+    blush: false
+  });
+
+  assert.ok(frames.some((frame) => Math.abs(frame.pose.bodyOffsetX) > 0));
+  assert.ok(frames.every((frame) => frame.pose.bodyRotation === 0));
+  assert.ok(frames.every((frame) => frame.pose.bodyScale === 1));
 });
 
 test("planner-facing transition config keeps reply text outside the engine contract", () => {

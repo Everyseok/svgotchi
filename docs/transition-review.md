@@ -13,6 +13,7 @@ The visual direction remains:
 - exact uploaded character pixels from `assets/1.png` as the base identity
 - SVG expression overlay primitives for visible reactions
 - deterministic frames from typed pose parameters
+- no full-image rotation during pose or sway motion
 - no LLM-generated SVG, selectors, path data, or animation code
 - no LLM-generated pet reply text or reply style
 
@@ -83,6 +84,7 @@ Current result:
 - preview includes all five required transitions
 - preview uses `/assets/1.png` for every sampled transition frame
 - preview includes visible face overlays, face patches, and mouth geometry in non-neutral transition frames
+- sway motion uses small lateral movement rather than rotating the flattened PNG image
 - preview has no remote image href, data URI image href, or `foreignObject`
 
 Additional current checks:

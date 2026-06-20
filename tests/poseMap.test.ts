@@ -77,8 +77,15 @@ test("pose sheet positions each character inside its own cell", () => {
   const svg = renderPoseSheetSvg();
   const happyCell = svg.match(/<g data-emotion="happy"[\s\S]*?<\/g>\n    <text x="4" y="70"/)?.[0] ?? "";
 
-  assert.match(happyCell, /<g transform="translate\(5 7\) rotate\(0 50 40\) scale\(0\.63\)">/);
+  assert.match(happyCell, /<g transform="translate\(5 7\) rotate\(0 50 40\) scale\(0\.62\)">/);
   assert.doesNotMatch(happyCell, /translate\(77 7\)/);
+});
+
+test("poses do not rotate or resize the uploaded PNG card", () => {
+  for (const [emotion, pose] of listPoseEntries()) {
+    assert.equal(pose.bodyRotation, 0, `${emotion} should not rotate the flattened PNG image`);
+    assert.equal(pose.bodyScale, 1, `${emotion} should keep the flattened PNG image at a stable scale`);
+  }
 });
 
 test("non-neutral emotion previews render real face overlays instead of transform-only poses", () => {

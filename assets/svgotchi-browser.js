@@ -14,35 +14,35 @@ const EMOTIONS = [
 
 const POSES = {
   neutral: pose("dot", "flat", "none", 0, 0, 0, 1, 0, "none", 0),
-  happy: pose("happy_closed", "big_smile", "soft", 0.25, -1, 0, 1.02, 0, "sparkles", 0.7),
-  excited: pose("wide", "big_smile", "raised", 0.35, -2, 0, 1.04, -2, "sparkles", 1),
-  proud: pose("half_closed", "small_smile", "raised", 0.1, -0.5, 0, 1.03, -3, "sparkles", 0.55),
-  playful: pose("happy_closed", "zigzag", "soft", 0.2, -1, 1, 1.02, 5, "sparkles", 0.5),
-  love: pose("heart_like", "big_smile", "soft", 0.8, -1, 0, 1.03, 0, "hearts", 1),
-  shy_love: pose("happy_closed", "small_smile", "worried", 1, 0.5, -1, 0.98, -4, "hearts", 0.9),
+  happy: pose("happy_closed", "big_smile", "soft", 0.25, -1, 0, 1, 0, "sparkles", 0.7),
+  excited: pose("wide", "big_smile", "raised", 0.35, -2, 0, 1, 0, "sparkles", 1),
+  proud: pose("half_closed", "small_smile", "raised", 0.1, -0.5, 0, 1, 0, "sparkles", 0.55),
+  playful: pose("happy_closed", "zigzag", "soft", 0.2, -1, 1, 1, 0, "sparkles", 0.5),
+  love: pose("heart_like", "big_smile", "soft", 0.8, -1, 0, 1, 0, "hearts", 1),
+  shy_love: pose("happy_closed", "small_smile", "worried", 1, 0.5, -1, 1, 0, "hearts", 0.9),
   comforted: pose("happy_closed", "small_smile", "soft", 0.35, 0, 0, 1, 0, "sparkles", 0.35),
-  attached: pose("dot", "small_smile", "soft", 0.55, -0.5, 0, 1.01, 2, "hearts", 0.65),
-  sad: pose("sad", "sad_curve", "worried", 0, 1, 0, 0.98, 0, "tears", 0.45),
-  lonely: pose("sad", "flat", "worried", 0, 1.5, -1, 0.97, -2, "tears", 0.35),
-  disappointed: pose("half_closed", "sad_curve", "worried", 0, 1, 0, 0.98, 0, "none", 0),
-  hurt: pose("sad", "zigzag", "worried", 0, 1, 1, 0.97, 3, "tears", 0.75),
-  angry: pose("sharp", "zigzag", "angry", 0, 0, 1, 1.02, 3, "anger", 1),
-  annoyed: pose("half_closed", "flat", "angry", 0, 0, 0.5, 1, 2, "anger", 0.45),
-  jealous: pose("sharp", "pout", "worried", 0.2, 0, -1, 1, -3, "anger", 0.35),
-  scared: pose("wide", "tiny_open", "worried", 0, -0.5, 0, 0.96, -2, "tears", 0.3),
-  nervous: pose("wide", "zigzag", "worried", 0.25, 0.5, -0.5, 0.98, -3, "question", 0.35),
-  surprised: pose("wide", "surprised_o", "raised", 0, -1, 0, 1.02, 0, "question", 0.85),
-  confused: pose("dot", "tiny_open", "raised", 0, 0, 0, 1, -4, "question", 1),
-  sleepy: pose("half_closed", "flat", "none", 0, 1.5, 0, 0.97, 0, "zzz", 1),
-  hungry: pose("dot", "tiny_open", "worried", 0, 0.5, 0, 0.98, 0, "question", 0.4),
-  tired: pose("half_closed", "sad_curve", "none", 0, 2, 0, 0.96, 0, "zzz", 0.45),
-  sick: pose("sad", "zigzag", "worried", 0, 1.5, 0, 0.95, 2, "none", 0),
-  curious: pose("wide", "small_smile", "raised", 0, -0.5, 0, 1.01, -4, "question", 0.75),
-  thinking: pose("half_closed", "tiny_open", "raised", 0, 0, 0, 1, -2, "question", 0.55),
-  bored: pose("half_closed", "flat", "none", 0, 1, 0, 0.98, 0, "zzz", 0.2),
-  grateful: pose("happy_closed", "small_smile", "soft", 0.45, -0.5, 0, 1.01, 0, "sparkles", 0.75),
-  apologetic: pose("sad", "small_smile", "worried", 0.25, 1, 0, 0.97, -2, "tears", 0.25),
-  sulky: pose("half_closed", "pout", "angry", 0.1, 1, -1, 0.98, -4, "anger", 0.2)
+  attached: pose("dot", "small_smile", "soft", 0.55, -0.5, 0, 1, 0, "hearts", 0.65),
+  sad: pose("sad", "sad_curve", "worried", 0, 1, 0, 1, 0, "tears", 0.45),
+  lonely: pose("sad", "flat", "worried", 0, 1.5, -1, 1, 0, "tears", 0.35),
+  disappointed: pose("half_closed", "sad_curve", "worried", 0, 1, 0, 1, 0, "none", 0),
+  hurt: pose("sad", "zigzag", "worried", 0, 1, 1, 1, 0, "tears", 0.75),
+  angry: pose("sharp", "zigzag", "angry", 0, 0, 1, 1, 0, "anger", 1),
+  annoyed: pose("half_closed", "flat", "angry", 0, 0, 0.5, 1, 0, "anger", 0.45),
+  jealous: pose("sharp", "pout", "worried", 0.2, 0, -1, 1, 0, "anger", 0.35),
+  scared: pose("wide", "tiny_open", "worried", 0, -0.5, 0, 1, 0, "tears", 0.3),
+  nervous: pose("wide", "zigzag", "worried", 0.25, 0.5, -0.5, 1, 0, "question", 0.35),
+  surprised: pose("wide", "surprised_o", "raised", 0, -1, 0, 1, 0, "question", 0.85),
+  confused: pose("dot", "tiny_open", "raised", 0, 0, 0, 1, 0, "question", 1),
+  sleepy: pose("half_closed", "flat", "none", 0, 1.5, 0, 1, 0, "zzz", 1),
+  hungry: pose("dot", "tiny_open", "worried", 0, 0.5, 0, 1, 0, "question", 0.4),
+  tired: pose("half_closed", "sad_curve", "none", 0, 2, 0, 1, 0, "zzz", 0.45),
+  sick: pose("sad", "zigzag", "worried", 0, 1.5, 0, 1, 0, "none", 0),
+  curious: pose("wide", "small_smile", "raised", 0, -0.5, 0, 1, 0, "question", 0.75),
+  thinking: pose("half_closed", "tiny_open", "raised", 0, 0, 0, 1, 0, "question", 0.55),
+  bored: pose("half_closed", "flat", "none", 0, 1, 0, 1, 0, "zzz", 0.2),
+  grateful: pose("happy_closed", "small_smile", "soft", 0.45, -0.5, 0, 1, 0, "sparkles", 0.75),
+  apologetic: pose("sad", "small_smile", "worried", 0.25, 1, 0, 1, 0, "tears", 0.25),
+  sulky: pose("half_closed", "pout", "angry", 0.1, 1, -1, 1, 0, "anger", 0.2)
 };
 
 const state = {
@@ -539,7 +539,7 @@ function applyMotion(poseValue, motion, progress, intensity) {
   const amount = clamp01(intensity);
   if (motion === "tiny_bounce") return { ...poseValue, bodyOffsetY: poseValue.bodyOffsetY - Math.abs(wave) * 0.8 * amount };
   if (motion === "shake") return { ...poseValue, bodyOffsetX: poseValue.bodyOffsetX + Math.sign(wave || 1) * 1.2 * amount };
-  if (motion === "sway") return { ...poseValue, bodyRotation: poseValue.bodyRotation + wave * 3 * amount };
+  if (motion === "sway") return { ...poseValue, bodyOffsetX: poseValue.bodyOffsetX + wave * 0.9 * amount };
   if (motion === "hop") return { ...poseValue, bodyOffsetY: poseValue.bodyOffsetY - Math.sin(progress * Math.PI) * 2.5 * amount };
   return poseValue;
 }

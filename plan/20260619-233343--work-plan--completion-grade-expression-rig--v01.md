@@ -3,12 +3,12 @@
 Plan Type: work-plan
 Workstream: completion-grade-expression-rig
 Version: v01
-Status: Verified; commit and push remain
+Status: Verified after polish; commit and push remain
 Created: 2026-06-19 23:33:43 Asia/Seoul
-Last Updated: 2026-06-20 00:26:36 Asia/Seoul
+Last Updated: 2026-06-20 10:50:51 Asia/Seoul
 Supersedes or Related Plan: Supersedes the active visual scope of `plan/20260619-225848--work-plan--exact-png-character-rig--v01.md`. That prior plan corrected the base character identity by rendering `assets/1.png`, but it intentionally hid the face rig and left the visible interaction dominated by transform motion. This new plan keeps the exact uploaded PNG as the base identity and adds a real visible expression layer so the app can feel complete rather than like a tilted static picture.
-Current Completion State: Verified locally; commit and push remain.
-Completed So Far: The repository is on `main` and aligned with `origin/main` at commit `36b03f3`, which uses `assets/1.png` as the visible character base. This plan has now added a visible SVG expression overlay rig with face-cover patches, eyes, eye shines, heart eyes, brows, mouth, blush, stronger effects, preview rendering, strengthened tests, and served DOM verification evidence. The pose sheet was screenshot-reviewed after fixing a double-translate preview bug, and all 30 cells now show the character in-cell with visible non-neutral expressions. `npm run verify`, `npm run verify:runtime`, `git diff --check`, and `npm pack --dry-run` passed. The test suite now has 40 tests. Served demo probes passed for `you are cute -> shy_love`, `i am sad -> sad`, `i hate this -> angry`, `are you there? -> surprised`, and `sleep now -> sleepy`, each with active face overlay evidence. Full mode also passed for `you are cute -> shy_love`. The current local worktree still has one pre-existing unstaged `package-lock.json` modification that is unrelated and should remain excluded unless separately approved.
+Current Completion State: Verified locally after a visual polish pass; commit and push remain.
+Completed So Far: The repository is on `main` and aligned with `origin/main` at commit `3605cf7`, which added the visible expression overlay rig. This continuation pass inspected actual app screenshots and found two polish defects: runtime debug text was visibly overlaid on the character/prompt, and some pose/motion values still rotated or resized the flattened PNG square, preserving the user's earlier "tilted photo" complaint. The app now hides `app-status` and `app-plan` visually while keeping them readable for verification, removes static full-image rotation and scale changes from all poses, and changes `sway` motion from rotation to a small lateral offset. `npm run verify`, `npm run verify:runtime`, `git diff --check`, representative prompt probes for angry and surprised, screenshot inspection of neutral/cute/angry/surprised, and `npm pack --dry-run` passed. The test suite now has 42 tests, including regressions that the uploaded PNG card is not rotated or resized and that sway does not rotate it. The current local worktree still has one pre-existing unstaged `package-lock.json` modification that is unrelated and should remain excluded unless separately approved.
 Remaining Work: Stage only intended files, commit, push, and report the focused result.
 Current Blockers: None. The main constraint is visual: the uploaded PNG is a flattened image, so emotion states cannot literally move the original pixels of the eyes and mouth. The safest completion-grade path with current assets is to preserve the exact PNG for neutral/base identity and place app-owned SVG expression patches and features over the face during emotion states.
 Next Step: Stage only intended files, commit, push, and report the visual/technical verification result.
@@ -17,13 +17,13 @@ Next Step: Stage only intended files, commit, push, and report the visual/techni
 
 Current Score: 50/100
 Score Source: provisional
-Last Updated: 2026-06-20 00:26:36 Asia/Seoul
+Last Updated: 2026-06-20 10:50:51 Asia/Seoul
 
-Score Rationale: The user has not provided a numeric score, so this remains capped at 50 by the local provisional-score rule. Technical and visual confidence is materially higher than before because the character now has visible SVG expression overlays, strengthened expression tests, a corrected pose sheet layout, screenshot inspection, and served prompt probes that prove face overlay state and geometry changes. The score is not marked complete because the user has not yet accepted the result as "finished."
+Score Rationale: The user has not provided a numeric score, so this remains capped at 50 by the local provisional-score rule. Technical and visual confidence improved again because the app no longer shows debug status text in the visible scene and no longer rotates or resizes the flattened PNG square for emotion poses. The score is not marked complete because the user has not yet accepted the result as "finished," and the baked checkerboard background remains a known limitation of the current RGB source asset.
 
-What Improved: The exact PNG base remains, but non-neutral emotions now visibly change eyes, mouth, brows, blush, and effects. Runtime verification now inspects `data-face-overlay`, cover opacity, mouth path, and eye geometry instead of only checking final emotion labels.
+What Improved: The exact PNG base remains, non-neutral emotions visibly change face features, runtime debug text is hidden from the user-visible scene, and full-image rotation/scale was removed so the result no longer reads as a tilted photo card.
 
-What Remains Unsatisfactory: The expression system is still an SVG overlay on a flattened PNG, not true raster facial animation from separate approved eye/mouth assets. Some overlays are intentionally stylized and may still need subjective tuning after user inspection.
+What Remains Unsatisfactory: The expression system is still an SVG overlay on a flattened PNG, not true raster facial animation from separate approved eye/mouth assets. The uploaded PNG has a baked checkerboard background because it is RGB, not alpha-transparent; removing that would require a separately approved cutout/segmentation step.
 
 Actions To Raise Or Maintain Score: Finish broad verification, commit and push the focused result, keep the local demo running for user inspection, and continue visual tuning if user feedback identifies a specific expression or alignment issue.
 
@@ -31,6 +31,7 @@ Score History:
 - 2026-06-19 23:33:43 Asia/Seoul: provisional 35/100. User approved the completion-grade expression work after rejecting transform-only behavior.
 - 2026-06-20 00:21:58 Asia/Seoul: provisional 50/100. Visible expression overlay rig is implemented and partially verified; provisional score is capped by workflow until user gives an explicit score.
 - 2026-06-20 00:26:36 Asia/Seoul: provisional 50/100. Broad verification, runtime verification, package dry-run, and representative prompt probes passed; provisional score remains capped pending explicit user acceptance.
+- 2026-06-20 10:50:51 Asia/Seoul: provisional 50/100. Visual polish removed visible debug text and eliminated full-image rotation/scale from the flattened PNG while preserving expression overlays; provisional score remains capped pending explicit user acceptance.
 
 ## Objective
 

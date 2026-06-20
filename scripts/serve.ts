@@ -155,8 +155,8 @@ function contentType(filePath: string): string {
 
 function renderSvgApp(mode: ServeMode): string {
   const appNodes = `
-  <text id="app-status" x="4" y="77">${mode === "demo" ? "demo ready" : "model ready"}</text>
-  <text id="app-plan" x="4" y="72"></text>
+  <text id="app-status" x="4" y="77" opacity="0" pointer-events="none" aria-hidden="true">${mode === "demo" ? "demo ready" : "model ready"}</text>
+  <text id="app-plan" x="4" y="72" opacity="0" pointer-events="none" aria-hidden="true"></text>
   <script type="importmap"><![CDATA[
     {
       "imports": {

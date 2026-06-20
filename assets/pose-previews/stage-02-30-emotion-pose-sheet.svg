@@ -34,7 +34,7 @@
   <g data-emotion="happy" transform="translate(72 0)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">2. happy</text>
-    <g transform="translate(5 7) rotate(0 50 40) scale(0.63)">
+    <g transform="translate(5 7) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -56,7 +56,7 @@
   <g data-emotion="excited" transform="translate(144 0)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">3. excited</text>
-    <g transform="translate(5 6) rotate(-2 50 40) scale(0.64)">
+    <g transform="translate(5 6) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -78,7 +78,7 @@
   <g data-emotion="proud" transform="translate(216 0)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">4. proud</text>
-    <g transform="translate(5 7.5) rotate(-3 50 40) scale(0.64)">
+    <g transform="translate(5 7.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -100,7 +100,7 @@
   <g data-emotion="playful" transform="translate(288 0)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">5. playful</text>
-    <g transform="translate(6 7) rotate(5 50 40) scale(0.63)">
+    <g transform="translate(6 7) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -122,7 +122,7 @@
   <g data-emotion="love" transform="translate(0 82)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">6. love</text>
-    <g transform="translate(5 7) rotate(0 50 40) scale(0.64)">
+    <g transform="translate(5 7) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -144,7 +144,7 @@
   <g data-emotion="shy_love" transform="translate(72 82)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">7. shy_love</text>
-    <g transform="translate(4 8.5) rotate(-4 50 40) scale(0.61)">
+    <g transform="translate(4 8.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -188,7 +188,7 @@
   <g data-emotion="attached" transform="translate(216 82)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">9. attached</text>
-    <g transform="translate(5 7.5) rotate(2 50 40) scale(0.63)">
+    <g transform="translate(5 7.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -210,7 +210,7 @@
   <g data-emotion="sad" transform="translate(288 82)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">10. sad</text>
-    <g transform="translate(5 9) rotate(0 50 40) scale(0.61)">
+    <g transform="translate(5 9) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -232,7 +232,7 @@
   <g data-emotion="lonely" transform="translate(0 164)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">11. lonely</text>
-    <g transform="translate(4 9.5) rotate(-2 50 40) scale(0.6)">
+    <g transform="translate(4 9.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -254,7 +254,7 @@
   <g data-emotion="disappointed" transform="translate(72 164)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">12. disappointed</text>
-    <g transform="translate(5 9) rotate(0 50 40) scale(0.61)">
+    <g transform="translate(5 9) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -275,7 +275,7 @@
   <g data-emotion="hurt" transform="translate(144 164)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">13. hurt</text>
-    <g transform="translate(6 9) rotate(3 50 40) scale(0.6)">
+    <g transform="translate(6 9) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -297,7 +297,7 @@
   <g data-emotion="angry" transform="translate(216 164)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">14. angry</text>
-    <g transform="translate(6 8) rotate(3 50 40) scale(0.63)">
+    <g transform="translate(6 8) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -319,7 +319,7 @@
   <g data-emotion="annoyed" transform="translate(288 164)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">15. annoyed</text>
-    <g transform="translate(5.5 8) rotate(2 50 40) scale(0.62)">
+    <g transform="translate(5.5 8) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -341,7 +341,7 @@
   <g data-emotion="jealous" transform="translate(0 246)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">16. jealous</text>
-    <g transform="translate(4 8) rotate(-3 50 40) scale(0.62)">
+    <g transform="translate(4 8) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -363,7 +363,7 @@
   <g data-emotion="scared" transform="translate(72 246)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">17. scared</text>
-    <g transform="translate(5 7.5) rotate(-2 50 40) scale(0.6)">
+    <g transform="translate(5 7.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -385,7 +385,7 @@
   <g data-emotion="nervous" transform="translate(144 246)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">18. nervous</text>
-    <g transform="translate(4.5 8.5) rotate(-3 50 40) scale(0.61)">
+    <g transform="translate(4.5 8.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -407,7 +407,7 @@
   <g data-emotion="surprised" transform="translate(216 246)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">19. surprised</text>
-    <g transform="translate(5 7) rotate(0 50 40) scale(0.63)">
+    <g transform="translate(5 7) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -429,7 +429,7 @@
   <g data-emotion="confused" transform="translate(288 246)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">20. confused</text>
-    <g transform="translate(5 8) rotate(-4 50 40) scale(0.62)">
+    <g transform="translate(5 8) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -451,7 +451,7 @@
   <g data-emotion="sleepy" transform="translate(0 328)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">21. sleepy</text>
-    <g transform="translate(5 9.5) rotate(0 50 40) scale(0.6)">
+    <g transform="translate(5 9.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -472,7 +472,7 @@
   <g data-emotion="hungry" transform="translate(72 328)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">22. hungry</text>
-    <g transform="translate(5 8.5) rotate(0 50 40) scale(0.61)">
+    <g transform="translate(5 8.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -494,7 +494,7 @@
   <g data-emotion="tired" transform="translate(144 328)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">23. tired</text>
-    <g transform="translate(5 10) rotate(0 50 40) scale(0.6)">
+    <g transform="translate(5 10) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -515,7 +515,7 @@
   <g data-emotion="sick" transform="translate(216 328)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">24. sick</text>
-    <g transform="translate(5 9.5) rotate(2 50 40) scale(0.59)">
+    <g transform="translate(5 9.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -536,7 +536,7 @@
   <g data-emotion="curious" transform="translate(288 328)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">25. curious</text>
-    <g transform="translate(5 7.5) rotate(-4 50 40) scale(0.63)">
+    <g transform="translate(5 7.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -558,7 +558,7 @@
   <g data-emotion="thinking" transform="translate(0 410)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">26. thinking</text>
-    <g transform="translate(5 8) rotate(-2 50 40) scale(0.62)">
+    <g transform="translate(5 8) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -580,7 +580,7 @@
   <g data-emotion="bored" transform="translate(72 410)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">27. bored</text>
-    <g transform="translate(5 9) rotate(0 50 40) scale(0.61)">
+    <g transform="translate(5 9) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -601,7 +601,7 @@
   <g data-emotion="grateful" transform="translate(144 410)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">28. grateful</text>
-    <g transform="translate(5 7.5) rotate(0 50 40) scale(0.63)">
+    <g transform="translate(5 7.5) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -623,7 +623,7 @@
   <g data-emotion="apologetic" transform="translate(216 410)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">29. apologetic</text>
-    <g transform="translate(5 9) rotate(-2 50 40) scale(0.6)">
+    <g transform="translate(5 9) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">
@@ -645,7 +645,7 @@
   <g data-emotion="sulky" transform="translate(288 410)">
     <rect x="1" y="1" width="70" height="80" class="frame muted"/>
     <text x="4" y="8">30. sulky</text>
-    <g transform="translate(4 9) rotate(-4 50 40) scale(0.61)">
+    <g transform="translate(4 9) rotate(0 50 40) scale(0.62)">
       <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
       <g class="anime-face" data-face-overlay="active">
         <g class="face-cover">

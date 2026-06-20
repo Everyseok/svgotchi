@@ -13,6 +13,7 @@ The current visual direction remains:
 - exact uploaded character pixels from `assets/1.png` as the base identity
 - visible SVG expression overlays for non-neutral emotions
 - primitive SVG pose parameters
+- stable full-image placement; the flattened PNG is not rotated or resized per emotion
 - no separate DOM structure per emotion
 
 Pose sheet preview:
@@ -96,6 +97,7 @@ Expected Stage 2 checks:
 - pose sheet preview uses `/assets/1.png` for every emotion
 - pose sheet preview renders active face overlays for the 29 non-neutral emotions
 - pose sheet characters are positioned inside their own cells rather than shifted by outer grid coordinates
+- pose sheet poses do not rotate or resize the flattened PNG card; expression changes carry the visible emotion
 - representative emotions render distinct face geometry such as heart eyes, sad tears, angry brows, surprised mouth, sleepy eyes, and curious/question states
 - pose sheet preview has no remote image href, data URI image href, or `foreignObject`
 - character rig tests continue passing

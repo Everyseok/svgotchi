@@ -46,6 +46,7 @@ try {
     : result.faceOverlay === "active"
       && result.faceCoverOpacity !== "0"
       && (result.mouthPath !== "M46 40.6h8" || result.eyeLeftRy !== "5.8");
+  const debugTextHidden = result.appStatusOpacity === "0" && result.appPlanOpacity === "0";
 
   process.exitCode = result.exitCode === 0
     && result.isSvg
@@ -56,6 +57,7 @@ try {
     && expectedEmotions.includes(result.lastPlanTo ?? "")
     && result.currentEmotion === result.lastPlanTo
     && expressionEvidenceOk
+    && debugTextHidden
     ? 0
     : 1;
 } finally {
@@ -74,6 +76,8 @@ type ProbeResult = Readonly<{
   appStatus: string | null;
   appPlan: string | null;
   appError: string | null;
+  appStatusOpacity: string | null;
+  appPlanOpacity: string | null;
   faceOverlay: string | null;
   faceCoverOpacity: string | null;
   mouthPath: string | null;
@@ -194,6 +198,8 @@ function emptyAppState(): AppState {
     appStatus: null,
     appPlan: null,
     appError: null,
+    appStatusOpacity: null,
+    appPlanOpacity: null,
     faceOverlay: null,
     faceCoverOpacity: null,
     mouthPath: null,
@@ -215,6 +221,8 @@ async function readAppState(client: CdpClient): Promise<AppState> {
     returnByValue: true,
     expression: `(() => {
       const root = document.getElementById("svgotchi-root");
+      const appStatus = document.getElementById("app-status");
+      const appPlan = document.getElementById("app-plan");
       const documentTag = document.documentElement?.tagName?.toLowerCase() || "";
       return {
         isSvg: documentTag === "svg" && root?.id === "svgotchi-root",
@@ -224,9 +232,11 @@ async function readAppState(client: CdpClient): Promise<AppState> {
         servedMode: root?.getAttribute("data-mode") ?? null,
         lastPlanTo: root?.getAttribute("data-last-plan-to") ?? null,
         currentEmotion: root?.getAttribute("data-current-emotion") ?? null,
-        appStatus: document.getElementById("app-status")?.textContent ?? null,
-        appPlan: document.getElementById("app-plan")?.textContent ?? null,
+        appStatus: appStatus?.textContent ?? null,
+        appPlan: appPlan?.textContent ?? null,
         appError: root?.getAttribute("data-app-error") ?? null,
+        appStatusOpacity: appStatus?.getAttribute("opacity") ?? null,
+        appPlanOpacity: appPlan?.getAttribute("opacity") ?? null,
         faceOverlay: root?.getAttribute("data-face-overlay") ?? document.getElementById("face")?.getAttribute("data-face-overlay") ?? null,
         faceCoverOpacity: document.getElementById("face-cover")?.getAttribute("opacity") ?? null,
         mouthPath: document.getElementById("mouth")?.getAttribute("d") ?? null,
