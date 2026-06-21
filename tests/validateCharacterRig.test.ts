@@ -46,7 +46,7 @@ test("validator rejects a non-canonical viewBox", () => {
 });
 
 test("validator rejects a body box that does not match the coordinate contract", () => {
-  const wrongBodyBox = assetSvg.replace('id="body" x="10" y="0" width="80" height="80"', 'id="body" x="11" y="0" width="80" height="80"');
+  const wrongBodyBox = assetSvg.replace('id="body" x="30" y="18" width="40" height="44"', 'id="body" x="31" y="18" width="40" height="44"');
   const result = validateCharacterRig(wrongBodyBox);
 
   assert.equal(result.ok, false);
@@ -61,26 +61,9 @@ test("validator rejects duplicate ids", () => {
   assert.match(result.errors[0] ?? "", /Duplicate SVG ids/);
 });
 
-test("base character uses only the approved uploaded PNG image asset", () => {
-  const imageTags = assetSvg.match(/<image\b/gi) ?? [];
-  const imageHrefs = [...assetSvg.matchAll(/<image\b[^>]*\bhref="([^"]+)"/gi)].map((match) => match[1]);
+test("base character uses only black and white color literals", () => {
+  const colorLiterals = [...assetSvg.matchAll(/#[0-9a-fA-F]{3,6}\b/g)].map((match) => match[0]?.toLowerCase());
 
-  assert.equal(imageTags.length, 1);
-  assert.deepEqual(imageHrefs, ["/assets/1.png"]);
-  assert.ok(assetSvg.includes('id="character-image"'));
-  assert.doesNotMatch(assetSvg, /<foreignObject\b/i);
-  assert.doesNotMatch(assetSvg, /\bhref="https?:\/\//i);
-  assert.doesNotMatch(assetSvg, /\bhref="data:/i);
-});
-
-test("base character exposes a visible-capable expression overlay rig", () => {
-  assert.ok(assetSvg.includes('id="face-cover"'));
-  assert.ok(assetSvg.includes('id="face-features"'));
-  assert.ok(assetSvg.includes('id="eye-left-shine"'));
-  assert.ok(assetSvg.includes('id="eye-right-shine"'));
-  assert.ok(assetSvg.includes('id="eye-left-heart"'));
-  assert.ok(assetSvg.includes('id="eye-right-heart"'));
-  assert.ok(assetSvg.includes('class="face-patch"'));
-  assert.ok(assetSvg.includes('class="mouth-line"'));
-  assert.doesNotMatch(assetSvg, /\.face-slot\s*\{[^}]*opacity:\s*0/i);
+  assert.ok(colorLiterals.length > 0);
+  assert.deepEqual([...new Set(colorLiterals)].sort(), ["#000", "#fff"]);
 });

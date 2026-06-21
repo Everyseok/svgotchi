@@ -1,30 +1,25 @@
 # SVGotchi Neutral Base Review
 
-Status: Current uploaded PNG character base with SVG expression overlay rig
-Last updated: 2026-06-19 Asia/Seoul
+Status: Stage 1 neutral base SVG and rig contract for user review
+Last updated: 2026-06-17 02:49:03 Asia/Seoul
 
-## Current Concept Applied
+## Approved Concept Applied
 
-Selected concept: exact uploaded PNG character base inside an SVG app shell, with app-owned SVG expression overlays for non-neutral emotions
+Selected concept: Mochi Sprout
 
-Reference inputs:
+User visual constraint:
 
-- `assets/1.png` is the active composed character image.
-- `assets/2.png` through `assets/6.png` remain reference layers and are not runtime dependencies.
-- The shipped character body is rendered by an SVG `<image>` element that points at `/assets/1.png`.
-- Neutral keeps the overlay inactive so the uploaded image remains the visual baseline.
-- Non-neutral emotions enable face-cover patches plus SVG eyes, mouth, brows, blush, and effects so the character visibly changes expression.
+- black canvas
+- white-only visible character and UI marks
+- no color palette beyond black and white
 
-Runtime visual direction:
+Revision note:
 
-- dark SVG canvas
-- exact uploaded character pixels from `assets/1.png` as the base identity
-- visible SVG expression overlay for non-neutral reactions
-- pure SVG prompt area
+- The top sprout/head shape was adjusted after user feedback so it connects to the body instead of visually overlapping the face area.
 
 Neutral base SVG:
 
-![Neutral uploaded character](../assets/base-character.svg)
+![Neutral Mochi Sprout](../assets/base-character.svg)
 
 ## Files
 
@@ -45,7 +40,7 @@ Layout:
 
 - pet area: `x=0 y=0 width=100 height=80`
 - prompt area: `x=0 y=81 width=100 height=19`
-- body box: `x=10 y=0 width=80 height=80`
+- body box: `x=30 y=18 width=40 height=44`
 
 The SVG includes every required rig ID:
 
@@ -53,17 +48,10 @@ The SVG includes every required rig ID:
 - `pet-area`
 - `prompt-area`
 - `pet`
-- `character-image`
 - `body`
 - `face`
-- `face-cover`
-- `face-features`
 - `eye-left`
 - `eye-right`
-- `eye-left-shine`
-- `eye-right-shine`
-- `eye-left-heart`
-- `eye-right-heart`
 - `brow-left`
 - `brow-right`
 - `mouth`
@@ -95,24 +83,23 @@ Validation implemented:
 - pet area coordinate contract
 - prompt area coordinate contract
 - body box coordinate contract
-- exactly one approved runtime `<image>` for `/assets/1.png`
-- visible-capable expression overlay nodes are present
-- the face slot is not globally hidden
-- no `foreignObject`
-- no remote or data URI image href
+- black/white-only color literal test
 
 Verification command:
 
 ```powershell
 npm run verify
-npm run verify:runtime
 ```
 
-Current result:
+Result:
 
 - typecheck passed
-- browser script syntax check passed
-- 40 baseline tests passed
-- served SVG demo/full probes passed
-- served SVG prompt probes inspect face overlay state, cover opacity, mouth path, and eye geometry
-- local browser-side classifier import probe passed
+- 10 tests passed
+- base SVG XML parse passed
+- black/white-only color literal check passed
+
+## User Decision Required
+
+Approve or reject the neutral base SVG and rig contract before Stage 2 begins.
+
+No 30-emotion pose sheet work should begin until this neutral base and rig contract are explicitly approved.

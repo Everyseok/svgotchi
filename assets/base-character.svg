@@ -1,80 +1,63 @@
 <svg xmlns="http://www.w3.org/2000/svg" id="svgotchi-root" viewBox="0 0 100 100" tabindex="0" role="img" aria-labelledby="svgotchi-title svgotchi-desc">
-  <title id="svgotchi-title">SVGotchi uploaded anime companion</title>
-  <desc id="svgotchi-desc">An SVG app shell that renders the uploaded character asset from assets/1.png and adds app-owned SVG expression overlays for emotion changes.</desc>
+  <title id="svgotchi-title">SVGotchi neutral Mochi Sprout</title>
+  <desc id="svgotchi-desc">A monochrome white pixel-style Mochi Sprout pet on a black SVG canvas with a pure SVG prompt placeholder.</desc>
   <style>
-    #svgotchi-root { background: #140f1f; }
-    .rig-slot { fill: none; opacity: 0; pointer-events: none; }
-    .face-slot { pointer-events: none; }
-    .character-image { image-rendering: auto; }
-    .face-patch { fill: #fff1f0; stroke: #f0c9cf; stroke-width: 0.3; }
-    .eye-fill { fill: #6f54b8; stroke: #3c286d; stroke-width: 0.55; }
-    .eye-shine { fill: #fffaff; }
-    .eye-heart { fill: #ff78ad; stroke: #963f72; stroke-width: 0.35; }
-    .mouth-line, .eye-line, .brow-line { fill: none; stroke: #4b2a4d; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; }
-    .blush-fill { fill: #ff9ab8; }
-    .effect-fill { fill: #ff7dac; }
-    .effect-tear { fill: #7ed8ff; }
-    .effect-line { stroke: #ffe889; stroke-width: 1.2; stroke-linecap: round; fill: none; }
-    .effect-symbol { fill: #ffe889; font-size: 8px; font-weight: 700; }
+    #svgotchi-root { background: #000; }
+    .pixel { shape-rendering: crispEdges; }
+    .white-fill { fill: #fff; }
+    .white-stroke { stroke: #fff; stroke-width: 2; fill: none; shape-rendering: crispEdges; }
+    .thin-stroke { stroke: #fff; stroke-width: 1; fill: none; shape-rendering: crispEdges; }
     .hidden-layer { opacity: 0; }
-    .prompt-panel { fill: #211832; stroke: #cbb5ea; stroke-width: 1; }
-    .prompt-fill { fill: #140f1f; }
-    .prompt-accent { fill: #cdb9ff; }
-    text { fill: #f7eaff; font-family: monospace; font-size: 5px; }
+    text { fill: #fff; font-family: monospace; font-size: 5px; }
   </style>
-  <rect id="pet-area" x="0" y="0" width="100" height="80" fill="#140f1f"/>
+  <rect id="pet-area" x="0" y="0" width="100" height="80" fill="#000"/>
   <g id="pet">
-    <rect id="body" x="10" y="0" width="80" height="80" rx="0" class="rig-slot"/>
-    <image id="character-image" href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-    <g id="face" class="face-slot">
-      <g id="face-cover" opacity="0">
-        <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-        <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-        <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-      </g>
-      <g id="face-features" opacity="0">
-        <path id="brow-left" d="M37.2 25.7q4.6-2 9.2 0" class="brow-line" opacity="0"/>
-        <path id="brow-right" d="M53.6 25.7q4.6-2 9.2 0" class="brow-line" opacity="0"/>
-        <ellipse id="eye-left" cx="41.8" cy="31.6" rx="4.9" ry="5.8" class="eye-fill" opacity="1"/>
-        <ellipse id="eye-right" cx="58.2" cy="31.6" rx="4.9" ry="5.8" class="eye-fill" opacity="1"/>
-        <circle id="eye-left-shine" cx="40.2" cy="29.2" r="1.1" class="eye-shine" opacity="1"/>
-        <circle id="eye-right-shine" cx="56.6" cy="29.2" r="1.1" class="eye-shine" opacity="1"/>
-        <path id="eye-left-heart" d="M41.8 29.6c-1.8-3.2-5.8-1.6-5 1.7c.8 3 5 5.5 5 5.5s4.2-2.5 5-5.5c.8-3.3-3.2-4.9-5-1.7z" class="eye-heart" opacity="0"/>
-        <path id="eye-right-heart" d="M58.2 29.6c-1.8-3.2-5.8-1.6-5 1.7c.8 3 5 5.5 5 5.5s4.2-2.5 5-5.5c.8-3.3-3.2-4.9-5-1.7z" class="eye-heart" opacity="0"/>
-        <path id="mouth" d="M46 40.6h8" class="mouth-line"/>
-        <ellipse id="blush-left" cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse id="blush-right" cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
+    <rect id="body" x="30" y="18" width="40" height="44" rx="10" class="white-stroke"/>
+    <g>
+      <rect x="37" y="61" width="8" height="5" class="thin-stroke"/>
+      <rect x="55" y="61" width="8" height="5" class="thin-stroke"/>
+      <rect x="42" y="9" width="8" height="6" class="thin-stroke"/>
+      <rect x="51" y="7" width="8" height="6" class="thin-stroke"/>
+      <rect x="48" y="13" width="4" height="6" class="white-fill pixel"/>
+    </g>
+    <g id="face">
+      <rect id="eye-left" x="40" y="36" width="5" height="5" class="white-fill pixel"/>
+      <rect id="eye-right" x="56" y="36" width="5" height="5" class="white-fill pixel"/>
+      <rect id="brow-left" x="39" y="32" width="7" height="2" class="white-fill pixel" opacity="0"/>
+      <rect id="brow-right" x="55" y="32" width="7" height="2" class="white-fill pixel" opacity="0"/>
+      <rect id="mouth" x="47" y="50" width="8" height="2" class="white-fill pixel"/>
+      <rect id="blush-left" x="36" y="46" width="6" height="3" class="white-fill pixel" opacity="0"/>
+      <rect id="blush-right" x="58" y="46" width="6" height="3" class="white-fill pixel" opacity="0"/>
     </g>
     <g id="effect-hearts" class="hidden-layer">
-      <path d="M67 22c-2-4-8-2-6 3c1 3 6 6 6 6s5-3 6-6c2-5-4-7-6-3z" class="effect-fill"/>
+      <path d="M64 24h2v-2h3v2h2v3h-2v2h-3v-2h-2z" class="white-fill pixel"/>
     </g>
     <g id="effect-tears" class="hidden-layer">
-      <path d="M39 35c-2.8 4.8-1.8 7.5 1 7.5s3.6-2.7-1-7.5z" class="effect-tear"/>
-      <path d="M60 35c-2.8 4.8-1.8 7.5 1 7.5s3.6-2.7-1-7.5z" class="effect-tear"/>
+      <rect x="38" y="43" width="2" height="5" class="white-fill pixel"/>
+      <rect x="60" y="43" width="2" height="5" class="white-fill pixel"/>
     </g>
     <g id="effect-zzz" class="hidden-layer">
-      <text x="66" y="20" class="effect-symbol">Zz</text>
+      <text x="66" y="20">Z</text>
     </g>
     <g id="effect-sparkles" class="hidden-layer">
-      <path d="M64 19v10M59 24h10M69 16v6M66 19h6" class="effect-line"/>
+      <path d="M63 22v8M59 26h8" class="thin-stroke"/>
     </g>
     <g id="effect-question" class="hidden-layer">
-      <text x="67" y="26" class="effect-symbol">?</text>
+      <text x="66" y="26">?</text>
     </g>
     <g id="effect-anger" class="hidden-layer">
-      <path d="M65 20l4 5M70 20l-4 5" class="effect-line"/>
+      <path d="M64 22l3 3M67 22l-3 3" class="thin-stroke"/>
     </g>
     <g id="speech-bubble" class="hidden-layer">
-      <rect x="20" y="4" width="60" height="13" rx="4" class="prompt-panel"/>
-      <path d="M45 17l5 4l3-4" class="prompt-accent"/>
+      <rect x="22" y="5" width="56" height="12" rx="2" class="thin-stroke"/>
+      <path d="M43 17l4 4l2-4" class="white-fill pixel"/>
     </g>
   </g>
-  <rect id="prompt-area" x="0" y="81" width="100" height="19" fill="#140f1f"/>
-  <rect id="prompt-bg" x="2" y="82" width="96" height="16" rx="3" class="prompt-panel"/>
+  <rect id="prompt-area" x="0" y="81" width="100" height="19" fill="#000"/>
+  <rect id="prompt-bg" x="2" y="82" width="96" height="16" rx="1" fill="#000" stroke="#fff" stroke-width="1"/>
   <text id="prompt-placeholder" x="7" y="92">say hi...</text>
   <text id="prompt-text" x="7" y="92"></text>
-  <rect id="prompt-caret" x="7" y="86" width="1" height="8" class="prompt-accent" opacity="0"/>
-  <rect id="send-zone" x="84" y="84" width="12" height="12" rx="3" class="prompt-panel"/>
+  <rect id="prompt-caret" x="7" y="86" width="1" height="8" class="white-fill pixel" opacity="0"/>
+  <rect id="send-zone" x="84" y="84" width="12" height="12" fill="#000" stroke="#fff" stroke-width="1"/>
   <text id="send-label" x="87" y="92">&gt;</text>
 </svg>

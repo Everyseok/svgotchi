@@ -14,35 +14,35 @@ const EMOTIONS = [
 
 const POSES = {
   neutral: pose("dot", "flat", "none", 0, 0, 0, 1, 0, "none", 0),
-  happy: pose("happy_closed", "big_smile", "soft", 0.25, -1, 0, 1, 0, "sparkles", 0.7),
-  excited: pose("wide", "big_smile", "raised", 0.35, -2, 0, 1, 0, "sparkles", 1),
-  proud: pose("half_closed", "small_smile", "raised", 0.1, -0.5, 0, 1, 0, "sparkles", 0.55),
-  playful: pose("happy_closed", "zigzag", "soft", 0.2, -1, 1, 1, 0, "sparkles", 0.5),
-  love: pose("heart_like", "big_smile", "soft", 0.8, -1, 0, 1, 0, "hearts", 1),
-  shy_love: pose("happy_closed", "small_smile", "worried", 1, 0.5, -1, 1, 0, "hearts", 0.9),
+  happy: pose("happy_closed", "big_smile", "soft", 0.25, -1, 0, 1.02, 0, "sparkles", 0.7),
+  excited: pose("wide", "big_smile", "raised", 0.35, -2, 0, 1.04, -2, "sparkles", 1),
+  proud: pose("half_closed", "small_smile", "raised", 0.1, -0.5, 0, 1.03, -3, "sparkles", 0.55),
+  playful: pose("happy_closed", "zigzag", "soft", 0.2, -1, 1, 1.02, 5, "sparkles", 0.5),
+  love: pose("heart_like", "big_smile", "soft", 0.8, -1, 0, 1.03, 0, "hearts", 1),
+  shy_love: pose("happy_closed", "small_smile", "worried", 1, 0.5, -1, 0.98, -4, "hearts", 0.9),
   comforted: pose("happy_closed", "small_smile", "soft", 0.35, 0, 0, 1, 0, "sparkles", 0.35),
-  attached: pose("dot", "small_smile", "soft", 0.55, -0.5, 0, 1, 0, "hearts", 0.65),
-  sad: pose("sad", "sad_curve", "worried", 0, 1, 0, 1, 0, "tears", 0.45),
-  lonely: pose("sad", "flat", "worried", 0, 1.5, -1, 1, 0, "tears", 0.35),
-  disappointed: pose("half_closed", "sad_curve", "worried", 0, 1, 0, 1, 0, "none", 0),
-  hurt: pose("sad", "zigzag", "worried", 0, 1, 1, 1, 0, "tears", 0.75),
-  angry: pose("sharp", "zigzag", "angry", 0, 0, 1, 1, 0, "anger", 1),
-  annoyed: pose("half_closed", "flat", "angry", 0, 0, 0.5, 1, 0, "anger", 0.45),
-  jealous: pose("sharp", "pout", "worried", 0.2, 0, -1, 1, 0, "anger", 0.35),
-  scared: pose("wide", "tiny_open", "worried", 0, -0.5, 0, 1, 0, "tears", 0.3),
-  nervous: pose("wide", "zigzag", "worried", 0.25, 0.5, -0.5, 1, 0, "question", 0.35),
-  surprised: pose("wide", "surprised_o", "raised", 0, -1, 0, 1, 0, "question", 0.85),
-  confused: pose("dot", "tiny_open", "raised", 0, 0, 0, 1, 0, "question", 1),
-  sleepy: pose("half_closed", "flat", "none", 0, 1.5, 0, 1, 0, "zzz", 1),
-  hungry: pose("dot", "tiny_open", "worried", 0, 0.5, 0, 1, 0, "question", 0.4),
-  tired: pose("half_closed", "sad_curve", "none", 0, 2, 0, 1, 0, "zzz", 0.45),
-  sick: pose("sad", "zigzag", "worried", 0, 1.5, 0, 1, 0, "none", 0),
-  curious: pose("wide", "small_smile", "raised", 0, -0.5, 0, 1, 0, "question", 0.75),
-  thinking: pose("half_closed", "tiny_open", "raised", 0, 0, 0, 1, 0, "question", 0.55),
-  bored: pose("half_closed", "flat", "none", 0, 1, 0, 1, 0, "zzz", 0.2),
-  grateful: pose("happy_closed", "small_smile", "soft", 0.45, -0.5, 0, 1, 0, "sparkles", 0.75),
-  apologetic: pose("sad", "small_smile", "worried", 0.25, 1, 0, 1, 0, "tears", 0.25),
-  sulky: pose("half_closed", "pout", "angry", 0.1, 1, -1, 1, 0, "anger", 0.2)
+  attached: pose("dot", "small_smile", "soft", 0.55, -0.5, 0, 1.01, 2, "hearts", 0.65),
+  sad: pose("sad", "sad_curve", "worried", 0, 1, 0, 0.98, 0, "tears", 0.45),
+  lonely: pose("sad", "flat", "worried", 0, 1.5, -1, 0.97, -2, "tears", 0.35),
+  disappointed: pose("half_closed", "sad_curve", "worried", 0, 1, 0, 0.98, 0, "none", 0),
+  hurt: pose("sad", "zigzag", "worried", 0, 1, 1, 0.97, 3, "tears", 0.75),
+  angry: pose("sharp", "zigzag", "angry", 0, 0, 1, 1.02, 3, "anger", 1),
+  annoyed: pose("half_closed", "flat", "angry", 0, 0, 0.5, 1, 2, "anger", 0.45),
+  jealous: pose("sharp", "pout", "worried", 0.2, 0, -1, 1, -3, "anger", 0.35),
+  scared: pose("wide", "tiny_open", "worried", 0, -0.5, 0, 0.96, -2, "tears", 0.3),
+  nervous: pose("wide", "zigzag", "worried", 0.25, 0.5, -0.5, 0.98, -3, "question", 0.35),
+  surprised: pose("wide", "surprised_o", "raised", 0, -1, 0, 1.02, 0, "question", 0.85),
+  confused: pose("dot", "tiny_open", "raised", 0, 0, 0, 1, -4, "question", 1),
+  sleepy: pose("half_closed", "flat", "none", 0, 1.5, 0, 0.97, 0, "zzz", 1),
+  hungry: pose("dot", "tiny_open", "worried", 0, 0.5, 0, 0.98, 0, "question", 0.4),
+  tired: pose("half_closed", "sad_curve", "none", 0, 2, 0, 0.96, 0, "zzz", 0.45),
+  sick: pose("sad", "zigzag", "worried", 0, 1.5, 0, 0.95, 2, "none", 0),
+  curious: pose("wide", "small_smile", "raised", 0, -0.5, 0, 1.01, -4, "question", 0.75),
+  thinking: pose("half_closed", "tiny_open", "raised", 0, 0, 0, 1, -2, "question", 0.55),
+  bored: pose("half_closed", "flat", "none", 0, 1, 0, 0.98, 0, "zzz", 0.2),
+  grateful: pose("happy_closed", "small_smile", "soft", 0.45, -0.5, 0, 1.01, 0, "sparkles", 0.75),
+  apologetic: pose("sad", "small_smile", "worried", 0.25, 1, 0, 0.97, -2, "tears", 0.25),
+  sulky: pose("half_closed", "pout", "angry", 0.1, 1, -1, 0.98, -4, "anger", 0.2)
 };
 
 const state = {
@@ -59,8 +59,7 @@ const state = {
 const root = document.getElementById("svgotchi-root");
 const nodes = ids([
   "pet", "prompt-area", "prompt-bg", "prompt-placeholder", "prompt-text", "prompt-caret",
-  "send-zone", "app-status", "app-plan", "face", "face-cover", "face-features", "eye-left", "eye-right", "mouth",
-  "eye-left-shine", "eye-right-shine", "eye-left-heart", "eye-right-heart",
+  "send-zone", "app-status", "app-plan", "eye-left", "eye-right", "mouth",
   "brow-left", "brow-right", "blush-left", "blush-right",
   "effect-hearts", "effect-sparkles", "effect-tears", "effect-zzz", "effect-question", "effect-anger"
 ]);
@@ -413,7 +412,6 @@ function renderPose(p) {
   setEyes(p.eyes);
   setMouth(p.mouth);
   setBrows(p.brows);
-  setFaceOverlay(p);
   attr(nodes["blush-left"], { opacity: p.blushOpacity });
   attr(nodes["blush-right"], { opacity: p.blushOpacity });
   for (const effect of ["hearts", "sparkles", "tears", "zzz", "question", "anger"]) {
@@ -421,18 +419,9 @@ function renderPose(p) {
   }
 }
 
-function setFaceOverlay(p) {
-  const active = p.eyes !== "dot" || p.mouth !== "flat" || p.brows !== "none" || p.blushOpacity > 0.05;
-  const opacity = active ? 1 : 0;
-  attr(nodes["face"], { "data-face-overlay": active ? "active" : "neutral" });
-  attr(nodes["face-cover"], { opacity });
-  attr(nodes["face-features"], { opacity });
-  if (root) root.dataset.faceOverlay = active ? "active" : "neutral";
-}
-
 function setPetTransform(p) {
   const cx = 50;
-  const cy = 40;
+  const cy = 42;
   const transform = [
     `translate(${round(p.bodyOffsetX)} ${round(p.bodyOffsetY)})`,
     `rotate(${round(p.bodyRotation)} ${cx} ${cy})`,
@@ -445,49 +434,44 @@ function setPetTransform(p) {
 
 function setEyes(kind) {
   const presets = {
-    dot: [[41.8, 31.6, 4.9, 5.8, "", 1], [58.2, 31.6, 4.9, 5.8, "", 1], 1, 0],
-    happy_closed: [[41.8, 32.4, 5, 0.6, "", 1], [58.2, 32.4, 5, 0.6, "", 1], 0, 0],
-    half_closed: [[41.8, 32, 5, 1.35, "", 1], [58.2, 32, 5, 1.35, "", 1], 0, 0],
-    sharp: [[41.8, 31.7, 5, 3, "rotate(12 41.8 31.7)", 1], [58.2, 31.7, 5, 3, "rotate(-12 58.2 31.7)", 1], 0, 0],
-    wide: [[41.8, 31.4, 5.3, 6.5, "", 1], [58.2, 31.4, 5.3, 6.5, "", 1], 1, 0],
-    sad: [[41.8, 32.2, 4.8, 3, "rotate(-12 41.8 32.2)", 1], [58.2, 32.2, 4.8, 3, "rotate(12 58.2 32.2)", 1], 0, 0],
-    heart_like: [[41.8, 31.6, 4.9, 5.8, "", 0], [58.2, 31.6, 4.9, 5.8, "", 0], 0, 1]
+    dot: [[40, 36, 5, 5, ""], [56, 36, 5, 5, ""]],
+    happy_closed: [[39, 38, 7, 1, ""], [55, 38, 7, 1, ""]],
+    half_closed: [[39, 38, 7, 2, ""], [55, 38, 7, 2, ""]],
+    sharp: [[39, 36, 7, 3, "rotate(12 42 37)"], [55, 36, 7, 3, "rotate(-12 58 37)"]],
+    wide: [[39, 34, 7, 7, ""], [55, 34, 7, 7, ""]],
+    sad: [[39, 38, 7, 2, "rotate(16 42 39)"], [55, 38, 7, 2, "rotate(-16 58 39)"]],
+    heart_like: [[39, 35, 7, 6, "rotate(45 42 38)"], [55, 35, 7, 6, "rotate(45 58 38)"]]
   };
-  const [left, right, shineOpacity, heartOpacity] = presets[kind] || presets.dot;
-  ellipse(nodes["eye-left"], left);
-  ellipse(nodes["eye-right"], right);
-  attr(nodes["eye-left-shine"], { opacity: shineOpacity });
-  attr(nodes["eye-right-shine"], { opacity: shineOpacity });
-  attr(nodes["eye-left-heart"], { opacity: heartOpacity });
-  attr(nodes["eye-right-heart"], { opacity: heartOpacity });
+  const [left, right] = presets[kind] || presets.dot;
+  rect(nodes["eye-left"], left);
+  rect(nodes["eye-right"], right);
 }
 
 function setMouth(kind) {
   const presets = {
-    flat: ["M46 40.6h8", ""],
-    small_smile: ["M45 39.8q5 4 10 0", ""],
-    big_smile: ["M43 38.8q7 7 14 0", ""],
-    sad_curve: ["M45 42.2q5-4 10 0", ""],
-    zigzag: ["M44 40.7l3-2l3 2l3-2l3 2", "rotate(-4 50 40.7)"],
-    tiny_open: ["M49 38.7q1-1 2 0q1 2 0 4q-1 1-2 0q-1-2 0-4z", ""],
-    surprised_o: ["M50 38.2a3 4 0 1 0 0.1 0", ""],
-    pout: ["M45 40.8q5-2 10 0", ""]
+    flat: [47, 50, 8, 2, ""],
+    small_smile: [46, 50, 10, 2, ""],
+    big_smile: [43, 49, 14, 3, ""],
+    sad_curve: [45, 52, 12, 2, ""],
+    zigzag: [44, 50, 13, 2, "rotate(-4 50 51)"],
+    tiny_open: [48, 49, 4, 4, ""],
+    surprised_o: [46, 48, 7, 7, ""],
+    pout: [45, 50, 10, 3, ""]
   };
-  const [d, transform] = presets[kind] || presets.flat;
-  attr(nodes.mouth, { d, transform });
+  rect(nodes.mouth, presets[kind] || presets.flat);
 }
 
 function setBrows(kind) {
   const presets = {
-    none: [["M37.2 25.7q4.6-2 9.2 0", 0, ""], ["M53.6 25.7q4.6-2 9.2 0", 0, ""]],
-    soft: [["M37.2 25.7q4.6-2 9.2 0", 0.55, ""], ["M53.6 25.7q4.6-2 9.2 0", 0.55, ""]],
-    angry: [["M36.8 25l9.4 3", 1, ""], ["M63.2 25l-9.4 3", 1, ""]],
-    worried: [["M36.8 28.4l9.4-3", 1, ""], ["M53.8 25.4l9.4 3", 1, ""]],
-    raised: [["M37.2 23.5q4.6-2 9.2 0", 1, ""], ["M53.6 23.5q4.6-2 9.2 0", 1, ""]]
+    none: [[39, 32, 7, 2, 0, ""], [55, 32, 7, 2, 0, ""]],
+    soft: [[39, 32, 7, 1, 0.55, ""], [55, 32, 7, 1, 0.55, ""]],
+    angry: [[39, 32, 7, 2, 1, "rotate(18 42 33)"], [55, 32, 7, 2, 1, "rotate(-18 58 33)"]],
+    worried: [[39, 33, 7, 2, 1, "rotate(-18 42 34)"], [55, 33, 7, 2, 1, "rotate(18 58 34)"]],
+    raised: [[39, 30, 7, 2, 1, ""], [55, 30, 7, 2, 1, ""]]
   };
   const [left, right] = presets[kind] || presets.none;
-  pathNode(nodes["brow-left"], left);
-  pathNode(nodes["brow-right"], right);
+  brow(nodes["brow-left"], left);
+  brow(nodes["brow-right"], right);
 }
 
 function renderPrompt() {
@@ -539,7 +523,7 @@ function applyMotion(poseValue, motion, progress, intensity) {
   const amount = clamp01(intensity);
   if (motion === "tiny_bounce") return { ...poseValue, bodyOffsetY: poseValue.bodyOffsetY - Math.abs(wave) * 0.8 * amount };
   if (motion === "shake") return { ...poseValue, bodyOffsetX: poseValue.bodyOffsetX + Math.sign(wave || 1) * 1.2 * amount };
-  if (motion === "sway") return { ...poseValue, bodyOffsetX: poseValue.bodyOffsetX + wave * 0.9 * amount };
+  if (motion === "sway") return { ...poseValue, bodyRotation: poseValue.bodyRotation + wave * 3 * amount };
   if (motion === "hop") return { ...poseValue, bodyOffsetY: poseValue.bodyOffsetY - Math.sin(progress * Math.PI) * 2.5 * amount };
   return poseValue;
 }
@@ -563,14 +547,14 @@ function ids(names) {
   return Object.fromEntries(names.map((name) => [name, document.getElementById(name)]));
 }
 
-function ellipse(node, values) {
-  const [cx, cy, rx, ry, transform, opacity] = values;
-  attr(node, { cx, cy, rx, ry, transform, opacity });
+function rect(node, values) {
+  const [x, y, width, height, transform] = values;
+  attr(node, { x, y, width, height, transform, opacity: 1 });
 }
 
-function pathNode(node, values) {
-  const [d, opacity, transform] = values;
-  attr(node, { d, opacity, transform });
+function brow(node, values) {
+  const [x, y, width, height, opacity, transform] = values;
+  attr(node, { x, y, width, height, opacity, transform });
 }
 
 function attr(node, values) {

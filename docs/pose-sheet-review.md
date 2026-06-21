@@ -1,19 +1,17 @@
 # SVGotchi 30-Emotion Pose Sheet Review
 
-Status: Current 30-emotion pose sheet for uploaded PNG base plus SVG expression overlay
-Last updated: 2026-06-19 Asia/Seoul
+Status: Stage 2 pose sheet for user review
+Last updated: 2026-06-17 Asia/Seoul
 
 ## Scope
 
-This document defines target poses for all 30 required emotions using one shared image-backed rig. The visible character body is the uploaded composed PNG at `assets/1.png`. Neutral preserves that base image as the visual baseline. Non-neutral poses render an app-owned SVG expression overlay for eyes, mouth, brows, blush, and effects. The model and planner still do not generate SVG, path data, selectors, image paths, or animation code.
+Stage 2 defines target poses for all 30 required emotions using one shared Mochi Sprout rig. This stage does not implement animation, interpolation, prompt input, transition planning, LLM runtime, or packaging.
 
 The current visual direction remains:
 
-- dark SVG background
-- exact uploaded character pixels from `assets/1.png` as the base identity
-- visible SVG expression overlays for non-neutral emotions
+- black background
+- white-only visible character/UI marks
 - primitive SVG pose parameters
-- stable full-image placement; the flattened PNG is not rotated or resized per emotion
 - no separate DOM structure per emotion
 
 Pose sheet preview:
@@ -94,10 +92,11 @@ Expected Stage 2 checks:
 - `POSE_MAP` has exactly one pose for every emotion and no extra keys
 - every pose has bounded primitive numeric parameters
 - pose sheet preview includes every emotion
-- pose sheet preview uses `/assets/1.png` for every emotion
-- pose sheet preview renders active face overlays for the 29 non-neutral emotions
-- pose sheet characters are positioned inside their own cells rather than shifted by outer grid coordinates
-- pose sheet poses do not rotate or resize the flattened PNG card; expression changes carry the visible emotion
-- representative emotions render distinct face geometry such as heart eyes, sad tears, angry brows, surprised mouth, sleepy eyes, and curious/question states
-- pose sheet preview has no remote image href, data URI image href, or `foreignObject`
+- pose sheet preview uses only black and white color literals
 - character rig tests continue passing
+
+## User Decision Required
+
+Approve or reject the 30-emotion pose sheet before Stage 3 begins.
+
+No pure SVG prompt prototype work should begin until the 30-emotion pose sheet is explicitly approved.

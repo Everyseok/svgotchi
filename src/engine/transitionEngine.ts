@@ -67,7 +67,7 @@ function applyMotion(pose: Pose, motion: MotionName, progress: number, intensity
     case "shake":
       return { ...pose, bodyOffsetX: pose.bodyOffsetX + Math.sign(wave || 1) * 1.2 * amount };
     case "sway":
-      return { ...pose, bodyOffsetX: pose.bodyOffsetX + wave * 0.9 * amount };
+      return { ...pose, bodyRotation: pose.bodyRotation + wave * 3 * amount };
     case "hop":
       return { ...pose, bodyOffsetY: pose.bodyOffsetY - Math.sin(progress * Math.PI) * 2.5 * amount };
   }

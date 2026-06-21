@@ -1,573 +1,614 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 440" role="img" aria-labelledby="title desc">
   <title id="title">SVGotchi deterministic transition previews</title>
-  <desc id="desc">Five multi-frame emotion transition previews using the uploaded character asset from assets/1.png.</desc>
+  <desc id="desc">Five multi-frame monochrome emotion transition previews.</desc>
   <style>
-    .bg { fill: #140f1f; }
-    .frame { fill: none; stroke: #5f4a7d; stroke-width: 1; }
-    .character-image { image-rendering: auto; }
-    .face-patch { fill: #fff1f0; stroke: #f0c9cf; stroke-width: 0.3; }
-    .eye-fill { fill: #6f54b8; stroke: #3c286d; stroke-width: 0.55; }
-    .eye-shine { fill: #fffaff; }
-    .eye-heart { fill: #ff78ad; stroke: #963f72; stroke-width: 0.35; }
-    .mouth-line, .eye-line, .brow-line { fill: none; stroke: #4b2a4d; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; }
-    .blush-fill { fill: #ff9ab8; }
-    .effect-fill { fill: #ff7dac; }
-    .effect-tear { fill: #7ed8ff; }
-    .effect-line { stroke: #ffe889; stroke-width: 1.2; stroke-linecap: round; fill: none; }
-    .effect-symbol { fill: #ffe889; font-size: 8px; font-weight: 700; }
-    .bubble { fill: #211832; stroke: #cbb5ea; stroke-width: 1; }
-    .bubble-tail { fill: #cdb9ff; }
-    text { fill: #f7eaff; font-family: monospace; font-size: 4px; }
+    .bg { fill: #000; }
+    .line { fill: none; stroke: #fff; stroke-width: 1.6; shape-rendering: crispEdges; }
+    .thin { fill: none; stroke: #fff; stroke-width: 1; shape-rendering: crispEdges; }
+    .fill { fill: #fff; shape-rendering: crispEdges; }
+    text { fill: #fff; font-family: monospace; font-size: 4px; }
     .label { font-size: 3.5px; }
-    .muted { opacity: 0.65; }
-    .bubble-group text { font-size: 3px; }
+    .bubble text { font-size: 3px; }
   </style>
   <rect class="bg" width="360" height="440"/>
   <g data-transition="neutral->shy_love" data-frame-index="0" transform="translate(0 0)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->shy_love</text>
     <text x="4" y="14" class="label">f0 0%</text>
-    <g transform="translate(5 18) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">eep...</text>
-      </g>
+    <g transform="translate(11 16) rotate(0 39 34) scale(1)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <rect x="36" y="48" width="8" height="2" class="fill"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">eep...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->shy_love" data-frame-index="1" transform="translate(72 0)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->shy_love</text>
     <text x="4" y="14" class="label">f1 20%</text>
-    <g transform="translate(4.64 17.42) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <ellipse cx="41.8" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><ellipse cx="58.2" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><circle cx="40.2" cy="29.2" r="1.1" class="eye-shine"/><circle cx="56.6" cy="29.2" r="1.1" class="eye-shine"/>
-        <path d="M45 39.8q5 4 10 0" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0.36"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0.36"/>
-      </g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">eep...</text>
-      </g>
+    <g transform="translate(10.64 15.419154786963878) rotate(-1.44 39 34) scale(0.99)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <path d="M35 48h2v2h6v-2h2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0.36"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0.36"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">eep...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->shy_love" data-frame-index="3" transform="translate(144 0)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->shy_love</text>
     <text x="4" y="14" class="label">f3 60%</text>
-    <g transform="translate(4.16 17.95) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M36.8 28.4l9.4-3M53.8 25.4l9.4 3" class="brow-line"/>
-        <path d="M36.8 32.4q5 3.5 10 0M53.2 32.4q5 3.5 10 0" class="eye-line"/>
-        <path d="M45 39.8q5 4 10 0" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0.84"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0.84"/>
-      </g>
-      <g opacity="0.76"><path d="M67 22c-2-4-8-2-6 3c1 3 6 6 6 6s5-3 6-6c2-5-4-7-6-3z" class="effect-fill"/></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">eep...</text>
-      </g>
+    <g transform="translate(10.16 15.949771798166022) rotate(-3.36 39 34) scale(0.98)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 33l7-3M44 30l7 3" class="thin"/>
+      <path d="M28 36h7M44 36h7" class="thin"/>
+      <path d="M35 48h2v2h6v-2h2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0.84"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0.84"/>
+      <g opacity="0.76"><path d="M52 20h2v-2h3v2h2v3h-2v2h-3v-2h-2z" class="fill"/></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">eep...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->shy_love" data-frame-index="4" transform="translate(216 0)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->shy_love</text>
     <text x="4" y="14" class="label">f4 80%</text>
-    <g transform="translate(4.04 17.72) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M36.8 28.4l9.4-3M53.8 25.4l9.4 3" class="brow-line"/>
-        <path d="M36.8 32.4q5 3.5 10 0M53.2 32.4q5 3.5 10 0" class="eye-line"/>
-        <path d="M45 39.8q5 4 10 0" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0.96"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0.96"/>
-      </g>
-      <g opacity="0.86"><path d="M67 22c-2-4-8-2-6 3c1 3 6 6 6 6s5-3 6-6c2-5-4-7-6-3z" class="effect-fill"/></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">eep...</text>
-      </g>
+    <g transform="translate(10.04 15.719154786963877) rotate(-3.84 39 34) scale(0.98)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 33l7-3M44 30l7 3" class="thin"/>
+      <path d="M28 36h7M44 36h7" class="thin"/>
+      <path d="M35 48h2v2h6v-2h2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0.96"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0.96"/>
+      <g opacity="0.86"><path d="M52 20h2v-2h3v2h2v3h-2v2h-3v-2h-2z" class="fill"/></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">eep...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->shy_love" data-frame-index="5" transform="translate(288 0)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->shy_love</text>
     <text x="4" y="14" class="label">f5 100%</text>
-    <g transform="translate(4 18.5) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M36.8 28.4l9.4-3M53.8 25.4l9.4 3" class="brow-line"/>
-        <path d="M36.8 32.4q5 3.5 10 0M53.2 32.4q5 3.5 10 0" class="eye-line"/>
-        <path d="M45 39.8q5 4 10 0" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="1"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="1"/>
-      </g>
-      <g opacity="0.9"><path d="M67 22c-2-4-8-2-6 3c1 3 6 6 6 6s5-3 6-6c2-5-4-7-6-3z" class="effect-fill"/></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">eep...</text>
-      </g>
+    <g transform="translate(10 16.5) rotate(-4 39 34) scale(0.98)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 33l7-3M44 30l7 3" class="thin"/>
+      <path d="M28 36h7M44 36h7" class="thin"/>
+      <path d="M35 48h2v2h6v-2h2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="1"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="1"/>
+      <g opacity="0.9"><path d="M52 20h2v-2h3v2h2v3h-2v2h-3v-2h-2z" class="fill"/></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">eep...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->hungry" data-frame-index="0" transform="translate(0 88)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->hungry</text>
     <text x="4" y="14" class="label">f0 0%</text>
-    <g transform="translate(5 18) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">snack?</text>
-      </g>
+    <g transform="translate(11 16) rotate(0 39 34) scale(1)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <rect x="36" y="48" width="8" height="2" class="fill"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">snack?</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->hungry" data-frame-index="1" transform="translate(72 88)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->hungry</text>
     <text x="4" y="14" class="label">f1 20%</text>
-    <g transform="translate(5.86 18.02) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">snack?</text>
-      </g>
+    <g transform="translate(11 16.02) rotate(2.85 39 34) scale(1)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <rect x="36" y="48" width="8" height="2" class="fill"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">snack?</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->hungry" data-frame-index="3" transform="translate(144 88)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->hungry</text>
     <text x="4" y="14" class="label">f3 60%</text>
-    <g transform="translate(4.47 18.18) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <ellipse cx="41.8" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><ellipse cx="58.2" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><circle cx="40.2" cy="29.2" r="1.1" class="eye-shine"/><circle cx="56.6" cy="29.2" r="1.1" class="eye-shine"/>
-        <path d="M49 38.7q1-1 2 0q1 2 0 4q-1 1-2 0q-1-2 0-4z" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">snack?</text>
-      </g>
+    <g transform="translate(11 16.18) rotate(-1.76 39 34) scale(0.99)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <rect x="38" y="47" width="4" height="4" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">snack?</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->hungry" data-frame-index="4" transform="translate(216 88)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->hungry</text>
     <text x="4" y="14" class="label">f4 80%</text>
-    <g transform="translate(4.14 18.32) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M36.8 28.4l9.4-3M53.8 25.4l9.4 3" class="brow-line"/>
-        <ellipse cx="41.8" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><ellipse cx="58.2" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><circle cx="40.2" cy="29.2" r="1.1" class="eye-shine"/><circle cx="56.6" cy="29.2" r="1.1" class="eye-shine"/>
-        <path d="M49 38.7q1-1 2 0q1 2 0 4q-1 1-2 0q-1-2 0-4z" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">snack?</text>
-      </g>
+    <g transform="translate(11 16.32) rotate(-2.85 39 34) scale(0.99)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 33l7-3M44 30l7 3" class="thin"/>
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <rect x="38" y="47" width="4" height="4" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">snack?</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->hungry" data-frame-index="5" transform="translate(288 88)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->hungry</text>
     <text x="4" y="14" class="label">f5 100%</text>
-    <g transform="translate(5 18.5) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M36.8 28.4l9.4-3M53.8 25.4l9.4 3" class="brow-line"/>
-        <ellipse cx="41.8" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><ellipse cx="58.2" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><circle cx="40.2" cy="29.2" r="1.1" class="eye-shine"/><circle cx="56.6" cy="29.2" r="1.1" class="eye-shine"/>
-        <path d="M49 38.7q1-1 2 0q1 2 0 4q-1 1-2 0q-1-2 0-4z" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g opacity="0.75"><text x="67" y="26" class="effect-symbol">?</text></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">snack?</text>
-      </g>
+    <g transform="translate(11 16.5) rotate(0 39 34) scale(0.98)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 33l7-3M44 30l7 3" class="thin"/>
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <rect x="38" y="47" width="4" height="4" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <g opacity="0.75"><text x="55" y="23">?</text></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">snack?</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->sleepy" data-frame-index="0" transform="translate(0 176)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->sleepy</text>
     <text x="4" y="14" class="label">f0 0%</text>
-    <g transform="translate(5 18) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">zzz...</text>
-      </g>
+    <g transform="translate(11 16) rotate(0 39 34) scale(1)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <rect x="36" y="48" width="8" height="2" class="fill"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">zzz...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->sleepy" data-frame-index="1" transform="translate(72 176)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->sleepy</text>
     <text x="4" y="14" class="label">f1 20%</text>
-    <g transform="translate(5 18.3) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">zzz...</text>
-      </g>
+    <g transform="translate(11 16.3) rotate(0 39 34) scale(0.99)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <rect x="36" y="48" width="8" height="2" class="fill"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">zzz...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->sleepy" data-frame-index="3" transform="translate(144 176)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->sleepy</text>
     <text x="4" y="14" class="label">f3 60%</text>
-    <g transform="translate(5 18.9) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <ellipse cx="41.8" cy="32" rx="5" ry="1.35" class="eye-fill"/><ellipse cx="58.2" cy="32" rx="5" ry="1.35" class="eye-fill"/>
-        <path d="M46 40.6h8" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">zzz...</text>
-      </g>
+    <g transform="translate(11 16.9) rotate(0 39 34) scale(0.98)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="36" width="6" height="2" class="fill"/><rect x="45" y="36" width="6" height="2" class="fill"/>
+      <rect x="36" y="48" width="8" height="2" class="fill"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">zzz...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->sleepy" data-frame-index="4" transform="translate(216 176)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->sleepy</text>
     <text x="4" y="14" class="label">f4 80%</text>
-    <g transform="translate(5 19.2) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <ellipse cx="41.8" cy="32" rx="5" ry="1.35" class="eye-fill"/><ellipse cx="58.2" cy="32" rx="5" ry="1.35" class="eye-fill"/>
-        <path d="M46 40.6h8" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g opacity="0.8"><text x="66" y="20" class="effect-symbol">Zz</text></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">zzz...</text>
-      </g>
+    <g transform="translate(11 17.2) rotate(0 39 34) scale(0.98)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="36" width="6" height="2" class="fill"/><rect x="45" y="36" width="6" height="2" class="fill"/>
+      <rect x="36" y="48" width="8" height="2" class="fill"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <g opacity="0.8"><text x="54" y="19">Z</text></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">zzz...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->sleepy" data-frame-index="5" transform="translate(288 176)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->sleepy</text>
     <text x="4" y="14" class="label">f5 100%</text>
-    <g transform="translate(5 19.5) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <ellipse cx="41.8" cy="32" rx="5" ry="1.35" class="eye-fill"/><ellipse cx="58.2" cy="32" rx="5" ry="1.35" class="eye-fill"/>
-        <path d="M46 40.6h8" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g opacity="1"><text x="66" y="20" class="effect-symbol">Zz</text></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">zzz...</text>
-      </g>
+    <g transform="translate(11 17.5) rotate(0 39 34) scale(0.97)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="36" width="6" height="2" class="fill"/><rect x="45" y="36" width="6" height="2" class="fill"/>
+      <rect x="36" y="48" width="8" height="2" class="fill"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <g opacity="1"><text x="54" y="19">Z</text></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">zzz...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->hurt" data-frame-index="0" transform="translate(0 264)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->hurt</text>
     <text x="4" y="14" class="label">f0 0%</text>
-    <g transform="translate(6.2 18) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">ow...</text>
-      </g>
+    <g transform="translate(12.2 16) rotate(0 39 34) scale(1)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <rect x="36" y="48" width="8" height="2" class="fill"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">ow...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->hurt" data-frame-index="1" transform="translate(72 264)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->hurt</text>
     <text x="4" y="14" class="label">f1 20%</text>
-    <g transform="translate(6.56 18.36) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <ellipse cx="41.8" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><ellipse cx="58.2" cy="31.6" rx="4.9" ry="5.8" class="eye-fill"/><circle cx="40.2" cy="29.2" r="1.1" class="eye-shine"/><circle cx="56.6" cy="29.2" r="1.1" class="eye-shine"/>
-        <path d="M44 40.7l3-2l3 2l3-2l3 2" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">ow...</text>
-      </g>
+    <g transform="translate(12.56 16.36) rotate(1.08 39 34) scale(0.99)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <path d="M34 49l3-2l3 2l3-2l3 2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">ow...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->hurt" data-frame-index="3" transform="translate(144 264)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->hurt</text>
     <text x="4" y="14" class="label">f3 60%</text>
-    <g transform="translate(4.64 18.84) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M36.8 28.4l9.4-3M53.8 25.4l9.4 3" class="brow-line"/>
-        <ellipse cx="41.8" cy="32.2" rx="4.8" ry="3" class="eye-fill" transform="rotate(-12 41.8 32.2)"/><ellipse cx="58.2" cy="32.2" rx="4.8" ry="3" class="eye-fill" transform="rotate(12 58.2 32.2)"/>
-        <path d="M44 40.7l3-2l3 2l3-2l3 2" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g opacity="0.63"><path d="M39 35c-2.8 4.8-1.8 7.5 1 7.5s3.6-2.7-1-7.5z" class="effect-tear"/><path d="M60 35c-2.8 4.8-1.8 7.5 1 7.5s3.6-2.7-1-7.5z" class="effect-tear"/></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">ow...</text>
-      </g>
+    <g transform="translate(10.64 16.84) rotate(2.52 39 34) scale(0.97)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 33l7-3M44 30l7 3" class="thin"/>
+      <path d="M28 36l7 3M44 39l7-3" class="thin"/>
+      <path d="M34 49l3-2l3 2l3-2l3 2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <g opacity="0.63"><rect x="28" y="40" width="2" height="5" class="fill"/><rect x="50" y="40" width="2" height="5" class="fill"/></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">ow...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->hurt" data-frame-index="4" transform="translate(216 264)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->hurt</text>
     <text x="4" y="14" class="label">f4 80%</text>
-    <g transform="translate(4.76 18.96) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M36.8 28.4l9.4-3M53.8 25.4l9.4 3" class="brow-line"/>
-        <ellipse cx="41.8" cy="32.2" rx="4.8" ry="3" class="eye-fill" transform="rotate(-12 41.8 32.2)"/><ellipse cx="58.2" cy="32.2" rx="4.8" ry="3" class="eye-fill" transform="rotate(12 58.2 32.2)"/>
-        <path d="M44 40.7l3-2l3 2l3-2l3 2" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g opacity="0.72"><path d="M39 35c-2.8 4.8-1.8 7.5 1 7.5s3.6-2.7-1-7.5z" class="effect-tear"/><path d="M60 35c-2.8 4.8-1.8 7.5 1 7.5s3.6-2.7-1-7.5z" class="effect-tear"/></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">ow...</text>
-      </g>
+    <g transform="translate(10.76 16.96) rotate(2.88 39 34) scale(0.97)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 33l7-3M44 30l7 3" class="thin"/>
+      <path d="M28 36l7 3M44 39l7-3" class="thin"/>
+      <path d="M34 49l3-2l3 2l3-2l3 2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <g opacity="0.72"><rect x="28" y="40" width="2" height="5" class="fill"/><rect x="50" y="40" width="2" height="5" class="fill"/></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">ow...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->hurt" data-frame-index="5" transform="translate(288 264)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->hurt</text>
     <text x="4" y="14" class="label">f5 100%</text>
-    <g transform="translate(4.8 19) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M36.8 28.4l9.4-3M53.8 25.4l9.4 3" class="brow-line"/>
-        <ellipse cx="41.8" cy="32.2" rx="4.8" ry="3" class="eye-fill" transform="rotate(-12 41.8 32.2)"/><ellipse cx="58.2" cy="32.2" rx="4.8" ry="3" class="eye-fill" transform="rotate(12 58.2 32.2)"/>
-        <path d="M44 40.7l3-2l3 2l3-2l3 2" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g opacity="0.75"><path d="M39 35c-2.8 4.8-1.8 7.5 1 7.5s3.6-2.7-1-7.5z" class="effect-tear"/><path d="M60 35c-2.8 4.8-1.8 7.5 1 7.5s3.6-2.7-1-7.5z" class="effect-tear"/></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">ow...</text>
-      </g>
+    <g transform="translate(10.8 17) rotate(3 39 34) scale(0.97)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 33l7-3M44 30l7 3" class="thin"/>
+      <path d="M28 36l7 3M44 39l7-3" class="thin"/>
+      <path d="M34 49l3-2l3 2l3-2l3 2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <g opacity="0.75"><rect x="28" y="40" width="2" height="5" class="fill"/><rect x="50" y="40" width="2" height="5" class="fill"/></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">ow...</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->curious" data-frame-index="0" transform="translate(0 352)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->curious</text>
     <text x="4" y="14" class="label">f0 0%</text>
-    <g transform="translate(5 18) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">hmm?</text>
-      </g>
+    <g transform="translate(11 16) rotate(0 39 34) scale(1)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      
+      <rect x="29" y="34" width="5" height="5" class="fill"/><rect x="45" y="34" width="5" height="5" class="fill"/>
+      <rect x="36" y="48" width="8" height="2" class="fill"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">hmm?</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->curious" data-frame-index="1" transform="translate(72 352)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->curious</text>
     <text x="4" y="14" class="label">f1 20%</text>
-    <g transform="translate(5.86 17.72) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M37.2 23.5q4.6-2 9.2 0M53.6 23.5q4.6-2 9.2 0" class="brow-line"/>
-        <ellipse cx="41.8" cy="31.4" rx="5.3" ry="6.5" class="eye-fill"/><ellipse cx="58.2" cy="31.4" rx="5.3" ry="6.5" class="eye-fill"/><circle cx="40.1" cy="28.7" r="1.25" class="eye-shine"/><circle cx="56.5" cy="28.7" r="1.25" class="eye-shine"/>
-        <path d="M45 39.8q5 4 10 0" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">hmm?</text>
-      </g>
+    <g transform="translate(11 15.720732884862452) rotate(0.62 39 34) scale(1.01)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 28h7M44 28h7" class="thin"/>
+      <rect x="28" y="32" width="7" height="7" class="thin"/><rect x="44" y="32" width="7" height="7" class="thin"/>
+      <path d="M35 48h2v2h6v-2h2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">hmm?</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->curious" data-frame-index="3" transform="translate(144 352)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->curious</text>
     <text x="4" y="14" class="label">f3 60%</text>
-    <g transform="translate(4.47 17.5) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M37.2 23.5q4.6-2 9.2 0M53.6 23.5q4.6-2 9.2 0" class="brow-line"/>
-        <ellipse cx="41.8" cy="31.4" rx="5.3" ry="6.5" class="eye-fill"/><ellipse cx="58.2" cy="31.4" rx="5.3" ry="6.5" class="eye-fill"/><circle cx="40.1" cy="28.7" r="1.25" class="eye-shine"/><circle cx="56.5" cy="28.7" r="1.25" class="eye-shine"/>
-        <path d="M45 39.8q5 4 10 0" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g opacity="0.75"><text x="67" y="26" class="effect-symbol">?</text></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">hmm?</text>
-      </g>
+    <g transform="translate(11 15.5) rotate(-5.76 39 34) scale(1.01)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 28h7M44 28h7" class="thin"/>
+      <rect x="28" y="32" width="7" height="7" class="thin"/><rect x="44" y="32" width="7" height="7" class="thin"/>
+      <path d="M35 48h2v2h6v-2h2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <g opacity="0.75"><text x="55" y="23">?</text></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">hmm?</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->curious" data-frame-index="4" transform="translate(216 352)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->curious</text>
     <text x="4" y="14" class="label">f4 80%</text>
-    <g transform="translate(4.14 17.5) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M37.2 23.5q4.6-2 9.2 0M53.6 23.5q4.6-2 9.2 0" class="brow-line"/>
-        <ellipse cx="41.8" cy="31.4" rx="5.3" ry="6.5" class="eye-fill"/><ellipse cx="58.2" cy="31.4" rx="5.3" ry="6.5" class="eye-fill"/><circle cx="40.1" cy="28.7" r="1.25" class="eye-shine"/><circle cx="56.5" cy="28.7" r="1.25" class="eye-shine"/>
-        <path d="M45 39.8q5 4 10 0" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g opacity="0.75"><text x="67" y="26" class="effect-symbol">?</text></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">hmm?</text>
-      </g>
+    <g transform="translate(11 15.5) rotate(-6.85 39 34) scale(1.01)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 28h7M44 28h7" class="thin"/>
+      <rect x="28" y="32" width="7" height="7" class="thin"/><rect x="44" y="32" width="7" height="7" class="thin"/>
+      <path d="M35 48h2v2h6v-2h2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <g opacity="0.75"><text x="55" y="23">?</text></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">hmm?</text>
+    </g>
     </g>
   </g>
   <g data-transition="neutral->curious" data-frame-index="5" transform="translate(288 352)">
-    <rect x="1" y="1" width="70" height="86" class="frame"/>
+    <rect x="1" y="1" width="70" height="86" class="thin"/>
     <text x="4" y="8">neutral->curious</text>
     <text x="4" y="14" class="label">f5 100%</text>
-    <g transform="translate(5 17.5) rotate(0 50 40) scale(0.62)">
-      <image href="/assets/1.png" x="0" y="0" width="100" height="80" preserveAspectRatio="xMidYMid meet" class="character-image"/>
-      <g class="anime-face" data-face-overlay="active">
-        <g class="face-cover">
-          <ellipse cx="41.8" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="58.2" cy="31.6" rx="7.3" ry="4.9" class="face-patch"/>
-          <ellipse cx="50" cy="39.9" rx="6" ry="3.3" class="face-patch"/>
-        </g>
-        <path d="M37.2 23.5q4.6-2 9.2 0M53.6 23.5q4.6-2 9.2 0" class="brow-line"/>
-        <ellipse cx="41.8" cy="31.4" rx="5.3" ry="6.5" class="eye-fill"/><ellipse cx="58.2" cy="31.4" rx="5.3" ry="6.5" class="eye-fill"/><circle cx="40.1" cy="28.7" r="1.25" class="eye-shine"/><circle cx="56.5" cy="28.7" r="1.25" class="eye-shine"/>
-        <path d="M45 39.8q5 4 10 0" class="mouth-line"/>
-        <ellipse cx="36.8" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-        <ellipse cx="63.2" cy="38" rx="5.4" ry="2.1" class="blush-fill" opacity="0"/>
-      </g>
-      <g opacity="0.75"><text x="67" y="26" class="effect-symbol">?</text></g>
-      <g class="bubble-group">
-        <rect x="20" y="4" width="60" height="13" rx="4" class="bubble"/>
-        <path d="M45 17l5 4l3-4" class="bubble-tail"/>
-        <text x="24" y="13">hmm?</text>
-      </g>
+    <g transform="translate(11 15.5) rotate(-4 39 34) scale(1.01)">
+      <rect x="19" y="16" width="40" height="44" rx="10" class="line"/>
+      <rect x="31" y="11" width="8" height="6" class="thin"/>
+      <rect x="40" y="9" width="8" height="6" class="thin"/>
+      <rect x="37" y="15" width="4" height="6" class="fill"/>
+      <rect x="26" y="59" width="8" height="5" class="thin"/>
+      <rect x="44" y="59" width="8" height="5" class="thin"/>
+      <path d="M28 28h7M44 28h7" class="thin"/>
+      <rect x="28" y="32" width="7" height="7" class="thin"/><rect x="44" y="32" width="7" height="7" class="thin"/>
+      <path d="M35 48h2v2h6v-2h2" class="thin"/>
+      <rect x="25" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <rect x="47" y="44" width="6" height="3" class="fill" opacity="0"/>
+      <g opacity="0.75"><text x="55" y="23">?</text></g>
+      <g class="bubble">
+      <rect x="12" y="3" width="56" height="12" rx="2" class="thin"/>
+      <path d="M34 15l4 4l2-4" class="fill"/>
+      <text x="16" y="11">hmm?</text>
+    </g>
     </g>
   </g>
 </svg>

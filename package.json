@@ -37,7 +37,6 @@
     "node": ">=24.0.0"
   },
   "files": [
-    "assets/1.png",
     "assets/base-character.svg",
     "assets/svgotchi-browser.js",
     "assets/pose-previews/",

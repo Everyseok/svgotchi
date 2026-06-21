@@ -58,27 +58,9 @@ test("transition intensity can stop before the full target pose", () => {
   assert.ok(finalPose);
   assert.equal(finalPose.bodyOffsetY, 0.2);
   assert.equal(finalPose.bodyOffsetX, -0.4);
-  assert.equal(finalPose.bodyScale, 1);
+  assert.equal(finalPose.bodyScale, 0.992);
   assert.equal(finalPose.blushOpacity, 0.4);
   assert.equal(finalPose.effect, "none");
-});
-
-test("sway motion does not rotate the flattened PNG image", () => {
-  const frames = createTransitionFrames({
-    from: "neutral",
-    to: "curious",
-    durationMs: 750,
-    fps: 6,
-    intensity: 0.8,
-    easing: "linear",
-    motion: "sway",
-    effect: "question",
-    blush: false
-  });
-
-  assert.ok(frames.some((frame) => Math.abs(frame.pose.bodyOffsetX) > 0));
-  assert.ok(frames.every((frame) => frame.pose.bodyRotation === 0));
-  assert.ok(frames.every((frame) => frame.pose.bodyScale === 1));
 });
 
 test("planner-facing transition config keeps reply text outside the engine contract", () => {
@@ -91,22 +73,14 @@ test("planner-facing transition config keeps reply text outside the engine contr
   assert.equal(Object.hasOwn(frames[0] ?? {}, "reply"), false);
 });
 
-test("transition preview asset contains all five required transitions and uses the approved uploaded PNG image asset", () => {
+test("transition preview asset contains all five required transitions and stays monochrome", () => {
   const assetSvg = readFileSync("assets/transition-previews/stage-04-sample-transitions.svg", "utf8");
   const renderedSvg = renderTransitionPreviewSvg(REQUIRED_TRANSITION_SAMPLES);
-  const imageHrefs = [...assetSvg.matchAll(/<image\b[^>]*\bhref="([^"]+)"/gi)].map((match) => match[1]);
-  const activeFaceOverlays = assetSvg.match(/data-face-overlay="active"/g) ?? [];
+  const colorLiterals = [...assetSvg.matchAll(/#[0-9a-fA-F]{3,6}\b/g)].map((match) => match[0]?.toLowerCase());
 
   assert.equal(assetSvg, renderedSvg);
   for (const sample of REQUIRED_TRANSITION_SAMPLES) {
     assert.match(assetSvg, new RegExp(`data-transition="${sample.from}->${sample.to}"`));
   }
-  assert.equal(imageHrefs.length, REQUIRED_TRANSITION_SAMPLES.length * 5);
-  assert.ok(activeFaceOverlays.length >= REQUIRED_TRANSITION_SAMPLES.length, "transition preview should show visible facial overlays");
-  assert.match(assetSvg, /class="face-patch"/);
-  assert.match(assetSvg, /class="mouth-line"/);
-  assert.deepEqual([...new Set(imageHrefs)], ["/assets/1.png"]);
-  assert.doesNotMatch(assetSvg, /<foreignObject\b/i);
-  assert.doesNotMatch(assetSvg, /\bhref="https?:\/\//i);
-  assert.doesNotMatch(assetSvg, /\bhref="data:/i);
+  assert.deepEqual([...new Set(colorLiterals)].sort(), ["#000", "#fff"]);
 });

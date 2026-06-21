@@ -1,9 +1,7 @@
 # SVGotchi Character Review
 
-Status: historical Stage 0 concept candidates
-Last updated: 2026-06-19 Asia/Seoul
-
-Note: This document is retained as historical concept-review context. The active runtime character is now the exact uploaded PNG character documented in `neutral-base-review.md`.
+Status: Stage 0 concept candidates for user review
+Last updated: 2026-06-17 Asia/Seoul
 
 ## Purpose
 

@@ -1,19 +1,18 @@
 # SVGotchi Deterministic Transition Review
 
-Status: Current deterministic transition preview for uploaded PNG base plus SVG expression overlay
-Last updated: 2026-06-19 Asia/Seoul
+Status: Stage 4 complete, approved with reply-generation exclusion
+Last updated: 2026-06-17 03:22:36 Asia/Seoul
 
 ## Scope
 
-The transition renderer implements deterministic multi-frame emotion transitions for the image-backed uploaded character and the 30-emotion pose map. The visible character body is `assets/1.png`, and non-neutral frames render an app-owned SVG expression overlay for eyes, mouth, brows, blush, and effects. The model/planner boundary remains narrow: model evidence is mapped into sanitized app-owned transition fields, and the model does not write SVG, selectors, path data, image paths, CSS, JavaScript, animation code, or pet reply text.
+Stage 4 implements deterministic multi-frame emotion transitions for the approved Mochi Sprout character and the Stage 2 pose map. This stage does not implement Hugging Face model selection, model packaging, local LLM runtime, planner sanitization, full integration, or the final `dist/` artifact.
 
 The visual direction remains:
 
-- dark SVG background
-- exact uploaded character pixels from `assets/1.png` as the base identity
-- SVG expression overlay primitives for visible reactions
+- black background
+- white-only visible character/UI marks
+- SVG primitives only
 - deterministic frames from typed pose parameters
-- no full-image rotation during pose or sway motion
 - no LLM-generated SVG, selectors, path data, or animation code
 - no LLM-generated pet reply text or reply style
 
@@ -29,7 +28,6 @@ Transition preview:
 - `src/engine/poseResolver.ts`
 - `src/engine/transitionEngine.ts`
 - `src/engine/transitionSamples.ts`
-- `src/render/animeRig.ts`
 - `src/render/effects.ts`
 - `src/render/bubble.ts`
 - `src/render/renderer.ts`
@@ -38,7 +36,7 @@ Transition preview:
 
 ## Transition Model
 
-The transition engine resolves a `from` emotion and a `to` emotion into primitive `Pose` values, interpolates numeric pose fields across a bounded frame schedule, applies a deterministic easing curve, and adds a named motion overlay. Discrete facial features switch at fixed progress thresholds so the preview remains deterministic instead of trying to morph arbitrary SVG path data.
+The transition engine resolves a `from` emotion and a `to` emotion into primitive `Pose` values, interpolates numeric pose fields across a bounded frame schedule, applies a deterministic easing curve, and adds a named motion overlay. Discrete facial features switch at fixed progress thresholds so the preview remains pixel-like instead of trying to morph arbitrary SVG path data.
 
 The current transition configuration surface is intentionally narrow:
 
@@ -73,24 +71,26 @@ Verification command:
 npm run verify
 ```
 
-Current result:
+Result:
 
 - typecheck passed
-- browser script syntax check passed
-- 40 baseline tests passed
+- 28 total tests passed
 - required transition samples generate multiple frames
 - transition endpoints include first and final progress states
 - preview asset matches renderer output exactly
 - preview includes all five required transitions
-- preview uses `/assets/1.png` for every sampled transition frame
-- preview includes visible face overlays, face patches, and mouth geometry in non-neutral transition frames
-- sway motion uses small lateral movement rather than rotating the flattened PNG image
-- preview has no remote image href, data URI image href, or `foreignObject`
+- preview color literals are limited to `#000` and `#fff`
 
-Additional current checks:
+Additional Stage 4 checks:
 
+- transition preview XML parse: passed
 - `data-transition` group count: 25
 - unique transitions: `neutral->shy_love`, `neutral->hungry`, `neutral->sleepy`, `neutral->hurt`, `neutral->curious`
-- served SVG demo/full probes passed for `you are cute -> shy_love` and inspect face overlay state
-- representative served demo probes passed for sad, angry, surprised/question, and sleepy states with non-neutral face overlay evidence
-- local browser-side classifier import probe passed
+- forbidden later-stage directories: no `src/llm`, no `dist`
+- no Hugging Face model runtime, Transformers.js runtime, ONNX runtime, or local model planner implementation was started
+
+## User Decision Required
+
+Approve or reject the five sample transition previews before Stage 5 begins.
+
+The user approved these transition previews with one additional contract: LLM output must not generate pet reply text or reply style. Stage 5 model review may proceed, but model packaging and local LLM runtime work still require later approvals.
