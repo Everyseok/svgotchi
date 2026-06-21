@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  No Python backend, no hosted inference API, and no HTML app shell. SVGotchi serves a real SVG surface, then lets browser JavaScript and a TypeScript-built local toolchain drive the companion from inside the document.
+  SVGotchi is an SVG-first experiment: instead of a Python backend, hosted inference API, or normal HTML app shell, the opened SVG document becomes the product surface. Browser JavaScript handles interaction and local inference; TypeScript keeps the setup, verification, contracts, and transition logic under control.
 </p>
 
 <p align="center">
@@ -24,55 +24,45 @@
 
 ---
 
-## What is SVGotchi?
-
-**SVGotchi** is an experimental SVG Tamagotchi-style prototype built around a different bet: an AI companion does not have to start as a Python notebook, a backend service, or a normal web app.
-
-The app opens as an SVG document. The character, prompt area, status text, and animation targets all live in the SVG surface. Browser JavaScript handles input, loads the local emotion classifier through Transformers.js, and turns model evidence into character motion. TypeScript is used around that surface for the local server, model setup, verification, contracts, and transition planning.
-
-That means the project is still an AI model app, but the runtime shape is unusual: **SVG first, browser local, TypeScript controlled.**
-
-- the static server only serves SVG, JavaScript, WASM, tokenizer, and model files
-- prompt text is handled by browser code
-- emotion classification runs in the browser after explicit local model setup
-- SVGotchi-owned code maps model labels and scores into safe deterministic character poses
-
-No hosted inference API, backend model service, or silent runtime model download is used.
-
----
-
-## Why It Is Different
-
-Most small AI model prototypes start with Python, a server process, or a notebook-style workflow. SVGotchi intentionally goes the other direction:
-
-| Layer | Typical AI prototype | SVGotchi approach |
-|---|---|---|
-| App surface | HTML, canvas, native UI, or notebook output | A directly served SVG document |
-| Model runtime | Python backend or hosted inference API | Browser-side Transformers.js with local model files |
-| Interaction | Request sent to a backend | Prompt stays in the browser |
-| Animation | Generated media or framework UI state | Deterministic SVG rig transitions |
-| Project control | Scripts around a backend app | TypeScript contracts, setup, verification, and static serving |
-
-The point is not to replace Python for model development. The point is to prove that a small AI companion can be packaged as a local browser experience where the SVG itself is the product surface.
-
----
-
-## Preview
+## Figure 1. Running Prototype
 
 <p align="center">
   <img src="docs/assets/readme/svgotchi-preview.gif" alt="SVGotchi full mode preview" width="72%" />
 </p>
 
-Additional screenshot slots can be added under `docs/assets/readme/` later:
-
-- `docs/assets/readme/svgotchi-full-mode.png`
-- `docs/assets/readme/svgotchi-demo-mode.png`
+<p align="center">
+  The browser opens an SVG document, accepts prompt input, runs local emotion inference, and animates the character rig without a backend prompt-processing service.
+</p>
 
 ---
 
-## Start From Zero
+## Figure 2. Technical Bet
 
-Use this path on a fresh computer or a folder that does not have the project yet.
+<p align="center">
+  <img src="docs/assets/readme/figure-01-technical-bet.svg" alt="Typical AI prototype stack compared with SVGotchi SVG-first stack" width="100%" />
+</p>
+
+---
+
+## Figure 3. Runtime Architecture
+
+<p align="center">
+  <img src="docs/assets/readme/figure-02-runtime-architecture.svg" alt="SVGotchi runtime architecture" width="100%" />
+</p>
+
+---
+
+## Figure 4. Run and Test Flow
+
+<p align="center">
+  <img src="docs/assets/readme/figure-03-run-and-test.svg" alt="SVGotchi run and test flow" width="100%" />
+</p>
+
+---
+
+## Run It
+
+Fresh checkout, full local AI mode:
 
 ```bash
 git clone https://github.com/Everyseok/svgotchi.git
@@ -82,24 +72,13 @@ npm run setup-model -- --yes
 npm run serve
 ```
 
-Then open the local URL printed by the terminal. The default is:
+Open the URL printed by the terminal. The default is:
 
 ```text
 http://127.0.0.1:4173/?mode=full
 ```
 
-`setup-model` downloads and verifies the local model/runtime assets. The expected payload is about **164 MiB** and is stored in ignored local folders:
-
-- `models/`
-- `runtime/`
-
-These large files are not committed to Git.
-
----
-
-## Demo Without Model Setup
-
-If you only want to confirm the SVG app opens, use deterministic demo mode:
+Fast visual demo without model setup:
 
 ```bash
 git clone https://github.com/Everyseok/svgotchi.git
@@ -108,7 +87,22 @@ npm ci
 npm run serve:demo
 ```
 
-Demo mode does not require `models/` or `runtime/`.
+Stop the local server with `Ctrl+C`.
+
+---
+
+## Test It
+
+```bash
+npm test
+npm run verify:model
+```
+
+Full release verification after model setup:
+
+```bash
+npm run verify:release
+```
 
 ---
 
@@ -117,133 +111,28 @@ Demo mode does not require `models/` or `runtime/`.
 | Requirement | Version / Note |
 |---|---|
 | Node.js | `>= 24.0.0` |
-| npm | bundled with Node |
-| Git | needed for source checkout |
-| Browser | modern Chromium/Safari/Firefox browser |
-| Network | required once for `setup-model` |
-
-Check Node before installing:
-
-```bash
-node -v
-```
-
-If `node -v` itself crashes on macOS with a missing Homebrew `.dylib`, reinstall Node with your preferred tool before running the project. For Homebrew users:
-
-```bash
-brew reinstall node
-```
-
----
-
-## Commands
-
-| Command | Purpose |
-|---|---|
-| `npm run serve` | Start full local model mode. Requires `setup-model` first. |
-| `npm run serve:demo` | Start deterministic demo mode without model files. |
-| `npm run setup-model` | Ask before downloading local model/runtime files. |
-| `npm run setup-model -- --yes` | Download local model/runtime files without the prompt. |
-| `npm run verify:model` | Verify local model/runtime file size and SHA-256 hashes. |
-| `npm test` | Run the model-free baseline test suite. |
-| `npm run test:model` | Run model/runtime integration tests after setup. |
-| `npm run verify` | Run typecheck, browser syntax check, and baseline tests. |
-| `npm run verify:release` | Run the full release verification suite. Requires model setup. |
-
-Stop the local server with `Ctrl+C`.
+| Browser | Modern Chromium, Safari, or Firefox |
+| Network | Required once for `setup-model` |
+| Model payload | About 164 MiB, stored in ignored `models/` and `runtime/` folders |
 
 ---
 
 ## Troubleshooting
 
-### `Full local model mode requires local model assets.`
-
-`npm run serve` starts full mode. Run setup once:
-
-```bash
-npm run setup-model -- --yes
-npm run serve
-```
-
-### `npm ERR! 404 Not Found - svgotchi`
-
-The npm package is not published yet. Do not use `npx svgotchi` for now. Use the GitHub source checkout:
-
-```bash
-git clone https://github.com/Everyseok/svgotchi.git
-cd svgotchi
-npm ci
-```
-
-### Browser did not open automatically
-
-Open the printed URL manually:
-
-```text
-http://127.0.0.1:4173/?mode=full
-```
-
-If port `4173` is busy, the server tries the next available port and prints the actual URL.
-
-### `node` crashes before npm runs
-
-This is a local Node installation problem, not an SVGotchi code problem. Reinstall Node, then retry:
-
-```bash
-node -v
-npm ci
-```
-
----
-
-## Current Project Status
-
-- Pure SVG app surface with browser-loaded JavaScript
-- Deterministic demo mode that works without model files
-- Full local model mode with explicit asset setup and verification
-- Local emotion model: `onnx-community/tanaos-emotion-detection-v1-ONNX`
-- Static localhost server for SVG, JS, WASM, tokenizer, and model files
-- Baseline test suite for character contract, prompt input, emotion pose mapping, transitions, and rig validation
-
----
-
-## Tech Stack
-
-| Area | Stack |
+| Symptom | Fix |
 |---|---|
-| App surface | SVG document |
-| Browser runtime | JavaScript loaded from the SVG |
-| Local inference | Transformers.js + ONNX Runtime Web |
-| Model asset | `onnx-community/tanaos-emotion-detection-v1-ONNX` |
-| Local server | Node.js 24 TypeScript scripts |
-| Verification | TypeScript contracts and Node test runner |
-| Distribution mode | Source checkout with explicit local model setup |
+| `Full local model mode requires local model assets.` | Run `npm run setup-model -- --yes`, then `npm run serve`. |
+| `npm ERR! 404 Not Found - svgotchi` | The npm package is not published yet. Use the GitHub source checkout above. |
+| Browser did not open automatically | Open `http://127.0.0.1:4173/?mode=full`, or the port printed by the terminal. |
+| `node` crashes before npm runs | Reinstall Node, then check `node -v`. |
 
 ---
 
 ## Model Boundary
 
-The model returns labels and scores. SVGotchi code owns the rest of the behavior.
+The model returns emotion labels and scores. SVGotchi code maps that evidence into deterministic SVG rig transitions.
 
-The model must not generate:
-
-- reply text
-- raw SVG
-- CSS
-- JavaScript
-- DOM selectors
-- path data
-- animation code
-
-The app maps model evidence into a sanitized transition plan before changing the character pose.
-
----
-
-## Repository Notes
-
-This repository is currently source-first. The README uses `git clone` and `npm run ...` commands because the npm package name is not published yet.
-
-When a package release exists, the install section can add `npx svgotchi` commands back as the primary path.
+The model does not generate reply text, SVG, CSS, JavaScript, DOM selectors, path data, or animation code.
 
 ---
 
@@ -255,5 +144,5 @@ GitHub: [@Everyseok](https://github.com/Everyseok)
 ---
 
 <p align="center">
-  <strong>Local SVG companion. Browser-owned emotion. No backend inference.</strong>
+  <strong>SVG first. Browser local. TypeScript controlled.</strong>
 </p>
