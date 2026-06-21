@@ -39,15 +39,7 @@
 | UI state is handled by an app framework | SVG rig IDs are animated directly |
 | Model output may drive arbitrary text/UI | Labels and scores are sanitized into fixed pose transitions |
 
-```mermaid
-flowchart LR
-  A["SVG document"] --> B["browser JavaScript"]
-  B --> C["Transformers.js pipeline"]
-  C --> D["local ONNX emotion model"]
-  D --> E["labels + scores"]
-  E --> F["TypeScript transition guardrails"]
-  F --> G["deterministic SVG rig motion"]
-```
+SVGotchi is not a Python app that renders an SVG character. It is an SVG-native local AI application where the opened SVG document itself becomes the interaction surface, the browser owns inference through Transformers.js and a local ONNX model, and sanitized emotion labels directly drive deterministic pose transitions.
 
 ---
 
