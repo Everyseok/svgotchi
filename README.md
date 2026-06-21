@@ -5,11 +5,11 @@
 </p>
 
 <p align="center">
-  <strong>A local-first SVG companion prototype with browser-side emotion inference.</strong>
+  <strong>A local-first AI companion that lives inside an SVG document.</strong>
 </p>
 
 <p align="center">
-  Run a pure SVG app locally, type a prompt into the character, and let the browser map emotion evidence into deterministic character motion.
+  No Python backend, no hosted inference API, and no HTML app shell. SVGotchi serves a real SVG surface, then lets browser JavaScript and a TypeScript-built local toolchain drive the companion from inside the document.
 </p>
 
 <p align="center">
@@ -26,7 +26,11 @@
 
 ## What is SVGotchi?
 
-**SVGotchi** is an experimental SVG Tamagotchi-style prototype. The app opens as an SVG document, not an HTML wrapper, and keeps the interaction loop local:
+**SVGotchi** is an experimental SVG Tamagotchi-style prototype built around a different bet: an AI companion does not have to start as a Python notebook, a backend service, or a normal web app.
+
+The app opens as an SVG document. The character, prompt area, status text, and animation targets all live in the SVG surface. Browser JavaScript handles input, loads the local emotion classifier through Transformers.js, and turns model evidence into character motion. TypeScript is used around that surface for the local server, model setup, verification, contracts, and transition planning.
+
+That means the project is still an AI model app, but the runtime shape is unusual: **SVG first, browser local, TypeScript controlled.**
 
 - the static server only serves SVG, JavaScript, WASM, tokenizer, and model files
 - prompt text is handled by browser code
@@ -34,6 +38,22 @@
 - SVGotchi-owned code maps model labels and scores into safe deterministic character poses
 
 No hosted inference API, backend model service, or silent runtime model download is used.
+
+---
+
+## Why It Is Different
+
+Most small AI model prototypes start with Python, a server process, or a notebook-style workflow. SVGotchi intentionally goes the other direction:
+
+| Layer | Typical AI prototype | SVGotchi approach |
+|---|---|---|
+| App surface | HTML, canvas, native UI, or notebook output | A directly served SVG document |
+| Model runtime | Python backend or hosted inference API | Browser-side Transformers.js with local model files |
+| Interaction | Request sent to a backend | Prompt stays in the browser |
+| Animation | Generated media or framework UI state | Deterministic SVG rig transitions |
+| Project control | Scripts around a backend app | TypeScript contracts, setup, verification, and static serving |
+
+The point is not to replace Python for model development. The point is to prove that a small AI companion can be packaged as a local browser experience where the SVG itself is the product surface.
 
 ---
 
@@ -184,6 +204,20 @@ npm ci
 - Local emotion model: `onnx-community/tanaos-emotion-detection-v1-ONNX`
 - Static localhost server for SVG, JS, WASM, tokenizer, and model files
 - Baseline test suite for character contract, prompt input, emotion pose mapping, transitions, and rig validation
+
+---
+
+## Tech Stack
+
+| Area | Stack |
+|---|---|
+| App surface | SVG document |
+| Browser runtime | JavaScript loaded from the SVG |
+| Local inference | Transformers.js + ONNX Runtime Web |
+| Model asset | `onnx-community/tanaos-emotion-detection-v1-ONNX` |
+| Local server | Node.js 24 TypeScript scripts |
+| Verification | TypeScript contracts and Node test runner |
+| Distribution mode | Source checkout with explicit local model setup |
 
 ---
 
