@@ -83,8 +83,8 @@ The no-backend/no-localhost direct-open SVG full LLM path is blocked for normal 
 Current decision after this proof:
 
 - direct-open SVG is deterministic-demo only for public distribution claims;
-- full local model mode uses the npm/npx CLI;
-- the CLI starts a localhost static server for SVG, JavaScript, WASM, tokenizer, and local model files;
+- full local model mode uses the source checkout scripts;
+- `npm run serve` starts a localhost static server for SVG, JavaScript, WASM, tokenizer, and local model files;
 - localhost is not a model backend and must not receive prompt text for inference;
 - browser code remains responsible for inference.
 
@@ -94,4 +94,4 @@ The rejected or deferred alternatives remain:
 - approve a different full local runtime wrapper that is not a backend service, such as a packaged desktop/runtime shell;
 - approve a browser-flag requirement, which is not recommended for ordinary users.
 
-The project should not proceed to final browser-side LLM integration until the npm/npx static-server path is reviewed and verified.
+The project should not proceed to final browser-side LLM integration until the source-checkout static-server path is reviewed and verified.

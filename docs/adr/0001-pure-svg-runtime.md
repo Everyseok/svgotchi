@@ -2,7 +2,7 @@
 
 ## Status
 
-Superseded in part by the npm/npx static-server distribution decision
+Superseded in part by the source-checkout static-server distribution decision
 
 ## Date
 
@@ -12,13 +12,13 @@ Superseded in part by the npm/npx static-server distribution decision
 
 SVGotchi must behave as an SVG artifact, not an HTML application. The prompt area must use SVG elements only. Runtime dependencies on an HTML wrapper, `foreignObject`, canvas, React, a backend, localhost inference bridge, or remote APIs are disallowed.
 
-Current update: direct-open SVG remains valid for deterministic demo behavior. Full local LLM mode now uses npm/npx to start a localhost static file server so the browser can fetch local SVG, JavaScript, WASM, tokenizer, and model files. That server is not an LLM backend and must not receive prompt text for inference.
+Current update: direct-open SVG remains valid for deterministic demo behavior. Full local LLM mode now uses source checkout scripts to start a localhost static file server so the browser can fetch local SVG, JavaScript, WASM, tokenizer, and model files. That server is not an LLM backend and must not receive prompt text for inference.
 
 Research shows standalone SVG documents can execute SVG script, but SVG used as an image resource is processed in restricted modes where script and interactivity are disabled.
 
 ## Decision
 
-Target a direct-open standalone SVG document with inline non-module JavaScript for deterministic/demo behavior. Treat image-preview contexts as static/non-interactive views. Use the npm/npx static-server path for full local LLM mode, serving the SVG app document directly instead of an HTML wrapper.
+Target a direct-open standalone SVG document with inline non-module JavaScript for deterministic/demo behavior. Treat image-preview contexts as static/non-interactive views. Use the source-checkout static-server path for full local LLM mode, serving the SVG app document directly instead of an HTML wrapper.
 
 The runtime will:
 

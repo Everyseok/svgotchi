@@ -4,17 +4,10 @@ SVGotchi full local model mode requires explicit local model setup.
 
 ## Commands
 
-Public npm/npx flow:
+Current source checkout flow:
 
 ```bash
-npx svgotchi setup-model
-npx svgotchi verify-model
-```
-
-Source checkout flow:
-
-```bash
-npm run setup-model
+npm run setup-model -- --yes
 npm run verify:model
 ```
 
@@ -65,8 +58,8 @@ Runtime network model downloads are not allowed. Full mode must use the verified
 If verification fails, do not treat full local mode as ready. Re-run:
 
 ```bash
-npx svgotchi setup-model
-npx svgotchi verify-model
+npm run setup-model -- --yes
+npm run verify:model
 ```
 
 If the download fails, check network access during setup. If runtime fails after verification passes, inspect browser DevTools Network and confirm requests are only local static file requests.

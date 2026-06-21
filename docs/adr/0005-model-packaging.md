@@ -20,12 +20,12 @@ Research shows browser-side inference with Transformers.js or ONNX Runtime Web n
 
 ## Decision
 
-Use an npm/npx-based public distribution path for full local LLM mode:
+Use a GitHub source-checkout public distribution path for full local LLM mode until the npm package is published:
 
-- `npx svgotchi demo` runs the GitHub-friendly deterministic demo without model assets.
-- `npx svgotchi setup-model` explicitly installs large local model/runtime assets into ignored folders.
-- `npx svgotchi serve` starts a localhost static file server for SVG, JavaScript, WASM, tokenizer, and local model files.
-- `npx svgotchi` runs a guided flow that checks assets, asks before downloading, verifies files, starts the static server, and opens the browser.
+- `npm run serve:demo` runs the GitHub-friendly deterministic demo without model assets.
+- `npm run setup-model -- --yes` explicitly installs large local model/runtime assets into ignored folders.
+- `npm run serve` starts a localhost static file server for SVG, JavaScript, WASM, tokenizer, and local model files.
+- `npm run cli --` runs a guided flow that checks assets, asks before downloading, verifies files, starts the static server, and opens the browser.
 
 The localhost server is static serving only. Inference must run in the browser. The server must not expose an inference endpoint or receive prompt text for model execution.
 
@@ -40,7 +40,7 @@ Current decision:
 
 - Do not proceed with the old Qwen2.5 packaging recommendation.
 - Treat `onnx-community/tanaos-emotion-detection-v1-ONNX` as the approved Gate G model.
-- Use npm/npx static serving for local sibling model/runtime assets.
+- Use source-checkout static serving for local sibling model/runtime assets.
 - Do not embed the Tanaos ONNX model/runtime assets directly into a single SVG.
 - Do not commit model files to Git.
 - Do not use GitHub Pages as the full local LLM mode.
@@ -83,10 +83,10 @@ Cons:
 Status:
 
 - Direct-open full local model loading failed in normal Chrome.
-- This option is superseded for full local mode by npm/npx static serving.
+- This option is superseded for full local mode by source-checkout static serving.
 - The sibling asset layout is still used, but assets are fetched by the browser from `http://127.0.0.1:<port>` rather than `file://`.
 
-### B2. npm/npx static server with local sibling model/runtime assets
+### B2. Source checkout static server with local sibling model/runtime assets
 
 Pros:
 
@@ -94,7 +94,7 @@ Pros:
 - keeps inference in the browser
 - avoids committing large model files
 - keeps setup-time downloads explicit
-- supports a simple public UX through `npx svgotchi`
+- supports a simple public UX through `npm run` scripts before npm publish
 
 Cons:
 
@@ -132,7 +132,7 @@ Cons:
 - Stage 6 recommends sibling local assets for that classifier path.
 - Any use of Transformers.js or ONNX Runtime Web must disable remote model loading and vendor required runtime assets.
 - Direct-open SVG full local model loading was tested and failed in normal Chrome.
-- Full local mode now uses npm/npx static serving.
+- Full local mode now uses source-checkout static serving.
 - GitHub Pages and direct-open SVG remain limited demo paths.
 
 ## Sources

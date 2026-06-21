@@ -28,7 +28,7 @@ export async function runServe(options: ServeOptions = parseServeArgs(process.ar
     const verification = await verifyModelAssets();
     if (!verification.ok) {
       console.error("Full local model mode requires local model assets.");
-      console.error("Run `npx svgotchi setup-model` or `npm run setup-model`, then try again.");
+      console.error("Run `npm run setup-model -- --yes`, then `npm run serve` again.");
       return 1;
     }
   }
@@ -81,7 +81,7 @@ function parseServeArgs(args: readonly string[]): ServeOptions {
 }
 
 function printServeHelp(): void {
-  console.log(`Usage: svgotchi serve [--demo] [--port 4173] [--no-open]
+  console.log(`Usage: npm run serve -- [--demo] [--port 4173] [--no-open]
 
 Starts a localhost static server. It is not a model backend.
 Use --demo for deterministic demo mode without model assets.`);

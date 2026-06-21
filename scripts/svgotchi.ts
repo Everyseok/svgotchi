@@ -43,7 +43,7 @@ async function runGuidedMode(): Promise<number> {
   if (!verification.ok) {
     const setupCode = await runSetupModel({ yes: false, dryRun: false });
     if (setupCode !== 0) {
-      console.log("Starting deterministic demo instead. Run `svgotchi setup-model` for full local mode.");
+      console.log("Starting deterministic demo instead. Run `npm run setup-model -- --yes` for full local mode.");
       return runServe({ mode: "demo", host: "127.0.0.1", port: 4173, open: true, smoke: false });
     }
   }
@@ -61,11 +61,11 @@ function printHelp(): void {
   console.log(`SVGotchi
 
 Usage:
-  svgotchi                 Guided setup and serve flow
-  svgotchi demo            Start deterministic demo, no model required
-  svgotchi setup-model     Install local model/runtime assets after confirmation
-  svgotchi serve           Start full local mode static server
-  svgotchi verify-model    Verify local model/runtime assets
+  npm run cli --           Guided setup and serve flow
+  npm run cli -- demo      Start deterministic demo, no model required
+  npm run setup-model      Install local model/runtime assets after confirmation
+  npm run serve            Start full local mode static server
+  npm run verify:model     Verify local model/runtime assets
 
 localhost is a static file server only. LLM inference runs in the browser.`);
 }

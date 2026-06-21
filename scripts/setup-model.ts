@@ -80,7 +80,7 @@ export async function runSetupModel(options: SetupOptions = parseSetupArgs(proce
     return 1;
   }
 
-  console.log("Setup complete. Run `npx svgotchi serve` or `npm run serve` to start the static server.");
+  console.log("Setup complete. Run `npm run serve` to start the static server.");
   return 0;
 }
 
@@ -97,7 +97,7 @@ function parseSetupArgs(args: readonly string[]): SetupOptions {
 }
 
 function printSetupHelp(): void {
-  console.log(`Usage: svgotchi setup-model [--yes] [--dry-run]
+  console.log(`Usage: npm run setup-model -- [--yes] [--dry-run]
 
 Installs SVGotchi local model/runtime assets into ignored local folders.
 Downloads happen only during this explicit setup step and are verified by SHA-256.`);

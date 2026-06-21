@@ -30,13 +30,6 @@ The browser owns inference. Localhost only delivers static bytes.
 ## Commands
 
 ```bash
-npx svgotchi demo
-npx svgotchi serve
-```
-
-Source checkout:
-
-```bash
 npm run serve:demo
 npm run serve
 ```

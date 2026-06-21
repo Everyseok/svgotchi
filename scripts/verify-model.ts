@@ -125,8 +125,7 @@ export async function runVerifyModelCli(): Promise<number> {
     console.error("  npm run verify:model");
     console.error("");
     console.error("Setup commands:");
-    console.error("  npx svgotchi setup-model");
-    console.error("  npm run setup-model");
+    console.error("  npm run setup-model -- --yes");
     return 1;
   }
 

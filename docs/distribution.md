@@ -1,15 +1,18 @@
 # Distribution
 
-SVGotchi uses an npm/npx-based public distribution model.
+SVGotchi is currently distributed as a GitHub source checkout. The npm package name is not published yet, so public setup instructions must use `git clone`, `npm ci`, and the repository scripts.
 
-The important distinction is that full local model mode is no longer a direct-open `file://` SVG. Normal Chrome blocks direct-open SVG access to sibling model files. Full local mode therefore runs from a localhost static file server started by the SVGotchi CLI. That localhost server is not a model backend. It only serves static SVG, JavaScript, WASM, tokenizer, and local model files so browser-side code can run inference locally.
+The important distinction is that full local model mode is not a direct-open `file://` SVG. Normal browsers block direct-open SVG access to sibling model files. Full local mode therefore runs from a localhost static file server started by the source checkout scripts. That localhost server is not a model backend. It only serves static SVG, JavaScript, WASM, tokenizer, and local model files so browser-side code can run inference locally.
 
 ## User Flows
 
 ### Flow A: Deterministic Demo
 
 ```bash
-npx svgotchi demo
+git clone https://github.com/Everyseok/svgotchi.git
+cd svgotchi
+npm ci
+npm run serve:demo
 ```
 
 This starts the deterministic demo. No model setup is required.
@@ -17,33 +20,26 @@ This starts the deterministic demo. No model setup is required.
 ### Flow B: Full Local Model Mode
 
 ```bash
-npx svgotchi setup-model
-npx svgotchi serve
+git clone https://github.com/Everyseok/svgotchi.git
+cd svgotchi
+npm ci
+npm run setup-model -- --yes
+npm run serve
 ```
 
-`setup-model` checks for local model/runtime assets, shows the expected size, asks before downloading missing model files, installs runtime assets, and verifies the pinned manifest.
+`setup-model` checks for local model/runtime assets, shows the expected size, downloads missing model files only during the explicit setup step, installs runtime assets, and verifies the pinned manifest.
 
 `serve` starts a localhost static file server. Inference is expected to run in the browser. The server does not expose an inference endpoint and must not receive prompt text for model execution.
 
 The root route serves the SVGotchi SVG app document directly. It is not an HTML wrapper.
 
-### Flow C: Guided Mode
+### Flow C: Source Guided Mode
 
 ```bash
-npx svgotchi
+npm run cli --
 ```
 
 Guided mode checks model assets, offers setup if assets are missing, then starts full local mode when ready. If setup is declined or unavailable, it can fall back to deterministic demo mode.
-
-### Source Checkout
-
-```bash
-git clone <repo>
-cd svgotchi
-npm install
-npm run setup-model
-npm run serve
-```
 
 ## Distribution Modes
 
@@ -64,7 +60,7 @@ Allowed static files include:
 - ONNX Runtime WASM files;
 - tokenizer/config JSON;
 - local ONNX model files;
-- committed small preview assets.
+- committed small preview assets;
 - the browser integration script.
 
 Forbidden server behavior:
@@ -79,9 +75,11 @@ Forbidden server behavior:
 
 GitHub Pages may host a limited deterministic demo with small committed assets. It is not the full local model mode because full mode requires user-local model assets installed through setup.
 
-### npm/npx Full Local Experience
+### Future npm Package
 
-npm/npx is the primary public distribution path. It provides:
+The repository contains a CLI entry point for a future npm package, but the public package is not published yet. Until that changes, GitHub-facing instructions should remain source-checkout only.
+
+After publish, the package can provide:
 
 - a CLI command surface;
 - explicit model setup;
@@ -102,28 +100,30 @@ The pinned payload is approximately:
 - runtime files: 36,581,230 bytes, about 34.89 MiB;
 - total: 172,121,134 bytes, about 164.15 MiB.
 
-Setup may download model files only after explicit user approval. Runtime after setup must not silently download model files.
+Setup may download model files only after explicit user approval or the `--yes` flag. Runtime after setup must not silently download model files.
 
 ## Commands
-
-```bash
-svgotchi
-svgotchi demo
-svgotchi setup-model
-svgotchi serve
-svgotchi verify-model
-```
 
 Source checkout scripts:
 
 ```bash
-npm run setup-model
-npm run serve
+npm run cli --
 npm run serve:demo
+npm run setup-model -- --yes
+npm run serve
 npm run verify:model
 ```
 
 ## Verification
+
+Basic checks that do not require local model files:
+
+```bash
+npm test
+npm run verify
+```
+
+Full local checks after `npm run setup-model -- --yes`:
 
 ```bash
 npm run verify:model
@@ -133,7 +133,6 @@ npm run verify:served-svg
 npm run verify:served-svg:full
 npm run verify:runtime
 npm run verify:release
-npm run verify
 ```
 
 Use browser DevTools Network after setup to confirm runtime requests are local static file requests only. There should be no hosted inference, model download, backend inference endpoint, or external API call during runtime.

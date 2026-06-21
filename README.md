@@ -107,8 +107,17 @@ http://127.0.0.1:4173/?mode=full
 
 ## Test It
 
+Basic checks, no model download required:
+
 ```bash
 npm test
+npm run verify
+```
+
+Full local release checks, after model setup:
+
+```bash
+npm run setup-model -- --yes
 npm run verify:model
 npm run verify:release
 ```

@@ -3,7 +3,7 @@
 Status: Stage -1 completed draft
 Last updated: 2026-06-17 Asia/Seoul
 
-Current update: later packaging proof showed that normal Chrome blocks direct-open SVG `file://` access to sibling model assets. The current full local model distribution path is npm/npx static serving on localhost, with inference still running in the browser and no backend inference service. The direct-open SVG target remains valid for deterministic demo behavior.
+Current update: later packaging proof showed that normal Chrome blocks direct-open SVG `file://` access to sibling model assets. The current full local model distribution path is source-checkout static serving on localhost, with inference still running in the browser and no backend inference service. The direct-open SVG target remains valid for deterministic demo behavior.
 
 ## Scope
 

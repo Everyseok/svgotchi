@@ -14,7 +14,7 @@ This document describes the intended architecture and records later packaging de
 The runtime target now has two tiers:
 
 - deterministic demo: direct-open SVG remains valid for small committed assets and non-model behavior
-- full local model mode: npm/npx starts a localhost static file server so the browser can fetch local SVG, JavaScript, WASM, tokenizer, and model files
+- full local model mode: source checkout scripts start a localhost static file server so the browser can fetch local SVG, JavaScript, WASM, tokenizer, and model files
 
 The localhost server is not a model backend. It must not receive prompt text for inference and must not expose an inference endpoint. Browser code owns inference.
 
@@ -22,7 +22,7 @@ Allowed:
 
 - SVG elements and attributes
 - inline non-module JavaScript inside the SVG document
-- static JavaScript loaded by the served SVG document in npm/npx full local mode
+- static JavaScript loaded by the served SVG document in source-checkout full local mode
 - deterministic app state owned by the SVG runtime
 - local model assets only after explicit packaging approval
 - local WASM/runtime assets only after explicit packaging approval
@@ -203,7 +203,7 @@ Hard runtime requirements:
 Packaging decision update:
 
 - The direct-open SVG full local model path was tested and failed in normal Chrome because `file://` fetch of sibling model assets is blocked.
-- Full local model mode is now an npm/npx experience with a localhost static server.
+- Full local model mode is now a source-checkout experience with a localhost static server.
 - GitHub Pages and direct-open SVG remain limited to deterministic demo behavior unless a later gate approves another model packaging route.
 
 Options to evaluate later:
@@ -217,7 +217,7 @@ Current recommendation:
 
 - Keep early implementation independent from model packaging.
 - Build deterministic character/input/transition layers first.
-- Use the npm/npx static-server distribution path for full local model mode.
+- Use the source-checkout static-server distribution path for full local model mode.
 - Serve the SVG app document directly; do not wrap it in an HTML runtime page.
 - Do not commit model assets to Git.
 - Do not present GitHub Pages as full local model mode.

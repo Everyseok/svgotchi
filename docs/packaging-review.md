@@ -1,15 +1,15 @@
 # SVGotchi Model Packaging Strategy Review
 
-Status: Revised Stage 6 complete; superseded for public distribution by npm/npx static serving
+Status: Revised Stage 6 complete; superseded for public distribution by source-checkout static serving
 Last updated: 2026-06-17 Asia/Seoul
 
 ## Current Packaging Update
 
-The direct-open SVG local asset proof failed in normal Chrome at `file://` model config fetch. The approved public distribution path is now npm/npx:
+The direct-open SVG local asset proof failed in normal Chrome at `file://` model config fetch. The approved public distribution path is now GitHub source checkout plus npm scripts:
 
 - deterministic demo remains GitHub-friendly and does not require model files;
 - full local model mode uses explicit setup to install large ignored local assets;
-- `svgotchi serve` starts a localhost static file server for SVG, JavaScript, WASM, tokenizer, and model files;
+- `npm run serve` starts a localhost static file server for SVG, JavaScript, WASM, tokenizer, and model files;
 - localhost is not an inference backend and must not receive prompt text for model execution;
 - browser code remains responsible for inference.
 
@@ -277,7 +277,7 @@ Mandatory constraints:
 - no runtime network call
 - no backend
 - no localhost inference bridge
-- localhost static serving only for the approved npm/npx full local mode
+- localhost static serving only for the approved source-checkout full local mode
 - no production deterministic planner substitution if the model fails
 - no model-generated reply text or reply style
 - direct-open full local asset loading has been tested and is blocked in normal Chrome

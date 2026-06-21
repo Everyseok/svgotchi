@@ -124,7 +124,7 @@ Any later approved model path must still enforce:
 - no hosted Hugging Face inference endpoint
 - no runtime model download
 - no backend and no localhost inference bridge as the primary architecture
-- localhost static serving is allowed only for the approved npm/npx full local mode
+- localhost static serving is allowed only for the approved source-checkout full local mode
 - max token budget low enough for TransitionPlan only
 - JSON-only, schema-constrained, classifier, or app-owned parser strategy where possible
 - sanitizer that ignores unknown fields and rejects forbidden fields
