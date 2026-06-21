@@ -39,24 +39,12 @@ No hosted inference API, backend model service, or silent runtime model download
 
 ## Preview
 
-<!--
-Add README media after recording the app:
-
 <p align="center">
   <img src="docs/assets/readme/svgotchi-preview.gif" alt="SVGotchi full mode preview" width="72%" />
 </p>
 
-<p align="center">
-  <img src="docs/assets/readme/svgotchi-full-mode.png" alt="SVGotchi full mode screenshot" width="48%" />
-  <img src="docs/assets/readme/svgotchi-demo-mode.png" alt="SVGotchi demo mode screenshot" width="48%" />
-</p>
--->
+Additional screenshot slots can be added under `docs/assets/readme/` later:
 
-Preview media is intentionally not committed yet. Record a short clip or screenshot, place it under `docs/assets/readme/`, then link it here.
-
-Recommended filenames:
-
-- `docs/assets/readme/svgotchi-preview.gif`
 - `docs/assets/readme/svgotchi-full-mode.png`
 - `docs/assets/readme/svgotchi-demo-mode.png`
 
