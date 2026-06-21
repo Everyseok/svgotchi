@@ -7,7 +7,7 @@ Last updated: 2026-06-17 Asia/Seoul
 
 The direct-open SVG local asset proof failed in normal Chrome at `file://` model config fetch. The approved public distribution path is now GitHub source checkout plus npm scripts:
 
-- deterministic demo remains GitHub-friendly and does not require model files;
+- model-free preview remains GitHub-friendly and does not require model files;
 - full local model mode uses explicit setup to install large ignored local assets;
 - `npm run serve` starts a localhost static file server for SVG, JavaScript, WASM, tokenizer, and model files;
 - localhost is not an inference backend and must not receive prompt text for model execution;

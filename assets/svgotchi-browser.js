@@ -71,7 +71,7 @@ if (root) {
   renderPrompt();
   renderPose(POSES.neutral);
   root.dataset.currentEmotion = state.currentEmotion;
-  setStatus(state.mode === "demo" ? "demo: local model off" : "ready");
+  setStatus(isPreviewMode() ? "model-free preview" : "ready");
   void runVerificationProbe();
   runFragmentProbe();
 }
@@ -137,8 +137,8 @@ async function submitPrompt() {
   renderPrompt();
 
   try {
-    const results = state.mode === "demo"
-      ? demoClassify(promptText)
+    const results = isPreviewMode()
+      ? previewClassify(promptText)
       : await classifyLocal(promptText);
     const planned = createTransitionPlan(state.currentEmotion, promptText, results);
     if (!planned.ok) {
@@ -151,7 +151,7 @@ async function submitPrompt() {
     await animatePlan(planned.plan);
     state.currentEmotion = planned.plan.to;
     root.dataset.currentEmotion = state.currentEmotion;
-    setStatus(state.mode === "demo" ? "demo ready" : "ready");
+    setStatus(isPreviewMode() ? "preview ready" : "ready");
   } catch (error) {
     setStatus(`model unavailable`);
     setPlanText(error instanceof Error ? error.message.slice(0, 28) : "unknown error");
@@ -216,7 +216,11 @@ async function getTransformers() {
   return state.transformersPromise;
 }
 
-function demoClassify(promptText) {
+function isPreviewMode() {
+  return state.mode === "preview" || state.mode === "demo";
+}
+
+function previewClassify(promptText) {
   const text = promptText.toLowerCase();
   if (/\b(love|cute|sweet|adorable|hug)\b/.test(text)) return [{ label: "joy", score: 0.86 }, { label: "neutral", score: 0.08 }];
   if (/\b(scared|afraid|nervous)\b/.test(text)) return [{ label: "fear", score: 0.88 }, { label: "sadness", score: 0.07 }];

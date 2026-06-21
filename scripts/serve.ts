@@ -10,7 +10,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { BASE_CHARACTER_SVG } from "../src/character/baseCharacter.ts";
 import { verifyModelAssets } from "./verify-model.ts";
 
-type ServeMode = "demo" | "full";
+type ServeMode = "preview" | "full";
 
 type ServeOptions = Readonly<{
   mode: ServeMode;
@@ -72,7 +72,7 @@ function parseServeArgs(args: readonly string[]): ServeOptions {
   const port = portIndex >= 0 && args[portIndex + 1] ? Number(args[portIndex + 1]) : 4173;
 
   return {
-    mode: args.includes("--demo") ? "demo" : "full",
+    mode: args.includes("--demo") || args.includes("--preview") ? "preview" : "full",
     host: "127.0.0.1",
     port: Number.isInteger(port) && port > 0 ? port : 4173,
     open: !args.includes("--no-open"),
@@ -81,10 +81,10 @@ function parseServeArgs(args: readonly string[]): ServeOptions {
 }
 
 function printServeHelp(): void {
-  console.log(`Usage: npm run serve -- [--demo] [--port 4173] [--no-open]
+  console.log(`Usage: npm run serve -- [--preview] [--port 4173] [--no-open]
 
 Starts a localhost static server. It is not a model backend.
-Use --demo for deterministic demo mode without model assets.`);
+Use --preview for model-free preview mode without model assets.`);
 }
 
 async function handleRequest(rawUrl: string, response: ServerResponse, mode: ServeMode): Promise<void> {
@@ -155,7 +155,7 @@ function contentType(filePath: string): string {
 
 function renderSvgApp(mode: ServeMode): string {
   const appNodes = `
-  <text id="app-status" x="4" y="77">${mode === "demo" ? "demo ready" : "model ready"}</text>
+  <text id="app-status" x="4" y="77">${mode === "preview" ? "preview ready" : "model ready"}</text>
   <text id="app-plan" x="4" y="72"></text>
   <script type="importmap"><![CDATA[
     {

@@ -22,7 +22,7 @@ Research shows browser-side inference with Transformers.js or ONNX Runtime Web n
 
 Use a GitHub source-checkout public distribution path for full local LLM mode until the npm package is published:
 
-- `npm run serve:demo` runs the GitHub-friendly deterministic demo without model assets.
+- `npm run serve:preview` runs the GitHub-friendly model-free preview without model assets.
 - `npm run setup-model -- --yes` explicitly installs large local model/runtime assets into ignored folders.
 - `npm run serve` starts a localhost static file server for SVG, JavaScript, WASM, tokenizer, and local model files.
 - `npm run cli --` runs a guided flow that checks assets, asks before downloading, verifies files, starts the static server, and opens the browser.
@@ -133,7 +133,7 @@ Cons:
 - Any use of Transformers.js or ONNX Runtime Web must disable remote model loading and vendor required runtime assets.
 - Direct-open SVG full local model loading was tested and failed in normal Chrome.
 - Full local mode now uses source-checkout static serving.
-- GitHub Pages and direct-open SVG remain limited demo paths.
+- GitHub Pages and direct-open SVG remain limited preview paths.
 
 ## Sources
 

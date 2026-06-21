@@ -78,11 +78,11 @@ Interpretation: the local file layout is at least reachable when Chrome file acc
 
 ## Architectural Consequence
 
-The no-backend/no-localhost direct-open SVG full LLM path is blocked for normal Chrome. Tier 1 deterministic demo remains viable. Tier 2 setup plus local model verification remains viable.
+The no-backend/no-localhost direct-open SVG full LLM path is blocked for normal Chrome. Tier 1 model-free preview remains viable. Tier 2 setup plus local model verification remains viable.
 
 Current decision after this proof:
 
-- direct-open SVG is deterministic-demo only for public distribution claims;
+- direct-open SVG is model-free preview only for public distribution claims;
 - full local model mode uses the source checkout scripts;
 - `npm run serve` starts a localhost static server for SVG, JavaScript, WASM, tokenizer, and local model files;
 - localhost is not a model backend and must not receive prompt text for inference;

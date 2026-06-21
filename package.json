@@ -1,9 +1,29 @@
 {
   "name": "svgotchi",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "SVG-native local AI companion runtime powered by browser-side Transformers.js and ONNX.",
   "license": "MIT",
   "private": false,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Everyseok/svgotchi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Everyseok/svgotchi/issues"
+  },
+  "homepage": "https://github.com/Everyseok/svgotchi#readme",
+  "keywords": [
+    "svg",
+    "local-ai",
+    "browser-ai",
+    "transformers-js",
+    "onnxruntime-web",
+    "typescript",
+    "ai-companion",
+    "tamagotchi",
+    "client-side-ml"
+  ],
   "bin": {
     "svgotchi": "./scripts/svgotchi.ts"
   },
@@ -11,7 +31,7 @@
     "cli": "node scripts/svgotchi.ts",
     "setup-model": "node scripts/setup-model.ts",
     "serve": "node scripts/serve.ts",
-    "serve:demo": "node scripts/serve.ts --demo",
+    "serve:preview": "node scripts/serve.ts --preview",
     "serve:smoke": "node scripts/serve.ts --no-open --smoke --port 4205",
     "test": "node --test tests/*.test.ts",
     "test:model": "node --test tests/modelRuntime.integration.ts",

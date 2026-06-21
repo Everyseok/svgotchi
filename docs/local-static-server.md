@@ -4,7 +4,7 @@ SVGotchi full local model mode uses localhost only as a static file server.
 
 This server exists because normal browsers block direct-open `file://` SVG access to sibling model assets. Serving files over `http://127.0.0.1:<port>` gives the browser normal fetch semantics while preserving local browser inference.
 
-## Boundary
+## Static Serving Contract
 
 Allowed:
 
@@ -30,7 +30,7 @@ The browser owns inference. Localhost only delivers static bytes.
 ## Commands
 
 ```bash
-npm run serve:demo
+npm run serve:preview
 npm run serve
 ```
 

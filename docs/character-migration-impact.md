@@ -15,7 +15,7 @@ The current approved path is:
 
 - Stage 1: Mochi Sprout neutral SVG and primitive rig contract.
 - Stage 2: 30-emotion `POSE_MAP` built from primitive fields.
-- Stage 3: pure SVG prompt prototype.
+- Stage 3: pure SVG prompt input runtime.
 - Stage 4: deterministic transition engine and primitive transition previews.
 - Stage 7: local classifier maps text into sanitized app-owned `TransitionPlan`.
 
@@ -312,4 +312,3 @@ The safest path is:
 - require blink as an app-owned overlay timeline;
 - use `npm install` plus a model download/setup script for full-feature distribution later;
 - stop implementation until the user approves the overlay rig and preview plan.
-

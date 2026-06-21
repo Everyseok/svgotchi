@@ -1,21 +1,21 @@
 # Distribution
 
-SVGotchi is currently distributed as a GitHub source checkout. The npm package name is not published yet, so public setup instructions must use `git clone`, `npm ci`, and the repository scripts.
+SVGotchi is distributed as a source-first GitHub project. Public setup instructions use `git clone`, `npm ci`, and the repository scripts.
 
 The important distinction is that full local model mode is not a direct-open `file://` SVG. Normal browsers block direct-open SVG access to sibling model files. Full local mode therefore runs from a localhost static file server started by the source checkout scripts. That localhost server is not a model backend. It only serves static SVG, JavaScript, WASM, tokenizer, and local model files so browser-side code can run inference locally.
 
 ## User Flows
 
-### Flow A: Deterministic Demo
+### Flow A: Model-Free Preview
 
 ```bash
 git clone https://github.com/Everyseok/svgotchi.git
 cd svgotchi
 npm ci
-npm run serve:demo
+npm run serve:preview
 ```
 
-This starts the deterministic demo. No model setup is required.
+This starts the SVG runtime surface without local model assets.
 
 ### Flow B: Full Local Model Mode
 
@@ -39,11 +39,11 @@ The root route serves the SVGotchi SVG app document directly. It is not an HTML 
 npm run cli --
 ```
 
-Guided mode checks model assets, offers setup if assets are missing, then starts full local mode when ready. If setup is declined or unavailable, it can fall back to deterministic demo mode.
+Guided mode checks model assets, offers setup if assets are missing, then starts full local mode when ready. If setup is declined or unavailable, it can fall back to model-free preview mode.
 
 ## Distribution Modes
 
-### Direct-Open SVG Deterministic Demo
+### Direct-Open SVG Preview
 
 Direct-open SVG is allowed for deterministic previews and small committed assets. It is not the full local model runtime path.
 
@@ -71,15 +71,13 @@ Forbidden server behavior:
 - no runtime model download;
 - no external inference API.
 
-### GitHub Pages Limited Demo
+### GitHub Pages Limited Preview
 
-GitHub Pages may host a limited deterministic demo with small committed assets. It is not the full local model mode because full mode requires user-local model assets installed through setup.
+GitHub Pages may host a limited model-free preview with small committed assets. It is not the full local model mode because full mode requires user-local model assets installed through setup.
 
-### Future npm Package
+### Source-First Distribution
 
-The repository contains a CLI entry point for a future npm package, but the public package is not published yet. Until that changes, GitHub-facing instructions should remain source-checkout only.
-
-After publish, the package can provide:
+The source checkout provides:
 
 - a CLI command surface;
 - explicit model setup;
@@ -108,7 +106,7 @@ Source checkout scripts:
 
 ```bash
 npm run cli --
-npm run serve:demo
+npm run serve:preview
 npm run setup-model -- --yes
 npm run serve
 npm run verify:model

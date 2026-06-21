@@ -1,13 +1,13 @@
 # SVGotchi Research Notes
 
-Status: Stage -1 completed draft
+Status: reference research for the implemented runtime
 Last updated: 2026-06-17 Asia/Seoul
 
-Current update: later packaging proof showed that normal Chrome blocks direct-open SVG `file://` access to sibling model assets. The current full local model distribution path is source-checkout static serving on localhost, with inference still running in the browser and no backend inference service. The direct-open SVG target remains valid for deterministic demo behavior.
+Current update: later packaging proof showed that normal Chrome blocks direct-open SVG `file://` access to sibling model assets. The current full local model distribution path is source-checkout static serving on localhost, with inference still running in the browser and no backend inference service. The direct-open SVG target remains valid for model-free preview behavior.
 
 ## Scope
 
-This document records research findings for SVGotchi before implementation. It does not approve character art, model selection, packaging strategy, or implementation. Those decisions remain gated by the active plan.
+This document records research findings that shaped the implemented SVGotchi runtime architecture.
 
 The research target is a pure SVG artifact with local-only model behavior:
 
@@ -122,7 +122,7 @@ Sources:
 Findings:
 
 - State machines model a system as a finite set of states and transitions triggered by inputs/events.
-- SVGotchi does not need a full statecharts dependency at Stage -1. The initial product state can be an explicit typed state object plus pure transition functions.
+- SVGotchi does not need a full statecharts dependency. The runtime state can be an explicit typed state object plus pure transition functions.
 - The LLM should not own state transitions directly. It can propose intent and transition parameters, but the deterministic runtime validates and applies them.
 
 Design consequence:
@@ -214,8 +214,8 @@ Findings:
 
 Design consequence:
 
-- Stage 5 must evaluate model candidates with a table that includes license, English-first task fit, optional language coverage, supported library/runtime, ONNX/GGUF/Transformers.js compatibility, quantized artifacts, artifact size, model-card quality, and local/offline packaging notes.
-- Do not select a model in Stage -1.
+- Model candidates should be evaluated with a table that includes license, English-first task fit, optional language coverage, supported library/runtime, ONNX/GGUF/Transformers.js compatibility, quantized artifacts, artifact size, model-card quality, and local/offline packaging notes.
+- The implemented runtime uses a task-specific local emotion classifier rather than a general text generator.
 
 Sources:
 
@@ -248,9 +248,9 @@ Sources:
 - ONNX Runtime Web deployment: https://onnxruntime.ai/docs/tutorials/web/deploy.html
 - Transformers.js custom usage: https://huggingface.co/docs/transformers.js/custom_usage
 
-## Unresolved Technical Questions
+## Resolved Packaging Questions
 
-These are intentionally not guessed in Stage -1:
+These questions drove the packaging proof and current source-checkout distribution:
 
 1. Which browser is the primary runtime target for direct-open SVG: Chrome, Edge, Firefox, Safari, or a narrower set?
 2. Can the selected browser execute inline SVG script from `file:///` with the needed focus, keyboard, composition, and animation behavior?
@@ -259,14 +259,11 @@ These are intentionally not guessed in Stage -1:
 5. What artifact size is acceptable for the final distribution?
 6. Will the user approve single-file embedding if the result is large, or sibling local model assets if direct-open loading is reliable?
 
-## Stage -1 Recommendation
+## Runtime Recommendation
 
-Use this architecture direction for later approval:
+Use this architecture direction for source-first local runtime distribution:
 
-- Implement character and transition runtime first, without LLM integration.
-- Keep SVG runtime deterministic and model-agnostic.
-- Keep the LLM boundary as a small planner interface returning sanitized TransitionPlan.
-- Treat model runtime and packaging as later research gates with measured browser tests.
-- Favor single inline SVG script for app/runtime code; defer model and WASM asset packaging until Stage 5 and Stage 6 evidence exists.
-
-Stage -1 does not approve Stage 0. User confirmation is required before character concept candidates begin.
+- Keep SVG runtime deterministic and model-aware only through a narrow classifier boundary.
+- Keep the model boundary as a small planner interface returning sanitized `TransitionPlan` data.
+- Use measured browser tests to verify local asset loading and served SVG behavior.
+- Favor a direct SVG runtime surface, with model and WASM assets served locally after explicit setup.

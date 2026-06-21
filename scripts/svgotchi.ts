@@ -15,7 +15,9 @@ export async function runSvgotchiCli(args = process.argv.slice(2)): Promise<numb
     case "guided":
       return runGuidedMode();
     case "demo":
-      return runServe({ mode: "demo", host: "127.0.0.1", port: readPort(rest), open: !rest.includes("--no-open"), smoke: rest.includes("--smoke") });
+      return runServe({ mode: "preview", host: "127.0.0.1", port: readPort(rest), open: !rest.includes("--no-open"), smoke: rest.includes("--smoke") });
+    case "preview":
+      return runServe({ mode: "preview", host: "127.0.0.1", port: readPort(rest), open: !rest.includes("--no-open"), smoke: rest.includes("--smoke") });
     case "setup-model":
       return runSetupModel({ yes: rest.includes("--yes") || rest.includes("-y"), dryRun: rest.includes("--dry-run") });
     case "serve":
@@ -43,8 +45,8 @@ async function runGuidedMode(): Promise<number> {
   if (!verification.ok) {
     const setupCode = await runSetupModel({ yes: false, dryRun: false });
     if (setupCode !== 0) {
-      console.log("Starting deterministic demo instead. Run `npm run setup-model -- --yes` for full local mode.");
-      return runServe({ mode: "demo", host: "127.0.0.1", port: 4173, open: true, smoke: false });
+      console.log("Starting model-free preview instead. Run `npm run setup-model -- --yes` for full local mode.");
+      return runServe({ mode: "preview", host: "127.0.0.1", port: 4173, open: true, smoke: false });
     }
   }
 
@@ -62,7 +64,7 @@ function printHelp(): void {
 
 Usage:
   npm run cli --           Guided setup and serve flow
-  npm run cli -- demo      Start deterministic demo, no model required
+  npm run cli -- preview   Start model-free preview mode, no model required
   npm run setup-model      Install local model/runtime assets after confirmation
   npm run serve            Start full local mode static server
   npm run verify:model     Verify local model/runtime assets

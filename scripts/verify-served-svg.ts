@@ -5,7 +5,7 @@ import path from "node:path";
 import process from "node:process";
 
 const host = "127.0.0.1";
-const mode = process.argv.includes("--full") ? "full" : "demo";
+const mode = process.argv.includes("--full") ? "full" : "preview";
 const port = mode === "full" ? 4208 : 4207;
 const promptText = readArg("--prompt") ?? "you are cute";
 const expectedEmotions = (readArg("--expect") ?? "shy_love,love,happy").split(",").map((emotion) => emotion.trim()).filter(Boolean);
@@ -18,7 +18,7 @@ if (!chromePath) {
 const resolvedChromePath = chromePath;
 
 const serverArgs = ["scripts/serve.ts", "--no-open", "--port", String(port)];
-if (mode === "demo") serverArgs.push("--demo");
+if (mode === "preview") serverArgs.push("--preview");
 
 const server = spawn(process.execPath, serverArgs, {
   cwd: process.cwd(),
@@ -353,6 +353,9 @@ function waitForServer(): Promise<void> {
 function resolveChromePath(): string | null {
   const candidates = [
     process.env.CHROME_PATH,
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "/Applications/Chromium.app/Contents/MacOS/Chromium",
+    "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
     "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
     "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
     "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",

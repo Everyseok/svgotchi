@@ -99,4 +99,4 @@ Expected Stage 2 checks:
 
 Approve or reject the 30-emotion pose sheet before Stage 3 begins.
 
-No pure SVG prompt prototype work should begin until the 30-emotion pose sheet is explicitly approved.
+No pure SVG prompt input runtime work should begin until the 30-emotion pose sheet is explicitly approved.

@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <strong>An SVG-first local AI companion.</strong><br />
-  No Python backend. No hosted inference API. No normal HTML app shell.
+  <strong>An SVG-native local AI companion runtime.</strong><br />
+  Runs browser-side emotion inference with Transformers.js and ONNX. No Python backend, no hosted inference API, no HTML app shell.
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
 
 ---
 
-## Demo
+## Local Runtime Preview
 
 <p align="center">
   <img src="docs/assets/readme/svgotchi-preview.gif" alt="SVGotchi full mode preview" width="72%" />
@@ -43,7 +43,17 @@ SVGotchi is not a Python app that renders an SVG character. It is an SVG-native 
 
 ---
 
-## Hugging Face Model Integration
+## Core Properties
+
+- **SVG-native surface**: the opened SVG document is the runtime surface, not a rendered asset inside a separate app.
+- **Browser-local inference**: Transformers.js loads a local ONNX model in the browser; prompt text is not sent to a backend.
+- **TypeScript-controlled behavior**: classifier labels are mapped into a typed `TransitionPlan`, then sanitized before animation.
+- **Small model boundary**: the model returns labels and scores only; SVG, CSS, JavaScript, selectors, and path data are never model-generated.
+- **Static-local deployment**: after model setup, SVGotchi runs from a localhost static server with local model and runtime assets.
+
+---
+
+## Local AI Runtime
 
 | Layer | Value |
 |---|---|
@@ -69,14 +79,16 @@ flowchart TD
   SVG --> JS["browser JavaScript"]
   JS --> PIPE["pipeline('text-classification')"]
   PIPE --> RESULT["emotion labels + scores"]
-  RESULT --> PLAN["local transition planner"]
+  RESULT --> PLAN["TypeScript transition planner"]
   PLAN --> SAFE["sanitized TransitionPlan"]
   SAFE --> RIG["SVG rig animation"]
 ```
 
 ---
 
-## Run It
+## Quick Start
+
+SVGotchi is distributed as a source-first GitHub project. Clone the repository and run it locally.
 
 Full local AI mode:
 
@@ -88,16 +100,16 @@ npm run setup-model -- --yes
 npm run serve
 ```
 
-Demo mode without model setup:
+Model-free preview mode:
 
 ```bash
 git clone https://github.com/Everyseok/svgotchi.git
 cd svgotchi
 npm ci
-npm run serve:demo
+npm run serve:preview
 ```
 
-Default URL:
+Default local URL:
 
 ```text
 http://127.0.0.1:4173/?mode=full
@@ -105,7 +117,7 @@ http://127.0.0.1:4173/?mode=full
 
 ---
 
-## Test It
+## Verification
 
 Basic checks, no model download required:
 
@@ -140,15 +152,16 @@ npm run verify:release
 | Symptom | Fix |
 |---|---|
 | `Full local model mode requires local model assets.` | Run `npm run setup-model -- --yes`, then `npm run serve`. |
-| `npm ERR! 404 Not Found - svgotchi` | The npm package is not published yet. Use the GitHub source checkout above. |
 | Browser did not open automatically | Open `http://127.0.0.1:4173/?mode=full`, or the port printed by the terminal. |
 | `node` crashes before npm runs | Reinstall Node, then check `node -v`. |
 
 ---
 
-## Boundary
+## Runtime Contract
 
-The model returns emotion labels and scores only. It does not generate reply text, SVG, CSS, JavaScript, DOM selectors, path data, or animation code.
+SVGotchi treats model output as untrusted classifier data.
+
+The model returns emotion labels and confidence scores only. It does not generate reply text, SVG, CSS, JavaScript, DOM selectors, path data, URLs, or animation code. App-owned TypeScript maps classifier output into a sanitized `TransitionPlan`, then the renderer mutates only known SVG rig IDs.
 
 ---
 
@@ -168,5 +181,5 @@ GitHub: [@Everyseok](https://github.com/Everyseok)
 ---
 
 <p align="center">
-  <strong>SVG first. Browser local. TypeScript controlled.</strong>
+  <strong>SVG native. Browser local. TypeScript controlled.</strong>
 </p>
