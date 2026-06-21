@@ -1,6 +1,7 @@
 {
   "name": "svgotchi",
   "version": "0.0.0",
+  "license": "MIT",
   "private": false,
   "type": "module",
   "bin": {
@@ -37,6 +38,8 @@
     "node": ">=24.0.0"
   },
   "files": [
+    "LICENSE",
+    "NOTICE",
     "assets/base-character.svg",
     "assets/svgotchi-browser.js",
     "assets/pose-previews/",

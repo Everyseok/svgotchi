@@ -1,0 +1,68 @@
+SVGotchi Notice
+===============
+
+Project license
+---------------
+
+SVGotchi source code, project documentation, repository-owned SVG assets, and
+README media are licensed under the MIT License in `LICENSE`, unless a file
+states otherwise.
+
+Copyright (c) 2026 Jun Seok Kim.
+
+Third-party npm dependencies
+----------------------------
+
+SVGotchi depends on third-party npm packages. Those packages are not vendored
+in this repository and remain under their own upstream licenses.
+
+Direct dependency licenses checked for the versions in `package-lock.json`:
+
+- `@huggingface/transformers@4.2.0`: Apache-2.0
+- `onnxruntime-web@1.26.0-dev.20260416-b7804b056c`: MIT
+- `@types/node@24.13.2`: MIT
+- `typescript@5.9.3`: Apache-2.0
+
+The transitive dependency license inventory is recorded in
+`docs/license-inventory.md`.
+
+Hugging Face model assets
+-------------------------
+
+Full local model mode downloads these model files during explicit setup:
+
+- model repository: `onnx-community/tanaos-emotion-detection-v1-ONNX`
+- source: https://huggingface.co/onnx-community/tanaos-emotion-detection-v1-ONNX
+- license shown by the Hugging Face model page/API on 2026-06-21: MIT
+- task: `text-classification`
+- selected ONNX file: `onnx/model_int8.onnx`
+- tokenizer/config files:
+  - `config.json`
+  - `special_tokens_map.json`
+  - `tokenizer.json`
+  - `tokenizer_config.json`
+
+These model files are not committed to Git. They are downloaded into the
+ignored `models/` directory by `npm run setup-model` and verified by expected
+size and SHA-256 hash before full local model mode is treated as ready.
+
+ONNX Runtime Web local runtime files
+------------------------------------
+
+Full local model mode also copies ONNX Runtime Web runtime files into the
+ignored `runtime/onnxruntime/` directory during `npm run setup-model`.
+
+Those copied runtime files come from the installed `onnxruntime-web` package
+and remain under the upstream `onnxruntime-web` license.
+
+Repository media and generated artifacts
+----------------------------------------
+
+The README GIF at `docs/assets/readme/svgotchi-preview.gif` is project media
+recorded for this repository.
+
+The committed SVG preview/proof assets are generated project artifacts unless
+a file states otherwise.
+
+No agent skill packs or agent workflow vendor copies are required for the app
+runtime, tests, or public source checkout.

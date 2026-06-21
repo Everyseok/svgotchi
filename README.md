@@ -151,6 +151,14 @@ The model returns emotion labels and scores only. It does not generate reply tex
 
 ---
 
+## License
+
+SVGotchi source code, project documentation, and repository-owned media are MIT licensed.
+
+Third-party npm packages and Hugging Face model/runtime assets keep their own upstream licenses. See [LICENSE](LICENSE), [NOTICE](NOTICE), and [docs/license-inventory.md](docs/license-inventory.md).
+
+---
+
 ## Author
 
 **Jun Seok Kim**<br />
