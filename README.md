@@ -1,15 +1,12 @@
 <h1 align="center">SVGotchi</h1>
 
 <p align="center">
-  <img src="assets/base-character.svg" alt="SVGotchi character preview" width="180" />
+  <img src="assets/base-character.svg" alt="SVGotchi character preview" width="150" />
 </p>
 
 <p align="center">
-  <strong>A local-first AI companion that lives inside an SVG document.</strong>
-</p>
-
-<p align="center">
-  SVGotchi is an SVG-first experiment: instead of a Python backend, hosted inference API, or normal HTML app shell, the opened SVG document becomes the product surface. Browser JavaScript handles interaction and local inference; TypeScript keeps the setup, verification, contracts, and transition logic under control.
+  <strong>An SVG-first local AI companion.</strong><br />
+  No Python backend. No hosted inference API. No normal HTML app shell.
 </p>
 
 <p align="center">
@@ -17,52 +14,79 @@
     <img src="https://img.shields.io/badge/Source-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" />
   </a>
   <img src="https://img.shields.io/badge/Runtime-Node%2024%2B-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node 24+" />
-  <img src="https://img.shields.io/badge/App-Pure%20SVG-FFB13B?style=for-the-badge" alt="Pure SVG" />
+  <img src="https://img.shields.io/badge/App-SVG%20Document-FFB13B?style=for-the-badge" alt="SVG Document" />
+  <img src="https://img.shields.io/badge/Model-Hugging%20Face-FFD21E?style=for-the-badge" alt="Hugging Face Model" />
   <img src="https://img.shields.io/badge/Inference-Browser%20Local-2563EB?style=for-the-badge" alt="Browser Local Inference" />
-  <img src="https://img.shields.io/badge/Status-Prototype-2F3640?style=for-the-badge" alt="Prototype" />
 </p>
 
 ---
 
-## Figure 1. Running Prototype
+## Demo
 
 <p align="center">
   <img src="docs/assets/readme/svgotchi-preview.gif" alt="SVGotchi full mode preview" width="72%" />
 </p>
 
-<p align="center">
-  The browser opens an SVG document, accepts prompt input, runs local emotion inference, and animates the character rig without a backend prompt-processing service.
-</p>
+---
+
+## What Makes It Different
+
+| Usual small AI app | SVGotchi |
+|---|---|
+| Python backend or notebook starts the model loop | The opened SVG document is the app surface |
+| Prompt goes to a server/API | Prompt stays in the browser |
+| Backend owns inference | Transformers.js loads a local ONNX model in the browser |
+| UI state is handled by an app framework | SVG rig IDs are animated directly |
+| Model output may drive arbitrary text/UI | Labels and scores are sanitized into fixed pose transitions |
+
+```mermaid
+flowchart LR
+  A["SVG document"] --> B["browser JavaScript"]
+  B --> C["Transformers.js pipeline"]
+  C --> D["local ONNX emotion model"]
+  D --> E["labels + scores"]
+  E --> F["TypeScript transition guardrails"]
+  F --> G["deterministic SVG rig motion"]
+```
 
 ---
 
-## Figure 2. Technical Bet
+## Hugging Face Model Integration
 
-<p align="center">
-  <img src="docs/assets/readme/figure-01-technical-bet.svg" alt="Typical AI prototype stack compared with SVGotchi SVG-first stack" width="100%" />
-</p>
+| Layer | Value |
+|---|---|
+| Model repo | [`onnx-community/tanaos-emotion-detection-v1-ONNX`](https://huggingface.co/onnx-community/tanaos-emotion-detection-v1-ONNX) |
+| Pipeline | `text-classification` |
+| Browser loader | `@huggingface/transformers` / Transformers.js |
+| Runtime format | ONNX Runtime Web |
+| Selected model file | `onnx/model_int8.onnx` |
+| Tokenizer files | `tokenizer.json`, `tokenizer_config.json`, `special_tokens_map.json` |
+| Local model root | `models/onnx-community/tanaos-emotion-detection-v1-ONNX/` |
+| Local runtime root | `runtime/onnxruntime/` |
+| Runtime lock | `allowRemoteModels = false`, `local_files_only = true` |
+| Classifier labels | `joy`, `anger`, `fear`, `sadness`, `surprise`, `disgust`, `excitement`, `neutral` |
+| SVGotchi output | sanitized `TransitionPlan` -> SVG pose, motion, effect, blush, duration |
 
----
-
-## Figure 3. Runtime Architecture
-
-<p align="center">
-  <img src="docs/assets/readme/figure-02-runtime-architecture.svg" alt="SVGotchi runtime architecture" width="100%" />
-</p>
-
----
-
-## Figure 4. Run and Test Flow
-
-<p align="center">
-  <img src="docs/assets/readme/figure-03-run-and-test.svg" alt="SVGotchi run and test flow" width="100%" />
-</p>
+```mermaid
+flowchart TD
+  HF["Hugging Face model repo"] --> SETUP["npm run setup-model"]
+  SETUP --> VERIFY["size + SHA-256 verification"]
+  VERIFY --> LOCAL["models/ + runtime/"]
+  LOCAL --> SERVE["localhost static server"]
+  SERVE --> SVG["SVG document"]
+  SVG --> JS["browser JavaScript"]
+  JS --> PIPE["pipeline('text-classification')"]
+  PIPE --> RESULT["emotion labels + scores"]
+  RESULT --> PLAN["local transition planner"]
+  PLAN --> SAFE["sanitized TransitionPlan"]
+  SAFE --> RIG["SVG rig animation"]
+```
 
 ---
 
 ## Run It
 
-Fresh checkout, full local AI mode:
+Full local AI mode:
 
 ```bash
 git clone https://github.com/Everyseok/svgotchi.git
@@ -72,13 +96,7 @@ npm run setup-model -- --yes
 npm run serve
 ```
 
-Open the URL printed by the terminal. The default is:
-
-```text
-http://127.0.0.1:4173/?mode=full
-```
-
-Fast visual demo without model setup:
+Demo mode without model setup:
 
 ```bash
 git clone https://github.com/Everyseok/svgotchi.git
@@ -87,7 +105,11 @@ npm ci
 npm run serve:demo
 ```
 
-Stop the local server with `Ctrl+C`.
+Default URL:
+
+```text
+http://127.0.0.1:4173/?mode=full
+```
 
 ---
 
@@ -96,11 +118,6 @@ Stop the local server with `Ctrl+C`.
 ```bash
 npm test
 npm run verify:model
-```
-
-Full release verification after model setup:
-
-```bash
 npm run verify:release
 ```
 
@@ -128,11 +145,9 @@ npm run verify:release
 
 ---
 
-## Model Boundary
+## Boundary
 
-The model returns emotion labels and scores. SVGotchi code maps that evidence into deterministic SVG rig transitions.
-
-The model does not generate reply text, SVG, CSS, JavaScript, DOM selectors, path data, or animation code.
+The model returns emotion labels and scores only. It does not generate reply text, SVG, CSS, JavaScript, DOM selectors, path data, or animation code.
 
 ---
 
